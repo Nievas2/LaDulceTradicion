@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-lg-8 offset-lg-3">
+        <div class="card text-white mb-3" style="max-width: 40rem; background-color: var(--color3);">
+            <div class="card-header text-center">Producto</div>
+            <div class="card-body">
+              <form>
+                <label class="form-label">Nombre del producto</label>
+                <input
+                  [(ngModel)]="productoEdit.nombre"
+                  type="text"
+                  class="form-control"
+                  name="nombre"
+                />
+        
+                <label class="form-label">Descripcion del producto</label>
+                <input
+                  [(ngModel)]="productoEdit.descripcion"
+                  type="text"
+                  class="form-control"
+                  name="descripcion"
+                />
+                <label class="form-label">Precio del producto</label>
+                <input
+                  [(ngModel)]="productoEdit.precio"
+                  type="text"
+                  class="form-control"
+                  name="precio"
+                />
+                <label class="form-label">Imagen del producto</label>
+                <input
+                  [(ngModel)]="productoEdit.imagen"
+                  type="text"
+                  class="form-control"
+                  name="imagen"
+                />
+                <button (click)="editar()" class="btn mt-3" style="            background-color: var(--color1);
+                border-color: #c1694c;
+                box-shadow: 5px 5px 0 #c1694c;
+                margin: 0;">Editar</button>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,212 @@
+<div class="row" id="arriba">
+  <a
+    class="navbar-brand text-white fs-3 p-1"
+    href="#"
+    style="
+      background-color: #fff0f0;
+      background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png');
+    "
+    ><img src="../../../assets/sinfondo.png" style="height: 100px" id="center"
+  /></a>
+</div>
+<div class="row" style="height: 25px; text-align: center">
+  <p>si fueras un texto que clase de texto colocarias aquí?</p>
+</div>
+<div class="row" style="background-color: #fbe4dd">
+  <nav
+    class="navbar navbar-expand-lg bg-body-tertiary"
+    style="background-color: #fbe4dd; padding: 0"
+  >
+    <div
+      class="container-fluid"
+      style="
+
+        background-color: #fbe4dd;
+        border-top: 1px solid #c1694c;
+        box-shadow: 0 1px 2px #c1694c;
+      "
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse dl-menu-style1"
+        id="navbarSupportedContent"
+        style="padding: 15px"
+      >
+        <ul
+          class="justify-content-center navbar-nav me-auto mb-2 mx-auto mb-lg-0 text-center et-menu"
+        >
+          <li class="nav-item" style="padding-left: 1em">
+            <a class="nav-link active" aria-current="page" href="#" id="center"
+              >Inicio</a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              routerLink="productos"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Productos
+            </a>
+            <ul class="dropdown-menu" style="background-color: #efa593">
+              <li>
+                <a class="dropdown-item text-center" href="#">MESA DULCE</a>
+              </li>
+              <li>
+                <a class="dropdown-item text-center" href="#"
+                  >TORTAS CLASICAS</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-center" href="#"
+                  >TORTAS PERSONALIZADAS</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item text-center" href="#">LUNCH</a></li>
+              <li>
+                <a class="dropdown-item text-center" href="#"
+                  >PERNILES Y CARNES</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item text-center" href="#">COMBOS</a></li>
+              <li>
+                <a class="dropdown-item text-center" href="#">EMPRESARIALES</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" style="padding-left: 1em">
+            <a class="nav-link" href="#" id="center">Preguntas frecuentes</a>
+          </li>
+          <li class="nav-item" style="padding-left: 1em">
+            <a class="nav-link" href="#" id="center">Contacto</a>
+          </li>
+        </ul>
+
+        <div *ngIf="iniciarSesion">
+          <button
+            class="btn"
+            style="
+              border-color: #c1694c;
+              box-shadow: 5px 5px 0 #c1694c;
+              margin: 0;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-target=".bd-example-modal-lg"
+            id="center"
+          >
+            Iniciar sesion
+          </button>
+        </div>
+        <div *ngIf="cerrarSesion" >
+          <button
+            type="submit"
+            class="btn"
+            style="
+            background-color: var(--color1);
+              border-color: #c1694c;
+              box-shadow: 5px 5px 0 #c1694c;
+              margin: 0;
+            "
+            (click)="logOut()"
+          >
+            Cerrar Sesion
+          </button>
+        </div>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="false"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: #efa593">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Suscribite!!
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body row">
+                <div class="col">
+                  <a class="navbar-brand text-white fs-3" href="#"
+                    ><img
+                      src="../../../assets/suscripcion.png"
+                      style="width: 15em"
+                      class="img-fluid"
+                  /></a>
+                </div>
+                <div class="col">
+                  <p>SUSCRIBITE Y OBTENE BENEFICIOS EXCLUSIVOS</p>
+                  <form>
+                    <div class="form-floating mb-3 mt-3">
+                      <input
+                        type="email"
+                        [(ngModel)]="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Ingrese email"
+                      />
+                      <label>email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input
+                        type="password"
+                        [(ngModel)]="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Ingrese password"
+                      />
+                      <label>Password</label>
+                    </div>
+                    <p>
+                      si no tienes una cuenta registrese
+                      <a routerLink="/register">aqui</a>
+                    </p>
+
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      (click)="login()"
+                    >
+                      login
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <!--
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
