@@ -1,0 +1,74 @@
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div
+    class="card"
+    style="width: 30rem; border-color: #fff; margin-top: -100px"
+  >
+    <div class="card-body" id="card-body">
+      <div class="row">
+        <h5 class="card-title">Registro</h5>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="login()">
+        <div class="mb-2">
+          <label>Email</label>
+          <input
+            class="form-control"
+            formControlName="email"
+            name="email"
+            type="email"
+            placeholder="Escribe tu email"
+          />
+          <span
+            *ngIf="
+              form.get('email')?.hasError('required') &&
+              form.get('email')?.touched
+            "
+          >
+            El campo email es <strong>requerido</strong>
+          </span>
+          <span
+            *ngIf="
+              form.get('email')?.hasError('email') && form.get('email')?.touched
+            "
+          >
+            Por favor, introduce un email válido.
+          </span>
+        </div>
+        <div class="mb-2">
+          <label>Contraseña</label>
+          <input
+            class="form-control"
+            formControlName="password"
+            name="password"
+            type="password"
+            placeholder="************"
+          />
+          <span
+            *ngIf="
+              form.get('password')?.hasError('required') &&
+              form.get('password')?.touched
+            "
+          >
+            El campo es <strong>requerido</strong>
+          </span>
+        </div>
+
+        <div class="row mt-3" style="background-color: var(--color2)">
+          <button
+            [disabled]="form.invalid"
+            class="submit text-white btn"
+            type="submit"
+          >
+            login
+          </button>
+        </div>
+      </form>
+    </div>
+    <h5 class="text-center">
+      Si no tiene una cuenta puede crearse una desde aqui
+      <a href="register">aqui</a>
+    </h5>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { AgregarComponent } from './components/Productos/agregar/agregar.compone
 import { TestsComponent } from './components/tests/tests.component';
 import { PaginasSecundariasComponent } from './components/paginas-secundarias/paginas-secundarias.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [ 
   {path:'home',component:HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'agregar', component:AgregarComponent},
   {path:'pagSec', component:PaginasSecundariasComponent},
   {path:'register', component:RegisterComponent},
+  {path:'login', component:LoginComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
