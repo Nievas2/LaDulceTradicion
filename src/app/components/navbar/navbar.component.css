@@ -1,0 +1,12 @@
+@media (max-width: 991px) {
+  .registroMedia {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .registroMedia {
+    margin-left: 10px;
+  }
+}

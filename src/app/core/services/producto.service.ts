@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-
+import { Producto } from "../interfaces/producto"
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,7 @@ export class ProductoService {
   constructor(private http: HttpClient) { }
 
 
-  //get producto
+  //get producto 
   getProductos()
   {
     return this.http.get(this.url + "/producto");
@@ -44,11 +44,4 @@ export class ProductoService {
 
 }
 
-export interface Producto{
-  id:string;
-  nombre?:string;
-  descripcion?:string;
-  precio?:string;
-  imagen?:string;
-}
 

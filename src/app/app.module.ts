@@ -18,6 +18,7 @@ import { TestsComponent } from './components/tests/tests.component';
 import { PaginasSecundariasComponent } from './components/paginas-secundarias/paginas-secundarias.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { AdminsComponent } from './components/admins/admins.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoginComponent } from './components/login/login.component';
     TestsComponent,
     PaginasSecundariasComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AdminsComponent
   ],
   imports: [
     BrowserModule,

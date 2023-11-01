@@ -8,9 +8,10 @@ import { TestsComponent } from './components/tests/tests.component';
 import { PaginasSecundariasComponent } from './components/paginas-secundarias/paginas-secundarias.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { AdminsComponent } from './components/admins/admins.component';
 
 const routes: Routes = [ 
-  {path:'home',component:HomeComponent},
+  {path:'',component:HomeComponent},
   {path:'test',component:TestsComponent},
   {path:'productos', component:ProductosComponent},
   {path:'editar/:id', component:EditarComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'pagSec', component:PaginasSecundariasComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  {path:'admins', component:AdminsComponent},
+  { path: '', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

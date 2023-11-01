@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { ProductoService, Producto } from 'src/app/core/services/producto.service';
+import { ProductoService } from 'src/app/core/services/producto.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from 'src/app/core/interfaces/user';
 import { UserService } from 'src/app/core/services/user.service';
+import { Producto } from 'src/app/core/interfaces/producto';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',

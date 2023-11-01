@@ -1,8 +1,9 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
-import { Producto,ProductoService } from 'src/app/core/services/producto.service';
+import { ProductoService } from 'src/app/core/services/producto.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Producto } from 'src/app/core/interfaces/producto';
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
