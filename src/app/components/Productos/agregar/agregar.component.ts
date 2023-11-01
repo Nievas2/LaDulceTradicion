@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Producto,ProductoService } from 'src/app/SERVICES/producto.service';
+import { Producto,ProductoService } from 'src/app/core/services/producto.service';
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',

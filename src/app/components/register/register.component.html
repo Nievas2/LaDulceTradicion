@@ -1,22 +1,107 @@
-<div class="wrapper">
-    <div  class="body">
-        <img class="logo" src="../../../assets/img/login.png" alt="img login">
-        <h3>Registrar Usuario</h3>
-        <div class="form-floating mb-3 mt-3">
-            <input type="email" [(ngModel)]="email" class="form-control" placeholder="Ingrese email">
-            <label>email</label>
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div class="card" style="width: 30rem; border-color: #fff; margin-top: -100px">
+    <div class="card-body" id="card-body">
+      <div class="row">
+        <h5 class="card-title">Registro</h5>
+      </div>
+      <form [formGroup]="form" (ngSubmit)="createUser()">
+        <div class="mb-2">
+          <label>Nombres </label>
+          <input
+            class="form-control"
+            formControlName="firstName"
+            name="firstName"
+            type="text"
+            placeholder="Escribe tus nombres"
+          />
+          <span
+            *ngIf="
+              form.get('firstName')?.hasError('required') &&
+              form.get('firstName')?.touched
+            "
+          >
+            El campo Nombres es <strong>requerido</strong>
+          </span>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese password">
-            <label>Password</label>
+        <div class="mb-2">
+          <label>Apellidos </label>
+          <input
+            class="form-control"
+            formControlName="lastName"
+            name="lastName"
+            type="text"
+            placeholder="Escribe tu/s apellido/s"
+          />
+          <span
+            *ngIf="
+              form.get('lastName')?.hasError('required') &&
+              form.get('lastName')?.touched
+            "
+          >
+            El campo es <strong>requerido</strong>
+          </span>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" [(ngModel)]="confirmPassword" class="form-control" placeholder="Ingrese password de nuevo">
-            <label>Repetir Password</label>
+        <div class="mb-2">
+          <label>Email</label>
+          <input
+            class="form-control"
+            formControlName="email"
+            name="email"
+            type="email"
+            placeholder="Escribe tu email"
+          />
+          <span
+            *ngIf="
+              form.get('email')?.hasError('required') &&
+              form.get('email')?.touched
+            "
+          >
+            El campo email es <strong>requerido</strong>
+          </span>
+          <span
+            *ngIf="
+              form.get('email')?.hasError('email') && form.get('email')?.touched
+            "
+          >
+            Por favor, introduce un email válido.
+          </span>
         </div>
-        <div class="d-grid gap-2 mb-3">
-            <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">Aceptar</button>
+        <div class="mb-2">
+          <label>Contraseña</label>
+          <input
+            class="form-control"
+            formControlName="password"
+            name="password"
+            type="password"
+            placeholder="************"
+          />
+          <span
+            *ngIf="
+              form.get('password')?.hasError('required') &&
+              form.get('password')?.touched
+            "
+          >
+            El campo es <strong>requerido</strong>
+          </span>
         </div>
-        <a routerLink="/login">Volver</a>
+
+        <div class="row mt-3" style="background-color: var(--color2)">
+          <button
+            [disabled]="form.invalid"
+            class="submit text-white btn "
+            type="submit"
+          >
+            Suscribirse
+          </button>
+        </div>
+      </form>
     </div>
+    <h5 class="text-center">
+      Si ya tiene una cuenta puede ingresar desde aqui
+      <a href="login">aqui</a>
+    </h5>
+  </div>
 </div>

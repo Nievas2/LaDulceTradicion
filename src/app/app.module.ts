@@ -9,12 +9,11 @@ import { ProductosDestacadosComponent } from './components/productos-destacados/
 import { PregFrecuentesComponent } from './components/preg-frecuentes/preg-frecuentes.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { BannersComponent } from './components/banners/banners.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AgregarComponent } from './components/Productos/agregar/agregar.component';
 import { EditarComponent } from './components/Productos/editar/editar.component';
 import { ProductosComponent } from './components/Productos/productos/productos.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TestsComponent } from './components/tests/tests.component';
 import { PaginasSecundariasComponent } from './components/paginas-secundarias/paginas-secundarias.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -38,9 +37,9 @@ import { RegisterComponent } from './components/register/register.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
-import { UserServiceService } from 'src/app/SERVICES/user-service.service';
+import { User } from 'src/app/core/interfaces/user';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -9,44 +11,60 @@ import { UserServiceService } from 'src/app/SERVICES/user-service.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  email: string = '';
-  password: string = '';
-  confirmPassword:string='';
-  constructor(private userService: UserServiceService, private router:Router){}
+  form: FormGroup;
+  registro:boolean=false;
+  user: User = {
+    id: 0,
+    firstName:"",
+    lastName:'',
+    email:'',
+    phone: '',
+    password:'',
+    active: true,
+    admin:false,
+   
 
+  }
+  constructor(private userService: UserService,private fb: FormBuilder,private router: Router,) { 
+      this.form = this.fb.group({
+        firstName:  ['', Validators.required],
+        lastName:  ['', Validators.required],
+        email:  ['', Validators.required],
+        phone:  [''],
+        password:  ['', Validators.required],
 
+      })
+      this.register()
+  }
 
-  
-  addUser() {
-
-    // Validamos que el usuario ingrese valores
-    if (this.email == '' || this.password == '' || this.confirmPassword == '') {
-      
-      return console.log("faltan datos");
+  createUser(){
+    this.user = {
+      id:0,
+      firstName: this.form.value.firstName,
+      lastName: this.form.value.lastName,
+      email: this.form.value.email,
+      phone: this.form.value.phone,
+      password: this.form.value.password,
+      active: true,
+      admin:false,
     }
 
-    // Validamos que las password sean iguales
-    if (this.password != this.confirmPassword) {
-      
-      return console.log("no son iguales las contraseñas");;
-    }
-
-    // Creamos el objeto
-    const user = {
-      email:this.email,
-      password: this.password
-    }
-
-    this.userService.register(user).subscribe({
-      next: (v) => {
-    
-        console.log(`El usuario fue registrado con exito`, 'Usuario registrado');
-        this.router.navigate(['']);
-      },
-      error: (e: HttpErrorResponse) => {
-        console.log("fallo")
-        return console.log(e)
+    this.userService.postUser(this.user)
+    .subscribe(
+      (data) => {this.registro= true;},
+      (error) => {
+        console.log(error);
       }
+    );
+  }
+
+  register(){
+    this.form.setValue({
+    firstName:"",
+    lastName:"",
+    email:"",
+    phone: "",
+    password:"",
     })
   }
 }

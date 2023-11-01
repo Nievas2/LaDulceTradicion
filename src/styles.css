@@ -4,15 +4,13 @@
   --color2: #c1694c;
   --color3: #751c19;
   --color4: #efa593;
+  --BottomOffset: 15px;
+  --LineHeight: 5px;
+  --LineColor: #751c19;
 }
 /* Cambiar los valores de separación inferior - ancho de la línea y color de la línea acá */
 html {
   scroll-behavior: smooth;
-}
-:root {
-  --BottomOffset: 15px;
-  --LineHeight: 5px;
-  --LineColor: #751c19;
 }
 /* Menu Hover Effects Style 1 */
 

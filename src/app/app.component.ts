@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,5 +6,4 @@ import { faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons'
 })
 export class AppComponent {
   title = 'LaDulceTradicion';
-  faArrowAltCircleUp = faArrowAltCircleUp;
 }
