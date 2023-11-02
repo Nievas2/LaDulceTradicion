@@ -50,21 +50,26 @@
               >Inicio</a
             >
           </li>
+          <li class="nav-item" style="padding-left: 1em">
+            <a class="nav-link active" aria-current="page" routerLink="/productos" id="center"
+              >Productos</a
+            >
+          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
-              routerLink="productos"
+              
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Productos
+              Categorias
             </a>
-            <ul class="dropdown-menu" style="background-color: #efa593">
-              <li>
-                <a class="dropdown-item text-center" href="#">MESA DULCE</a>
+            <ul class="dropdown-menu" style="background-color: #efa593" >
+              <li *ngFor="let category of categories">
+                <a class="dropdown-item text-center" href="/categorias/{{category.id}}">{{category.name}}</a>
               </li>
-              <li>
+<!--               <li>
                 <a class="dropdown-item text-center" href="#"
                   >TORTAS CLASICAS</a
                 >
@@ -85,7 +90,7 @@
               <li><a class="dropdown-item text-center" href="#">COMBOS</a></li>
               <li>
                 <a class="dropdown-item text-center" href="#">EMPRESARIALES</a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="nav-item" style="padding-left: 1em">

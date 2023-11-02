@@ -12,14 +12,6 @@ import { Producto } from 'src/app/core/interfaces/producto';
 })
 export class ProductosComponent {
   ListarProducto: Producto[] = [];
-  verificacion:boolean= false;
-  ListarUser: User[]=[];
-  role:any;
-  token:any;
-  userData:any ={};
-  
-  IsAdmin:boolean =false;
-  valorRole:any =localStorage.getItem('rol');
   constructor(
     private ProductoService: ProductoService,
     private router: Router,
@@ -32,23 +24,10 @@ export class ProductosComponent {
   listarProducto() {
     this.ProductoService.getProductos().subscribe(
       (res) => {
-      
         this.ListarProducto = <any>res;
       },
       (err) => console.log(err)
     );
-  }
-  eliminar(id:string) {
-    this.ProductoService.deleteProducto(id).subscribe(
-      (res) => {
-        console.log('equipo eliminado');
-        this.listarProducto();
-      },
-      (err) => console.log(err)
-    );
-  }
-  editar(id:string) {
-    this.router.navigate(['/editar/' + id]);
   }
 
 

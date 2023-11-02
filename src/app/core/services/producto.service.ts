@@ -6,7 +6,7 @@ import { Producto } from "../interfaces/producto"
 })
 export class ProductoService {
 
-  url='localhost:4001/user';
+  url='http://localhost:4001';
 
   constructor(private http: HttpClient) { }
 
@@ -14,31 +14,31 @@ export class ProductoService {
   //get producto 
   getProductos()
   {
-    return this.http.get(this.url + "/producto");
+    return this.http.get(this.url + "/product");
   }
 
 
   //get un producto
   getUnProducto(id:string){
-    return this.http.get<Producto[]>(this.url+"/producto/"+id);
+    return this.http.get<Producto[]>(this.url+"/product/"+id);
   }
 
 
   //agregar producto
   addProductos(producto:Producto)
   {
-    return this.http.post(this.url+"/"+ "producto",producto);
+    return this.http.post(this.url+"/"+ "product",producto);
   }
 
 
   //eliminar
   deleteProducto(id:string){
-    return this.http.delete(this.url+"/producto/"+id);
+    return this.http.delete(this.url+"/product/"+id);
   }
 
   //modificar producto
   editProducto(id:string, producto:Producto){
-    return this.http.put(this.url+"/producto/"+id, producto);
+    return this.http.put(this.url+"/product/"+id, producto);
   }
 
 

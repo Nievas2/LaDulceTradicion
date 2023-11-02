@@ -10,10 +10,10 @@ import { ProductoService } from 'src/app/core/services/producto.service';
 export class AgregarComponent {
   producto : Producto={
     id:'',
-    nombre:'',
-    descripcion:'',
-    precio:'',
-    imagen:''
+    name:'',
+    description:'',
+    price:'',
+    image:''
   }
   constructor(private router:Router, private ProductoService:ProductoService){}
 

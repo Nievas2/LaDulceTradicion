@@ -9,8 +9,8 @@ import { ProductosDestacadosComponent } from './components/productos-destacados/
 import { PregFrecuentesComponent } from './components/preg-frecuentes/preg-frecuentes.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { BannersComponent } from './components/banners/banners.component';
-import { AgregarComponent } from './components/Productos/agregar/agregar.component';
-import { EditarComponent } from './components/Productos/editar/editar.component';
+import { AgregarComponent } from './components/admins/Productos/agregar/agregar.component';
+import { EditarComponent } from './components/admins/Productos/editar/editar.component';
 import { ProductosComponent } from './components/Productos/productos/productos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,7 @@ import { PaginasSecundariasComponent } from './components/paginas-secundarias/pa
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminsComponent } from './components/admins/admins.component';
+import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AdminsComponent } from './components/admins/admins.component';
     PaginasSecundariasComponent,
     RegisterComponent,
     LoginComponent,
-    AdminsComponent
+    AdminsComponent,
+    ProductsByCategoryComponent
   ],
   imports: [
     BrowserModule,

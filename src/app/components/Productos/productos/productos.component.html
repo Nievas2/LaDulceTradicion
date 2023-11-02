@@ -1,21 +1,10 @@
-<div *ngIf="IsAdmin">
-  <button class="btn btn-danger" routerLink="/agregar">agregar</button>
-</div>
+
 <div class="row">
   <div
     class="col m2"
     *ngFor="let producto of ListarProducto; let index = index"
   >
-  <div *ngIf="IsAdmin">
-    
-  
-    <button class="btn btn-primary" (click)="editar(producto.id)">
-      Editar
-    </button>
-    <button class="btn btn-danger" (click)="eliminar(producto.id)">
-      Eliminar
-    </button>
-  </div>
+  <h2>{{producto.name}}</h2>
     <div
       class="card sh"
       style="width: 18rem; margin-left: 15px; border-color: #751c19"
@@ -35,7 +24,7 @@
       </div>
 
       <img
-        src="{{ producto.imagen }}"
+        src="{{ producto.image }}"
         class="card-img-top img-dest img-fluid"
         alt="..."
         style="height: 20rem"
@@ -43,12 +32,12 @@
 
       <div class="card-body item-info">
         <h3 class="fs-5">
-          <b>{{ producto.nombre }}</b>
+          <b>{{ producto.name }}</b>
         </h3>
         <p class="card-text" style="text-align: start">
-          {{ producto.descripcion }}
+          {{ producto.description }}
         </p>
-        <h4 class="fs-6" style="text-align: end">{{ producto.precio }}</h4>
+        <h4 class="fs-6" style="text-align: end">{{ producto.price }}</h4>
       </div>
     </div>
 
@@ -78,15 +67,15 @@
           </div>
           <div class="modal-body">
             <img
-              src="{{ producto.imagen }}"
+              src="{{ producto.image }}"
               class="card-img-top img-dest img-fluid"
               alt="..."
             />
             <h3>
-              {{ producto.nombre }}
+              {{ producto.name }}
             </h3>
             <p>
-              {{ producto.descripcion }}
+              {{ producto.description }}
             </p>
           </div>
           <div class="modal-footer">

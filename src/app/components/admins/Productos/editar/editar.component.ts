@@ -12,10 +12,10 @@ import { Producto } from 'src/app/core/interfaces/producto';
 export class EditarComponent  implements OnInit{
   producto : Producto={
     id: '',
-    nombre:'',
-    descripcion:'',
-    precio:'',
-    imagen:''
+    name:'',
+    description:'',
+    price:'',
+    image:''
   }
   productoEdit:any ={};
   constructor(private router:Router, 
