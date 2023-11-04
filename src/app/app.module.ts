@@ -9,9 +9,6 @@ import { ProductosDestacadosComponent } from './components/productos-destacados/
 import { PregFrecuentesComponent } from './components/preg-frecuentes/preg-frecuentes.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { BannersComponent } from './components/banners/banners.component';
-import { AgregarComponent } from './components/admins/Productos/agregar/agregar.component';
-import { EditarComponent } from './components/admins/Productos/editar/editar.component';
-import { ProductosComponent } from './components/Productos/productos/productos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TestsComponent } from './components/tests/tests.component';
@@ -20,6 +17,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { ProductsByCategoryComponent } from './components/products-by-category/products-by-category.component';
+import { CategoriaComponent } from './components/admins/Categorias/categoria.component';
+import { CarouselComponent } from './components/admins/carousel/carousel.component';
+import { ValidationemailComponent } from './components/validationemail/validationemail.component';
+import { CreatenewcodeComponent } from './components/validationemail/createnewcode/createnewcode.component';
+import { AddCarouselComponent } from './components/admins/carousel/add-carousel/add-carousel.component';
+import { EditCarouselComponent } from './components/admins/carousel/edit-carousel/edit-carousel.component';
+import { EditCategoryComponent } from './components/admins/Categorias/edit-category/edit-category.component';
+import { ProductosComponent } from './components/Productos/productos.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +35,20 @@ import { ProductsByCategoryComponent } from './components/products-by-category/p
     PregFrecuentesComponent,
     ContactanosComponent,
     BannersComponent,
-    AgregarComponent,
-    EditarComponent,
     ProductosComponent,
     TestsComponent,
     PaginasSecundariasComponent,
     RegisterComponent,
     LoginComponent,
     AdminsComponent,
-    ProductsByCategoryComponent
+    ProductsByCategoryComponent,
+    CategoriaComponent,
+    CarouselComponent,
+    ValidationemailComponent,
+    CreatenewcodeComponent,
+    AddCarouselComponent,
+    EditCarouselComponent,
+    EditCategoryComponent
   ],
   imports: [
     BrowserModule,

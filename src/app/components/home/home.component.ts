@@ -12,15 +12,10 @@ export class HomeComponent implements OnInit{
   token: string | null = null;
   admin : boolean = false;
   register : boolean = false;
-  image : any ={};
+  image : string ="";
+  numero : number = 0
 constructor(private loginService:LoginService, private router: Router,private carouselService: CarouselService){
-/*   this.carouselService.getCarousel().subscribe((data)=>{
-    console.log(data);
-    this.image = <any>data
-  },
-  (error)=>{
-    console.log(error)
-  }) */
+
 }
 ngOnInit(): void {
   this.loginService.token.subscribe(
@@ -38,8 +33,9 @@ ngOnInit(): void {
       this.register = isRegistered
     }
   )
-  console.log(this.carouselService.imageSources);
+ 
   
-  
+ 
 }
+
 }

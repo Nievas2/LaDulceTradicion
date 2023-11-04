@@ -1,4 +1,4 @@
-<div class="row">
+<div class="container-fluid">
   <div *ngIf="!existCourses">
     <h4 class="text-center">
       <svg
@@ -24,11 +24,11 @@
       </svg>
     </h4>
   </div>
+  <div class="row">
   <div
     class="col m2"
     *ngFor="let producto of category; let index = index"
   >
-    <h2>{{ producto.name }}</h2>
     <div
       class="card sh"
       style="width: 18rem; margin-left: 15px; border-color: #751c19"
@@ -102,7 +102,7 @@
           </div>
           <div class="modal-body">
             <img
-              src="{{ producto.image }}"
+              src="${{ producto.image }}"
               class="card-img-top img-dest img-fluid"
               alt="..."
             />
@@ -127,4 +127,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

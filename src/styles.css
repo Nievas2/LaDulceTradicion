@@ -81,7 +81,7 @@ body{
 }
 .img-dest:hover {
   transition: 0.8s;
-  transform: scale(1.1);
+ /*  transform: scale(1.1); */
   z-index: 1;
   filter: brightness(115%);
 }

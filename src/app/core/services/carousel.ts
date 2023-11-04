@@ -17,21 +17,28 @@ export class CarouselService {
     }
   
     getImages(): void {
-        this.httpCarousel.get('http://localhost:4001/carousel', { responseType: 'text' })
-          .subscribe((data) => {
-            // Maneja los datos como texto
-            this.images = <any>data;
-            this.images.forEach(imageName => {
-              this.getImageSource(imageName);
-            },
-            (error: any)=>{
-                console.log(error)
-            }
-            );
-          })
+      this.httpCarousel.get('http://localhost:4001/carousel', { responseType: 'text' })
+      .subscribe((data) => {
+        // Maneja los datos como texto
+        try {
+          this.images = JSON.parse(data);
+          if (Array.isArray(this.images)) {
+            this.images.forEach((image) => {
+              this.getImageSource(image);
+            });
+          } else {
+            console.error('Los datos no son un array');
+          }
+        } catch (error) {
+          console.error('Error al analizar los datos JSON', error);
+        }
+      },
+      (error) => {
+        console.error('Ocurrió un error al obtener los datos', error);
+      });
       }
     getImageSource(name: string): void {
-        this.httpCarousel.get('http://localhost:4001/carousel/images/1698938865468-mina.png', { responseType: 'blob' })
+        this.httpCarousel.get('http://localhost:4001/carousel/images/'+ name, { responseType: 'blob' })
           .subscribe((blob: any) => {
             const reader = new FileReader();
             reader.onload = () => {

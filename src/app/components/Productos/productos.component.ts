@@ -8,7 +8,7 @@ import { Producto } from 'src/app/core/interfaces/producto';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
-  styleUrls: ['./productos.component.css'],
+  styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent {
   ListarProducto: Producto[] = [];
