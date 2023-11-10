@@ -17,17 +17,23 @@ import { AddCategoryComponent } from './components/admins/Categorias/add-categor
 import { EditCategoryComponent } from './components/admins/Categorias/edit-category/edit-category.component';
 import { CarouselComponent } from './components/admins/carousel/carousel.component';
 import { AddCarouselComponent } from './components/admins/carousel/add-carousel/add-carousel.component';
+import { CreatenewcodeComponent } from './components/validationemail/createnewcode/createnewcode.component';
+import { ValidationemailComponent } from './components/validationemail/validationemail.component';
 
 
 const routes: Routes = [ 
   {path:'',component:HomeComponent},
   {path:'test',component:TestsComponent},
   {path:'productos', component:ProductosComponent},
-  {path:'pagSec', component:PaginasSecundariasComponent},
+  {path:'pagsec/:id', component:PaginasSecundariasComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
   {path:'admins', component:AdminsComponent},
   {path:'contacto', component:ContactanosComponent},
+  {path:"crear-codigo", component:CreatenewcodeComponent},
+  {
+    path: 'verificar-email/:email/:code',component:ValidationemailComponent 
+  },
   /* PRODUCTOS */
   {path:'admins/productos', component:ProductosAdminComponent},
   {path:'admins/productos/addproductos', component:AddProductsComponent},

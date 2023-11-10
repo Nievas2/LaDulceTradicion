@@ -17,7 +17,7 @@
         <tbody *ngFor="let carousel of carousels">
           <tr>
             <th scope="row">
-              <h5>{{ carousel.name }}</h5>
+              <h5>{{ carousel }}</h5>
             </th>
             <th scope="row">
               <!-- Button trigger modal -->
@@ -27,7 +27,7 @@
                 style="background-color: var(--colorOrange)"
                 data-bs-toggle="modal"
                 data-bs-target="#delete"
-                (click)="selectName(carousel.name)"
+                (click)="selectName(carousel)"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

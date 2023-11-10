@@ -50,7 +50,7 @@ uploadImage() {
   if (this.fileToUpload) {
     const formData = new FormData();
     formData.append('imagen', this.fileToUpload, this.fileToUpload.name);
-
+    console.log(formData)
     this.http.post('localhost:4001/carousel/upload', formData)
       .subscribe(
         response => {

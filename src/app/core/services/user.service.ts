@@ -32,11 +32,6 @@ export class UserService {
   postUser(user: User){
     return this.httpUser.post(this.apiUrl, user);
   }
-  removeCourseRegistration(idCourse:number,idUser:number ){
-    const idCourseSelect = idCourse;
-    const idUserSelect = idUser;
-    return this.httpUser.delete(this.apiUrl+"/removeinscription/"+idCourseSelect+"/"+idUserSelect)
-  }
   createCode(email:string):Observable<any>{
     const requestBody = { email }; 
     return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)

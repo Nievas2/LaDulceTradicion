@@ -4,7 +4,7 @@
       style="background-color: #fff; padding: 20px 30px; border-radius: 10px;margin-left: 15px;margin-right: 15px;"
     >
       <div class="row">
-        <button class="boton" routerLink="/admins">Volver</button>
+        <button class="btn boton" routerLink="/admins">Volver</button>
   
       </div>
       <table class="table rounded">
@@ -24,7 +24,7 @@
               <button
                 class="btn border rounded"
                 style="background-color: var(--colorOrange)"
-                routerLink="editCourseCategory/{{ category.id }}"
+                routerLink="editcategorias/{{ category.id }}"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,14 +80,14 @@
                     <div class="modal-footer">
                       <button
                         type="button"
-                        class="boton col"
+                        class="btn boton col"
                         data-bs-dismiss="modal"
                       >
                         Volver
                       </button>
                       <button
                         type="button"
-                        class="boton col"
+                        class="btn boton col"
                         (click)="deleteCourseCategory()"
                       >
                         Aceptar
@@ -101,7 +101,7 @@
         </tbody>
       </table>
       <div class="row">
-        <button class="boton" style="width: 120px" routerLink="addCourseCategory">
+        <button class="btn boton" style="width: 120px" routerLink="addcategorias">
           Agregar
         </button>
       </div>

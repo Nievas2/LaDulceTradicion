@@ -8,10 +8,10 @@
           class="card sh"
           style="width: 18rem; margin-left: 15px; border-color: #751c19"
         >
-          <div style="position: absolute; right: 10px; z-index: 10000000000000;">
+          <div style="position: absolute; right: 10px; z-index: 100;">
             <a
               href="#arriba"
-              style="color: #fff"
+              style="color: #000000"
               data-bs-toggle="modal"
               [attr.data-bs-target]="'#exampleModal2-' + index"
             >
@@ -51,41 +51,22 @@
           aria-hidden="true"
         >
           <div class="modal-dialog">
-            <div class="modal-content" style="background-color: #efa593">
-              <div class="">
-                <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">
-                  Modal title
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  style="position: absolute; right: 5px; top: 5px"
-                ></button>
-              </div>
-              <div class="modal-body">
+            <div class="modal-content" style="background-color: var(--color1)">
+              <div class="modal-body " style="padding: 0;">
                 <img
                   src="{{ producto.image }}"
-                  class="card-img-top img-dest img-fluid"
+                  class="img-dest img-fluid"
                   alt="..."
                 />
-                <h3>
+                <h3 class="p-2">
                   {{ producto.name }}
                 </h3>
-                <p>
+                <p class="p-2">
                   {{ producto.description }}
                 </p>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id="center" type="button" class="btn boton"><a style="text-decoration: none; color: #000;" href="/pagsec/{{producto.id}}">Ver más</a></button>
               </div>
             </div>
           </div>
