@@ -6,41 +6,29 @@ import { Producto } from "../interfaces/producto"
 })
 export class ProductoService {
 
-  url='http://localhost:4001';
+  url='http://localhost:4001/product';
 
   constructor(private http: HttpClient) { }
 
-
-  //get producto 
-  getProductos()
-  {
-    return this.http.get(this.url + "/product");
+  getProductos() {
+    return this.http.get<Producto[]>(this.url)
+  };
+  
+  getProductoById(id:number){
+    return this.http.get<Producto>(this.url+'/'+id)
   }
 
-
-  //get un producto
-  getUnProducto(id:string){
-    return this.http.get<Producto[]>(this.url+"/product/"+id);
+  postProducto(course: Producto){
+    return this.http.post(this.url, course)
   }
 
-
-  //agregar producto
-  addProductos(producto:Producto)
-  {
-    return this.http.post(this.url+"/"+ "product",producto);
+  putProducto(course: Producto, id:number){
+    return this.http.put(this.url+'/'+id, course)
   }
 
-
-  //eliminar
-  deleteProducto(id:string){
-    return this.http.delete(this.url+"/product/"+id);
+  deleteProducto(id:number){
+    return this.http.delete(this.url+'/'+id)
   }
-
-  //modificar producto
-  editProducto(id:string, producto:Producto){
-    return this.http.put(this.url+"/product/"+id, producto);
-  }
-
 
 }
 

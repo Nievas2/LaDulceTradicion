@@ -69,35 +69,14 @@
               <li *ngFor="let category of categories">
                 <a class="dropdown-item text-center" href="/categorias/{{category.id}}">{{category.name}}</a>
               </li>
-<!--               <li>
-                <a class="dropdown-item text-center" href="#"
-                  >TORTAS CLASICAS</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-center" href="#"
-                  >TORTAS PERSONALIZADAS</a
-                >
-              </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item text-center" href="#">LUNCH</a></li>
-              <li>
-                <a class="dropdown-item text-center" href="#"
-                  >PERNILES Y CARNES</a
-                >
-              </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item text-center" href="#">COMBOS</a></li>
-              <li>
-                <a class="dropdown-item text-center" href="#">EMPRESARIALES</a>
-              </li> -->
+
             </ul>
           </li>
           <li class="nav-item" style="padding-left: 1em">
             <a class="nav-link" href="#" id="center">Preguntas frecuentes</a>
           </li>
           <li class="nav-item" style="padding-left: 1em">
-            <a class="nav-link" href="#" id="center">Contacto</a>
+            <a class="nav-link" href="contacto" id="center">Contacto</a>
           </li>
           <li class="nav-item" style="padding-left: 1em" *ngIf="admin">
             <a class="nav-link" routerLink="/admins" id="center">Administración</a>

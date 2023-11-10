@@ -22,9 +22,12 @@ import { CarouselComponent } from './components/admins/carousel/carousel.compone
 import { ValidationemailComponent } from './components/validationemail/validationemail.component';
 import { CreatenewcodeComponent } from './components/validationemail/createnewcode/createnewcode.component';
 import { AddCarouselComponent } from './components/admins/carousel/add-carousel/add-carousel.component';
-import { EditCarouselComponent } from './components/admins/carousel/edit-carousel/edit-carousel.component';
 import { EditCategoryComponent } from './components/admins/Categorias/edit-category/edit-category.component';
 import { ProductosComponent } from './components/Productos/productos.component';
+import { EditProductsComponent } from './components/admins/Productos/edit-products/edit-products.component';
+import { AddCategoryComponent } from './components/admins/Categorias/add-category/add-category.component';
+import { AddProductsComponent } from './components/admins/Productos/add-products/add-products.component';
+import { ProductosAdminComponent } from './components/admins/Productos/productosAdmin.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { ProductosComponent } from './components/Productos/productos.component';
     ContactanosComponent,
     BannersComponent,
     ProductosComponent,
+    ProductosAdminComponent,
     TestsComponent,
     PaginasSecundariasComponent,
     RegisterComponent,
@@ -46,9 +50,11 @@ import { ProductosComponent } from './components/Productos/productos.component';
     CarouselComponent,
     ValidationemailComponent,
     CreatenewcodeComponent,
+    EditCategoryComponent,
+    EditProductsComponent,
+    AddCategoryComponent,
     AddCarouselComponent,
-    EditCarouselComponent,
-    EditCategoryComponent
+    AddProductsComponent
   ],
   imports: [
     BrowserModule,
