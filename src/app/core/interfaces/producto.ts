@@ -1,3 +1,5 @@
+import { ImagesProductAsocciations } from "./imagesProductAsocciation";
+import { SubCategoryProduct } from "./subCategoryProduct";
 
 export interface Producto{
   id:number;
@@ -6,4 +8,6 @@ export interface Producto{
   price:number;
   image:string;
   CategoryName: string;
+  SubCategoryProducts: SubCategoryProduct,
+  ImagesProductAsocciations: ImagesProductAsocciations
 }

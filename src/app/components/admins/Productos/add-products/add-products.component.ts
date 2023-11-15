@@ -18,13 +18,23 @@ export class AddProductsComponent {
   id: number;
   recursos: any = [];
   admin: boolean = false;
-  course: Producto = {
+  producto: Producto = {
     id: 0,
     name: '',
     description: '',
     image: '',
     price: 0,
     CategoryName: '',
+    ImagesProductAsocciations:{
+      id:0,
+      ImageProductId: 0,
+      ProductId: 0,
+    },
+    SubCategoryProducts:{
+      id:0,
+      SubCategoryId: 0,
+      ProductId: 0,
+    }
   };
   constructor(
     private fb: FormBuilder,
@@ -73,15 +83,25 @@ ngOnInit(): void {
     );
   }
   add() {
-    this.course = {
+    this.producto = {
       id: this.id,
       name: this.form.value.name,
       description: this.form.value.description,
       image: this.form.value.image,
       price: this.form.value.price,
       CategoryName: this.form.value.CategoryName,
+      ImagesProductAsocciations:{
+        id:0,
+        ImageProductId: 0,
+        ProductId: 0,
+      },
+      SubCategoryProducts:{
+        id:0,
+        SubCategoryId: 0,
+        ProductId: 0,
+      }
     };
-    this.courseService.postProducto(this.course).subscribe(
+    this.courseService.postProducto(this.producto).subscribe(
       (data) => {
         this.router.navigate(['/admins/productos']);
       },

@@ -25,6 +25,16 @@ export class AddCategoryComponent {
     image: '',
     price: 0,
     CategoryName: '',
+    ImagesProductAsocciations:{
+      id:0,
+      ImageProductId: 0,
+      ProductId: 0,
+    },
+    SubCategoryProducts:{
+      id:0,
+      SubCategoryId: 0,
+      ProductId: 0,
+    }
   };
   category : Category = {
     id: 0,

@@ -24,7 +24,17 @@ export class EditProductsComponent {
     description: '',
     image: '',
     price: 0,
-    CategoryName:""
+    CategoryName:"",
+    ImagesProductAsocciations:{
+      id:0,
+      ImageProductId: 0,
+      ProductId: 0,
+    },
+    SubCategoryProducts:{
+      id:0,
+      SubCategoryId: 0,
+      ProductId: 0,
+    }
   };
   constructor(
     private fb: FormBuilder,
@@ -86,6 +96,16 @@ ngOnInit(): void {
       image: this.form.value.image,
       price: this.form.value.price,
       CategoryName: this.form.value.CategoryName,
+      ImagesProductAsocciations:{
+        id:0,
+        ImageProductId: 0,
+        ProductId: 0,
+      },
+      SubCategoryProducts:{
+        id:0,
+        SubCategoryId: 0,
+        ProductId: 0,
+      }
     };
     console.log(this.producto)
     this.productoService.putProducto(this.producto, this.id).subscribe(
