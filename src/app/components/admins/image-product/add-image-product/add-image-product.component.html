@@ -1,10 +1,31 @@
-<form [formGroup]="miFormulario" (ngSubmit)="enviarDatos()">
-    <div formArrayName="datos">
-      <div *ngFor="let dato of datos.controls; let i = index">
-        <input [formControl]="dato" placeholder="Ingrese un dato">
-        <button type="button" (click)="eliminarInput(i)">-</button>
+
+
+
+
+
+<div class="row mb-3 mt-3 offset-lg-2 userSelect">
+  <div
+    class="card text-white mb-3"
+    style="max-width: 50rem; background-color: var(--colorBlue)"
+  >
+    <div class="card-header text-center fs-3"style="text-shadow: 2px 2px 5px #000000;"><b> Agregar curso</b></div>
+    <div class="card-body">
+     <form [formGroup]="miFormulario" (ngSubmit)="enviarDatos()">
+  <div formArrayName="datos">
+    <div *ngFor="let dato of datos.controls; let i = index">
+      <div [formGroupName]="i">
+        <div class="row mb-3 mb-3">  <input class="form-control" type="text" formControlName="image" placeholder="imagen"></div>
+        <div class="row mb-3 mb-3" *ngIf="disable">
+        <input class="form-control" type="number" formControlName="Product" placeholder="id del producto a modificar">
       </div>
+      </div>
+      <button class="btn boton" type="button" (click)="eliminarInput(i)">-</button>
     </div>
-    <button type="button" (click)="agregarInput()">+</button>
-    <button type="submit">Enviar</button>
-  </form>
+  </div>
+  <button class="btn boton" type="button" (click)="agregarInput()">+</button>
+  <button class="btn boton" type="submit">Enviar</button>
+  <button class="btn boton" type="submit" routerLink="/admins/imageproduct">Volver</button>
+</form>
+    </div>
+  </div>
+</div>

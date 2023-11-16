@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImageProduct } from 'src/app/core/interfaces/imageProduct';
 import { ImageProductService } from 'src/app/core/services/image-product.service';
 import { LoginService } from 'src/app/core/services/login.service';
@@ -18,8 +18,11 @@ export class ImageProductComponent {
   constructor(
     private imageProductService: ImageProductService,
     private router: Router,
-    private loginSvc: LoginService
+    private loginSvc: LoginService,
+
   ) {
+    
+
     this.getImageProducts();
   }
 

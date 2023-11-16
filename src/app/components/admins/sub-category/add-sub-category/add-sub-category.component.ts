@@ -13,6 +13,10 @@ export class AddSubCategoryComponent {
   miFormulario: FormGroup;
   subCategory! : SubCategory;
   id: number;
+  newId: any;
+  /* analiza si esta en !=0 true (para mostrar el input)
+  si es == 0 false    */
+  disable: boolean = false;
   constructor(private fb: FormBuilder,
     private aRouter: ActivatedRoute, private subCategoryService: SubCategoryService) {
     this.miFormulario = this.fb.group({
@@ -20,6 +24,9 @@ export class AddSubCategoryComponent {
     });
     
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
+    if(this.id == 0){
+      this.disable = true
+    }
   }
 
   ngOnInit() {
@@ -41,12 +48,17 @@ export class AddSubCategoryComponent {
   enviarDatos() {
     const datosFormArray = this.miFormulario.get('datos') as FormArray;
     
-    datosFormArray.controls.forEach((control) => {
+    datosFormArray.controls.forEach((control) => {      
+      if(!this.disable){
+        this.newId = control.get("Product")?.value
+      }else{
+        this.newId = this.id
+      }
       this.subCategory={
         id:0,
         date: control.get("date")?.value,
         price: control.get("price")?.value,
-        Product:this.id
+        Product:this.newId
       }
       // Realiza la llamada al backend utilizando tu servicio
       this.subCategoryService.postSubCategory(this.subCategory).subscribe(
@@ -63,7 +75,8 @@ export class AddSubCategoryComponent {
   private crearFormGroup() {
     return this.fb.group({
       date: [''],
-      price: ['']
+      price: [''],
+      Product: ['']
     });
   }
 }
