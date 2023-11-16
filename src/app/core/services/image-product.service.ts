@@ -14,7 +14,7 @@ export class ImageProductService {
 
   constructor(private httpImageProduct: HttpClient) { }
 
-  getSubCategories() {
+  getImageProducts() {
     return this.httpImageProduct.get<ImageProduct>(this.apiUrl)
   };
   

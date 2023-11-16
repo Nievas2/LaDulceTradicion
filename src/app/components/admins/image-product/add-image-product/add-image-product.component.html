@@ -1,1 +1,10 @@
-<p>add-image-product works!</p>
+<form [formGroup]="miFormulario" (ngSubmit)="enviarDatos()">
+    <div formArrayName="datos">
+      <div *ngFor="let dato of datos.controls; let i = index">
+        <input [formControl]="dato" placeholder="Ingrese un dato">
+        <button type="button" (click)="eliminarInput(i)">-</button>
+      </div>
+    </div>
+    <button type="button" (click)="agregarInput()">+</button>
+    <button type="submit">Enviar</button>
+  </form>

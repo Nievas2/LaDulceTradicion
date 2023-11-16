@@ -19,6 +19,12 @@ import { CarouselComponent } from './components/admins/carousel/carousel.compone
 import { AddCarouselComponent } from './components/admins/carousel/add-carousel/add-carousel.component';
 import { CreatenewcodeComponent } from './components/validationemail/createnewcode/createnewcode.component';
 import { ValidationemailComponent } from './components/validationemail/validationemail.component';
+import { SubCategoryComponent } from './components/admins/sub-category/sub-category.component';
+import { AddSubCategoryComponent } from './components/admins/sub-category/add-sub-category/add-sub-category.component';
+import { EditSubCategoryComponent } from './components/admins/sub-category/edit-sub-category/edit-sub-category.component';
+import { ImageProductComponent } from './components/admins/image-product/image-product.component';
+import { AddImageProductComponent } from './components/admins/image-product/add-image-product/add-image-product.component';
+import { EditImageProductComponent } from './components/admins/image-product/edit-image-product/edit-image-product.component';
 
 
 const routes: Routes = [ 
@@ -42,7 +48,14 @@ const routes: Routes = [
   {path:'admins/categorias', component:CategoriaComponent},
   {path:'admins/categorias/addcategorias', component:AddCategoryComponent},
   {path:'admins/categorias/editcategorias/:id', component:EditCategoryComponent},
-  
+  /* SUBCATEGORIAS */
+  {path:'admins/subcategorias', component:SubCategoryComponent},
+  {path:'admins/subcategorias/addsubcategorias', component:AddSubCategoryComponent},
+  {path:'admins/subcategorias/editsubcategorias/:id', component:EditSubCategoryComponent},
+  /* IMAGEPRODUCT */
+  {path:'admins/imageproduct', component:ImageProductComponent},
+  {path:'admins/imageproduct/addimageproduct', component:AddImageProductComponent},
+  {path:'admins/imageproduct/editimageproduct/:id', component:EditImageProductComponent},
   /* CAROUSEL */
   {path:'admins/carrusel', component:CarouselComponent},
   {path:'admins/carrusel/addcarrusel', component:AddCarouselComponent},

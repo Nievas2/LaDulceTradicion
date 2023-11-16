@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ImageProduct } from 'src/app/core/interfaces/imageProduct';
 import { ImageProductService } from 'src/app/core/services/image-product.service';
 import { LoginService } from 'src/app/core/services/login.service';
+
 
 @Component({
   selector: 'app-image-product',
@@ -11,24 +11,17 @@ import { LoginService } from 'src/app/core/services/login.service';
   styleUrls: ['./image-product.component.css']
 })
 export class ImageProductComponent {
-  miFormulario: FormGroup;
-
-  imageProduct! : ImageProduct;
-  admin!: boolean;
-  id: number;
-constructor( 
-  private fb: FormBuilder,
-  private router: Router,
-  private aRouter: ActivatedRoute,
-  private loginSvc: LoginService,
-  private imageProductService: ImageProductService){
-    this.miFormulario = this.fb.group({
-      datos: this.fb.array([this.fb.control('')]),
-    });
-    
-    this.id = Number(aRouter.snapshot.paramMap.get('id'));
+  
+  imageProducts: ImageProduct[] = [];
+  id: number = 0;
+  admin: boolean = false;
+  constructor(
+    private imageProductService: ImageProductService,
+    private router: Router,
+    private loginSvc: LoginService
+  ) {
+    this.getImageProducts();
   }
-
 
   ngOnInit(): void {
     this.loginSvc.isAdmin.subscribe((isAdmin) => {
@@ -38,38 +31,24 @@ constructor(
       }
     });
   }
-  
-  get datos() {
-    return this.miFormulario.get('datos') as FormArray;
+  getImageProducts() {
+    this.imageProductService.getImageProducts().subscribe(
+      (res) => {
+        this.imageProducts = <any>res;
+      },
+      (err) => console.log(err)
+    );
   }
 
-  agregarInput() {
-    this.datos.push(this.fb.control(''));
+  deleteImageProduct() {
+    this.imageProductService.deleteImageProduct(this.id).subscribe(
+      (res) => {
+        window.location.reload();
+      },
+      (err) => console.log(err)
+    );
   }
-
-  eliminarInput(index: number) {
-    this.datos.removeAt(index);
-  }
-
-  enviarDatos() {
-    const datosFormArray = this.miFormulario.get('datos') as FormArray;
-
-    // Utiliza forEach para iterar sobre los datos y enviar al backend
-    datosFormArray.controls.forEach((control) => {
-      this.imageProduct = {
-        id : 0,
-        image: control.value,
-        Product: this.id
-      }
-      // Realiza la llamada al backend utilizando tu servicio
-      this.imageProductService.postImageProduct(this.imageProduct).subscribe(
-        (respuesta) => {
-          console.log('Datos enviados con éxito:', respuesta);
-        },
-        (error) => {
-          console.error('Error al enviar datos:', error);
-        }
-      );
-    });
+  selectId(id: number) {
+    this.id = id;
   }
 }
