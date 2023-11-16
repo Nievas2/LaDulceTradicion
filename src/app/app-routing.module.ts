@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   /* PRODUCTOS */
   {path:'admins/productos', component:ProductosAdminComponent},
-  {path:'admins/productos/addproductos', component:AddProductsComponent},
+  {path:'admins/productos/addproductos/:id', component:AddProductsComponent},
   {path:'admins/productos/editproductos/:id', component:EditProductsComponent},
   /* CATEGORIAS */
   {path:'admins/categorias', component:CategoriaComponent},

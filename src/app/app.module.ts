@@ -28,6 +28,12 @@ import { EditProductsComponent } from './components/admins/Productos/edit-produc
 import { AddCategoryComponent } from './components/admins/Categorias/add-category/add-category.component';
 import { AddProductsComponent } from './components/admins/Productos/add-products/add-products.component';
 import { ProductosAdminComponent } from './components/admins/Productos/productosAdmin.component';
+import { ImageProductComponent } from './components/admins/image-product/image-product.component';
+import { SubCategoryComponent } from './components/admins/sub-category/sub-category.component';
+import { AddImageProductComponent } from './components/admins/image-product/add-image-product/add-image-product.component';
+import { EditImageProductComponent } from './components/admins/image-product/edit-image-product/edit-image-product.component';
+import { AddSubCategoryComponent } from './components/admins/sub-category/add-sub-category/add-sub-category.component';
+import { EditSubCategoryComponent } from './components/admins/sub-category/edit-sub-category/edit-sub-category.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +60,13 @@ import { ProductosAdminComponent } from './components/admins/Productos/productos
     EditProductsComponent,
     AddCategoryComponent,
     AddCarouselComponent,
-    AddProductsComponent
+    AddProductsComponent,
+    ImageProductComponent,
+    SubCategoryComponent,
+    AddImageProductComponent,
+    EditImageProductComponent,
+    AddSubCategoryComponent,
+    EditSubCategoryComponent
   ],
   imports: [
     BrowserModule,

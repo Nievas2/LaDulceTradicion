@@ -1,0 +1,14 @@
+<form [formGroup]="miFormulario" (ngSubmit)="enviarDatos()">
+    <div formArrayName="datos">
+      <div *ngFor="let dato of datos.controls; let i = index">
+        <div [formGroupName]="i">
+          <input type="text" formControlName="date" placeholder="dato">
+          <input type="number" formControlName="price" placeholder="precio">
+        </div>
+        <button type="button" (click)="eliminarInput(i)">-</button>
+      </div>
+    </div>
+    <button type="button" (click)="agregarInput()">+</button>
+    <button type="submit">Enviar</button>
+  </form>
+  

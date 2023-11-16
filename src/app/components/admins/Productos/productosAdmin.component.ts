@@ -12,6 +12,7 @@ import { ProductoService } from 'src/app/core/services/producto.service';
 export class ProductosAdminComponent {
   productos: Producto[] = [];
   id : number= 0;
+  idAdd : number = 0;
   admin: boolean = false;
   constructor(private productoService: ProductoService, private router: Router,private loginSvc: LoginService,) {
     this.getProductos();
@@ -30,6 +31,9 @@ export class ProductosAdminComponent {
     this.productoService.getProductos().subscribe(
       (res) => {
         this.productos = <any>res;
+        this.idAdd = this.productos[this.productos.length - 1].id;
+        this.idAdd = this.idAdd + 1
+
       },
       (err) => console.log(err)
     );
