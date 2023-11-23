@@ -25,16 +25,27 @@ export class AddCategoryComponent {
     image: '',
     price: 0,
     CategoryName: '',
-    ImagesProductAsocciations:{
+    ImagesProductAsocciations:[{
       id:0,
       ImageProductId: 0,
       ProductId: 0,
-    },
-    SubCategoryProducts:{
+      ImageProduct:{
+        id:0,
+        image:"",
+        Product:0
+      }
+    }],
+    SubCategoryProducts:[{
       id:0,
       SubCategoryId: 0,
       ProductId: 0,
-    }
+      SubCategory:{
+        date:"",
+        id: 0,
+        price:0,
+        Product:0
+      }
+    }]
   };
   category : Category = {
     id: 0,

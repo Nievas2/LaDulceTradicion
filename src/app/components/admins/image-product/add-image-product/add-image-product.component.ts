@@ -58,11 +58,13 @@ constructor(
   }
   enviarDatos() {
     const datosFormArray = this.miFormulario.get('datos') as FormArray;
+    console.log(datosFormArray);
+    
 
     // Utiliza forEach para iterar sobre los datos y enviar al backend
     datosFormArray.controls.forEach((control) => {
 
-      if(!this.disable){
+      if(this.disable){
         this.newId = control.get("Product")?.value
       }else{
         this.newId = this.id

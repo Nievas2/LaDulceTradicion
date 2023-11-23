@@ -1,115 +1,140 @@
-
-<div style="background-image: url(../../../assets/fondos/fondos7.jfif);filter: opacity(75%); width: 100%; background-size: cover;
-background-position: center;
-background-repeat: no-repeat;">
 <div
-  class="container d-flex justify-content-center align-items-center"
-  style="height: 100vh;"
+  style="
+    background-image: url(../../../assets/fondos/fondos7.jfif);
+    filter: opacity(75%);
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  "
 >
   <div
-    class="card"
-    style="width: 100rem; border-color: #fff; margin-top: 100px"
+    class="container d-flex justify-content-center align-items-center"
+    style="height: 100vh"
   >
-    <div class="card-body" id="card-body">
+    <div
+      class="card margintop"
+      style="width: 100rem; border-color: #fff; margin-top: 100px"
+    >
+      <div class="card-body" id="card-body">
+        <div class="row" style="background-color: #efa593">
+          <div class="col-md">
+            <div class="img-logo2">
+              <img
+                src="../../../assets/sinfondo.png"
+                class="Logo2 img-fluid"
+                id="center"
+              />
+            </div>
+            <div>
+              <h2 class="text-center text-white" id="Contacto">
+                PASTELERIA Y ALGO MÁS
+              </h2>
+            </div>
 
-        <div class="row" style="background-color: #efa593;">
-            <div class="col-md">
+            <div class="redes" id="center">
+              <div class="insta text-white" id="center">
+                <img
+                  src="../../../assets/insta.png"
+                  class="logitos"
+                  id="center"
+                />
+                <h5 class="text-white"><b>INSTAGRAM</b></h5>
+                <a
+                  href="https://www.instagram.com/ladulcetradicionpilar"
+                  target="_blank"
+                  style="text-decoration: none; color: #fbe4dd"
+                >
+                  <h5 class="enlaces">@ladulcetradicionpilar</h5>
+                </a>
+              </div>
+              <div class="whatsapp" id="center">
+                <img
+                  src="../../../assets/whatsapp.png"
+                  class="logitos2"
+                  id="center"
+                />
+                <h5 class="text-white"><b>WHATSAPP</b></h5>
+                <a
+                  href="https://wa.me/5491136801229"
+                  target="_blank"
+                  style="text-decoration: none; color: #fbe4dd"
+                >
+                  <h5 class="enlaces">11-3680-1229</h5>
+                </a>
+              </div>
+              <div class="ubicacion" id="center">
+                <img
+                  src="../../../assets/ubicacion.png"
+                  class="logitos3"
+                  id="center"
+                />
+                <h5 class="text-white"><b>UBICACION</b></h5>
+                <a
+                  href="https://maps.app.goo.gl/EkLQKnRwZZtA6EMXA"
+                  target="_blank"
+                  style="text-decoration: none; color: #fbe4dd"
+                >
+                  <h5 class="blocka enlaces">PILAR,BUENOS AIRES, ARGENTINA</h5>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div>
+              <p>
+                Hola! ¿Estas buscando hacer un evento en especial? o te
+                comunicas de parte de una empresa. <br />
+
+                Dejanos tu consulta con el tipo de comida que buscabas
+                (lunch-dulce-salado-con servicio),Fecha y Cantidad de invitados.
+                <br />
+
+                A la brevedad te estamos pasando un presupuesto personalizado!
+                <br />
+
+                Saludos, Flor!
+              </p>
+            </div>
+            <form
+              [formGroup]="form"
+              (ngSubmit)="sendContact()"
+              style="margin-top: 5rem"
+            >
+              <div class="mb-2 form-floating">
                 
-                <div class="img-logo2">
-                    <img src="../../../assets/sinfondo.png" class="Logo2 img-fluid" id="center">
-                </div>
-                <div>
-                    <h2 class="text-center text-white" id="Contacto">PASTELERIA Y ALGO MÁS</h2>
-                </div>
-        
-                <div class="redes" id="center">
-        
-                    <div class="insta text-white" id="center">
-                        
-                            <img src="../../../assets/insta.png" class="logitos" id="center">
-                            <h5 class="text-white"><b>INSTAGRAM</b></h5>
-                            <a href="https://www.instagram.com/ladulcetradicionpilar" target="_blank" style="text-decoration: none; color: #fbe4dd;">
-                            <h5 class="enlaces">@ladulcetradicionpilar</h5>
-                            
-                        </a>
-                    </div>
-                    <div class="whatsapp" id="center">
-                        
-                            <img src="../../../assets/whatsapp.png" class="logitos2" id="center">
-                            <h5 class="text-white"><b>WHATSAPP</b></h5>
-                            <a href="https://wa.me/5491136801229" target="_blank" style="text-decoration: none;color: #fbe4dd;">
-                            <h5 class="enlaces">11-3680-1229</h5>
-                        </a>
-                    </div>
-                    <div class="ubicacion " id="center">
-                        
-                            <img src="../../../assets/ubicacion.png" class="logitos3" id="center">
-                            <h5 class="text-white"><b>UBICACION</b></h5>
-                            <a href="https://maps.app.goo.gl/EkLQKnRwZZtA6EMXA" target="_blank" style="text-decoration: none;color: #fbe4dd;">
-                            <h5 class="blocka enlaces">PILAR,BUENOS AIRES, ARGENTINA</h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <form [formGroup]="form" (ngSubmit)="sendContact()" style="margin-top: 5rem;">
-                    <div class="mb-2">
-                      <label>Email</label>
-                      <input
-                        class="form-control"
-                        formControlName="email"
-                        name="email"
-                        type="email"
-                        placeholder="Escribe tu email"
-                      />
-                      <span
-                        *ngIf="
-                          form.get('email')?.hasError('required') &&
-                          form.get('email')?.touched
-                        "
-                      >
-                        El campo email es <strong>requerido</strong>
-                      </span>
-                      <span
-                        *ngIf="
-                          form.get('email')?.hasError('email') && form.get('email')?.touched
-                        "
-                      >
-                        Por favor, introduce un email válido.
-                      </span>
-                    </div>
-                    <div class="mb-2">
-                      <label>Contraseña</label>
-                      <input
-                        class="form-control"
-                        formControlName="password"
-                        name="password"
-                        type="password"
-                        placeholder="************"
-                      />
-                      <span
-                        *ngIf="
-                          form.get('password')?.hasError('required') &&
-                          form.get('password')?.touched
-                        "
-                      >
-                        El campo es <strong>requerido</strong>
-                      </span>
-                    </div>
-            
-                    <div class="row mt-3" style="background-color: var(--color2)">
-                      <button
-                        [disabled]="form.invalid"
-                        class="submit text-white btn"
-                        type="submit"
-                      >
-                        login
-                      </button>
-                    </div>
-                  </form>
-            </div>
-        </div>
+                <textarea
+                  class="form-control"
+                  formControlName="consulta"
+                  type="text"
+                  placeholder="Leave a comment here" 
+                  id="floatingTextarea"
+                ></textarea>
+                <label for="floatingTextarea">Consulta</label>
+                <span
+                  *ngIf="
+                    form.get('consulta')?.hasError('required') &&
+                    form.get('consulta')?.touched
+                  "
+                >
+                  El campo consulta es <strong>requerido</strong>
+                </span>
+                
+              </div>
 
+              <div class="row mt-3" style="background-color: var(--color2)">
+                <button
+                  [disabled]="form.invalid"
+                  class="submit text-white btn"
+                  type="submit"
+                >
+                  Enviar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div></div>
+</div>

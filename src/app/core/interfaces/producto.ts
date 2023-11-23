@@ -8,6 +8,6 @@ export interface Producto{
   price:number;
   image:string;
   CategoryName: string;
-  SubCategoryProducts: SubCategoryProduct,
-  ImagesProductAsocciations: ImagesProductAsocciations
+  SubCategoryProducts: [SubCategoryProduct],
+  ImagesProductAsocciations: [ImagesProductAsocciations]
 }

@@ -34,6 +34,8 @@ import { AddImageProductComponent } from './components/admins/image-product/add-
 import { EditImageProductComponent } from './components/admins/image-product/edit-image-product/edit-image-product.component';
 import { AddSubCategoryComponent } from './components/admins/sub-category/add-sub-category/add-sub-category.component';
 import { EditSubCategoryComponent } from './components/admins/sub-category/edit-sub-category/edit-sub-category.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { FormAddProductComponent } from './components/carrito/form-add-product/form-add-product.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { EditSubCategoryComponent } from './components/admins/sub-category/edit-
     AddImageProductComponent,
     EditImageProductComponent,
     AddSubCategoryComponent,
-    EditSubCategoryComponent
+    EditSubCategoryComponent,
+    CarritoComponent,
+    FormAddProductComponent
   ],
   imports: [
     BrowserModule,

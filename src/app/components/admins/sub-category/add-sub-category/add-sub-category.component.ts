@@ -49,7 +49,7 @@ export class AddSubCategoryComponent {
     const datosFormArray = this.miFormulario.get('datos') as FormArray;
     
     datosFormArray.controls.forEach((control) => {      
-      if(!this.disable){
+      if(this.disable){
         this.newId = control.get("Product")?.value
       }else{
         this.newId = this.id

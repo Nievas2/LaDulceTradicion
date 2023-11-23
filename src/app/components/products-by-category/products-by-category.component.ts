@@ -12,6 +12,7 @@ export class ProductsByCategoryComponent implements OnInit {
   existCourses: boolean = true;
   id: number;
   category!: any;
+  options : boolean = true ;
   constructor(
     private aRouter: ActivatedRoute,
     private categoryService: CategoryService
@@ -25,6 +26,9 @@ export class ProductsByCategoryComponent implements OnInit {
     this.categoryService.getCategoryById(this.id).subscribe(
       (data) => {
         this.category = data.Products;
+        if(!this.category.some(Boolean)){
+          this.options = false
+        }
       },
       (error) => {
         console.log(error);

@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class ContactanosComponent {
   form: FormGroup;
+  consulta: string ="";
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      consulta: ['', Validators.required],
     });
 
     this.contact();
@@ -21,11 +21,11 @@ export class ContactanosComponent {
   ngOnInit(): void {}
   contact() {
     this.form.setValue({
-      email: '',
-      password: '',
+      consulta: '',
     });
   }
   sendContact(){
-    
+    this.consulta = this.form.value.consulta
+    console.log(this.consulta)
   }
 }
