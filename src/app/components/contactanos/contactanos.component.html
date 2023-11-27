@@ -81,8 +81,8 @@
             </div>
           </div>
           <div class="col-md">
-            <div>
-              <p>
+            <div class="m-3">
+              <h5><b>
                 Hola! ¿Estas buscando hacer un evento en especial? o te
                 comunicas de parte de una empresa. <br />
 
@@ -93,8 +93,8 @@
                 A la brevedad te estamos pasando un presupuesto personalizado!
                 <br />
 
-                Saludos, Flor!
-              </p>
+                Saludos, Flor!</b>
+              </h5>
             </div>
             <form
               [formGroup]="form"
@@ -109,8 +109,9 @@
                   type="text"
                   placeholder="Leave a comment here" 
                   id="floatingTextarea"
+                  style="height: 200px"
                 ></textarea>
-                <label for="floatingTextarea">Consulta</label>
+                <label for="floatingTextarea">Escriba su consulta </label>
                 <span
                   *ngIf="
                     form.get('consulta')?.hasError('required') &&
