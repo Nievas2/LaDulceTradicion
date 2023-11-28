@@ -114,10 +114,10 @@
             </div>
           </div>
         </form> -->
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <div>
-            <label for="cant">Cantidad:</label>
-            <input type="text" id="cant" formControlName="cant" />
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin: 10px;">
+          <div class="row mb-3">
+            <label for="cant" class="form-label mb-0 p-0"><b>Cantidad:</b></label>
+            <input type="text" id="cant" formControlName="cant" class="form-control"/>
             <span
               *ngIf="
                 form.get('cant')?.hasError('required') &&
@@ -131,7 +131,7 @@
           </div>
           <div class="row mb-3" *ngIf="options">
             <label class="form-label mb-0 p-0"
-              ><b>Nombre de la categoria</b></label
+              ><b>Categorias</b></label
             >
             <select
             formControlName="option"
@@ -155,63 +155,38 @@
               El campo option es <strong>requerido</strong>
             </span>
           </div>
-          <button type="submit">Agregar al carrito</button>
-        </form>
-        
-        <!--  -->
-        <!-- <div *ngIf="options">
-          <div class="dropdown">
+
+
+          <div class="row" *ngIf="!isRegistered">
+            <div class="rounded p-2 col" style="background-color: #f1ebeb; margin: 10px;">
+              <h4>¡Para poder hacer compras es necesario que este logueado, por favor redirijase <a routerLink="/login">aquí</a>!</h4>
+
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="isRegistered">
             <button
               class="btn text-white"
               style="background-color: var(--color3)"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+              type="submit"
             >
-              Opciones
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-cart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                />
+              </svg>
+              Agregar al carrito
             </button>
-            <ul class="dropdown-menu">
-              <li *ngFor="let product of producto.SubCategoryProducts">
-                <a class="dropdown-item" href="#">{{
-                  product.SubCategory.date
-                }}</a>
-              </li>
-            </ul>
           </div>
-        </div>
+        </form>
 
-        <div>
-          <h5 class="p-2">Por Favor seleccione una cantidad</h5>
-        </div>
-        <div>
-          <label for="cant" class="form-label">Cantidad</label>
-          <input class="form-control" type="number" id="cant" />
-        </div>
-      </div> -->
 
-      <div col-md-6>
-        <button
-          class="btn text-white"
-          style="background-color: var(--color3)"
-          data-bs-toggle="offcanvas"
-          aria-controls="offcanvasExample"
-          data-bs-target="#offcanvasExample"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-cart"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-            />
-          </svg>
-          Agregar al carrito
-        </button>
-      </div>
     </div>
   </div>
   <div class="row">

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/core/interfaces/producto';
+import { CarritoService } from 'src/app/core/services/carrito.service';
+import { LoginService } from 'src/app/core/services/login.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
 
 @Component({
@@ -12,7 +14,7 @@ import { ProductoService } from 'src/app/core/services/producto.service';
 export class PaginasSecundariasComponent implements OnInit {
   id: number;
   form!: FormGroup;
-  producto: Producto = {
+  producto: any = {
     id: 0,
     name: '',
     description: '',
@@ -48,10 +50,14 @@ export class PaginasSecundariasComponent implements OnInit {
   productos!: [Producto];
   productosSelect: Producto[] = [];
   options: boolean = true;
+  isRegistered: any;
   constructor(
     private productoService: ProductoService,
     private aRouter: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private router: Router,
+    private carritoService : CarritoService,
   ) {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.form = this.fb.group({
@@ -60,7 +66,12 @@ export class PaginasSecundariasComponent implements OnInit {
     });
   }
   async ngOnInit() {
-    await this.getProducto(); // Espera a que getProducto() se complete
+    this.loginService.isAdmin.subscribe(
+      (isRegistered)=>{
+        this.isRegistered  = isRegistered 
+      }
+    )
+    await this.getProducto();
     this.form = this.fb.group({
       cant: ['', Validators.required],
       option: ['', this.options ? Validators.required : []],
@@ -70,21 +81,19 @@ export class PaginasSecundariasComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       // Recolecta los datos y agrégalo al array de objetos en localStorage
+      const subtotal = this.producto.price * this.form.value.cant
       const datos = {
         cant: this.form.value.cant,
         option: this.form.value.option,
+        name: this.producto.name,
+        image: this.producto.image,
+        price: this.producto.price,
+        total: subtotal
       };
-      console.log(datos);
-      // Obtén el carrito del localStorage (asegúrate de parsear si es necesario)
-      //const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-      // Agrega el nuevo objeto al carrito
-      //carrito.push(datos);
-
-      // Guarda el carrito actualizado en localStorage
-      //localStorage.setItem('carrito', JSON.stringify(carrito));
+      this.carritoService.agregarAlCarrito(datos)
     }
   }
+  
   optionsC() {
     return this.options;
   }

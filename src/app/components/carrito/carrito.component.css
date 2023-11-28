@@ -1,0 +1,8 @@
+.numberVert{
+    writing-mode: vertical-rl; text-orientation: upright
+}
+@media (max-width: 590px) {
+    .numberVertBox{
+        visibility: hidden;
+    }
+}
