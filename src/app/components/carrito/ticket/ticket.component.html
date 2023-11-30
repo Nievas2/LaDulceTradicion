@@ -1,0 +1,49 @@
+<div
+  style="
+    background-image: url(../../../assets/fondos/fondos1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  "
+>
+  <div
+    class="container d-flex justify-content-center align-items-center"
+    style="height: 100vh"
+  >
+    <div class="card-body" id="card-body">
+      <div class="ticket">
+        <div class="row">
+          <h1 class="line">Ticket</h1>
+        </div>
+        <table class="table line">
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td scope="row">{{ product.name }}</td>
+              <td scope="row">{{ product.cant }}</td>
+              <td scope="row">${{ product.price }}</td>
+              <td scope="row">{{ product.option }}</td>
+              <td scope="row">${{ product.cant * product.price }}</td>
+            </tr>
+          </tbody>
+          <tr>
+            <td class="fs-4">Total:{{
+                totalGeneral
+              }}</td>
+            
+          </tr>
+          <div>
+            <input type="checkbox" class="form-check-input" />
+            <label> Con envio</label>
+          </div>
+        </table>
+        
+      
+      <div class="row " style="margin-bottom: 50px;">
+        <div class="col"><button class="btn boton">WhatsApp</button></div>
+        <div class="col"><button class="btn boton">Email</button></div>
+      </div>
+      <div class="row"></div>
+    </div>
+    </div>
+  </div>
+</div>

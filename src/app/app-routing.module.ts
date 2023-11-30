@@ -25,6 +25,7 @@ import { EditSubCategoryComponent } from './components/admins/sub-category/edit-
 import { ImageProductComponent } from './components/admins/image-product/image-product.component';
 import { AddImageProductComponent } from './components/admins/image-product/add-image-product/add-image-product.component';
 import { EditImageProductComponent } from './components/admins/image-product/edit-image-product/edit-image-product.component';
+import { TicketComponent } from './components/carrito/ticket/ticket.component';
 
 
 const routes: Routes = [ 
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:'pagsec/:id', component:PaginasSecundariasComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
+  {path:'ticket', component:TicketComponent},
   {path:'admins', component:AdminsComponent},
   {path:'contacto', component:ContactanosComponent},
   {path:"crear-codigo", component:CreatenewcodeComponent},

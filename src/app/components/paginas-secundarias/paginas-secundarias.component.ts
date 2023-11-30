@@ -72,6 +72,7 @@ export class PaginasSecundariasComponent implements OnInit {
       }
     )
     await this.getProducto();
+
     this.form = this.fb.group({
       cant: ['', Validators.required],
       option: ['', this.options ? Validators.required : []],

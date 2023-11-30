@@ -19,7 +19,7 @@ export class CarritoComponent implements OnInit {
     });
     this.carritoService.total.subscribe((total)=>{
       this.totalGeneral = total
-    })
+    });
     this.actualizarTotalGeneral()
   }
 

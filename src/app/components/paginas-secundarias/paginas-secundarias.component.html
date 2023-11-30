@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div
     class="row"
-    style="background-color: #fff; border-radius: 15px; margin: 15px"
+    style="background-color: #fff; border-radius: 15px; margin: 15px;"
   >
     <div class="col-md-6 col-sm-12 mt-3 mb-3" style="max-width: 30rem">
       <div id="carouselExampleFade" class="carousel slide carousel-fade">
@@ -57,67 +57,10 @@
             {{ producto.description }}
           </h4>
         </div>
-        <!--  -->
-
-       <!--  <form [formGroup]="form" (ngSubmit)="add()">
-          <div class="row mb-3 mb-3">
-            <label class="form-label mb-0 p-0"><b>cant</b></label>
-            <input
-              formControlName="cant"
-              type="text"
-              class="form-control"
-              placeholder="Ingrese cant"
-            
-            />
-            <span
-              *ngIf="
-                form.get('cant')?.hasError('required') &&
-                form.get('cant')?.touched
-              "
-              class="mt-1"
-              style="background-color: rgb(255, 73, 73); border-radius: 5px"
-            >
-              El campo cant es <strong>requerido</strong>
-            </span>
-          </div>
-          <div class="row mb-3" *ngIf="options">
-            <label class="form-label mb-0 p-0"
-              ><b>Nombre de la categoria</b></label
-            >
-            <select
-            formControlName="option"
-            name="option"
-            class="form-control"
-            id="option"
-            >
-            <option value="">Selecciona una option</option>
-            <option *ngFor="let product of producto.SubCategoryProducts" [value]="product.SubCategory.date">
-              <h1>{{ product.SubCategory.date }}</h1> 
-            </option>
-            </select>
-            <span
-              *ngIf="
-                form.get('option')?.hasError('required') &&
-                form.get('option')?.touched
-              "
-              class="mt-1"
-              style="background-color: rgb(255, 73, 73); border-radius: 5px"
-            >
-              El campo option es <strong>requerido</strong>
-            </span>
-          </div>
-          <div class="row mb-3 mt-2 text-center">
-            <div class="col-lg-6">
-              <button [disabled]="form.invalid" type="submit" class="btn boton">
-                Aceptar
-              </button>
-            </div>
-          </div>
-        </form> -->
         <form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin: 10px;">
           <div class="row mb-3">
             <label for="cant" class="form-label mb-0 p-0"><b>Cantidad:</b></label>
-            <input type="text" id="cant" formControlName="cant" class="form-control"/>
+            <input type="number" min="1" id="cant" formControlName="cant" class="form-control"/>
             <span
               *ngIf="
                 form.get('cant')?.hasError('required') &&
@@ -188,6 +131,9 @@
 
 
     </div>
+  </div>
+  <div class="row">
+    <h4 class="text-center"><b>Productos Recomendados</b></h4>
   </div>
   <div class="row">
     <div
