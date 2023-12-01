@@ -17,32 +17,7 @@ background-repeat: no-repeat;">
       <div class="row">
         <h5 class="card-title">Iniciar sesion</h5>
       </div>
-      <form [formGroup]="form" (ngSubmit)="login()">
-        <div class="mb-2">
-          <label>Email</label>
-          <input
-            class="form-control"
-            formControlName="email"
-            name="email"
-            type="email"
-            placeholder="Escribe tu email"
-          />
-          <span
-            *ngIf="
-              form.get('email')?.hasError('required') &&
-              form.get('email')?.touched
-            "
-          >
-            El campo email es <strong>requerido</strong>
-          </span>
-          <span
-            *ngIf="
-              form.get('email')?.hasError('email') && form.get('email')?.touched
-            "
-          >
-            Por favor, introduce un email válido.
-          </span>
-        </div>
+      <form [formGroup]="form" (ngSubmit)="newPasswordForm()">
         <div class="mb-2">
           <label>Contraseña</label>
           <input
@@ -61,6 +36,24 @@ background-repeat: no-repeat;">
             El campo es <strong>requerido</strong>
           </span>
         </div>
+        <div class="mb-2">
+            <label>Contraseña</label>
+            <input
+              class="form-control"
+              formControlName="repeatpassword"
+              name="repeatpassword"
+              type="password"
+              placeholder="************"
+            />
+            <span
+              *ngIf="
+                form.get('repeatpassword')?.hasError('repeatpassword') &&
+                form.get('repeatpassword')?.touched
+              "
+            >
+              El campo es <strong>requerido</strong>
+            </span>
+          </div>
 
         <div class="row mt-3" style="background-color: var(--color2)">
           <button

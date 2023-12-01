@@ -26,6 +26,8 @@ import { ImageProductComponent } from './components/admins/image-product/image-p
 import { AddImageProductComponent } from './components/admins/image-product/add-image-product/add-image-product.component';
 import { EditImageProductComponent } from './components/admins/image-product/edit-image-product/edit-image-product.component';
 import { TicketComponent } from './components/carrito/ticket/ticket.component';
+import { RecuperarContrasenaComponent } from './components/login/recuperar-contrasena/recuperar-contrasena.component';
+import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nueva-contrasena.component';
 
 
 const routes: Routes = [ 
@@ -35,6 +37,8 @@ const routes: Routes = [
   {path:'pagsec/:id', component:PaginasSecundariasComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
+  {path:'login/recuperarcontraseña', component:RecuperarContrasenaComponent},
+  {path:'login/nuevacontrasena/:code/:email', component:NuevaContrasenaComponent},
   {path:'ticket', component:TicketComponent},
   {path:'admins', component:AdminsComponent},
   {path:'contacto', component:ContactanosComponent},

@@ -62,4 +62,12 @@ export class LoginService {
       );
     });
   }
+  passwordRecovery(email:string){
+    const requestBody = { email }; 
+    return this.http.post(this.url+"/user/passwordrecovery",requestBody)
+  }
+  createPassword(email:string, code: string, password: string){
+    const requestBody = { password }; 
+    return this.http.patch(this.url+"/user/newpassword/"+code + "/"+ email , requestBody )
+  }
 }
