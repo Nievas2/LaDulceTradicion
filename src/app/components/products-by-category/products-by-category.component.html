@@ -33,48 +33,33 @@
       class="card sh"
       style="width: 18rem; margin-left: 15px; border-color: #751c19"
     >
+    <a
+    href="#arriba"
+    style="color: #000000"
+    data-bs-toggle="modal"
+    [attr.data-bs-target]="'#exampleModal2-' + index"
+    
+  >
       <div style="position: absolute; right: 10px; z-index: 100;">
-        <a
-          href="#arriba"
-          style="color: #000000"
-          data-bs-toggle="modal"
-          [attr.data-bs-target]="'#exampleModal2-' + index"
+       
           
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-info-circle"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-            />
-            <path
-              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
-            />
-          </svg>
-        </a>
+        
       </div>
 
       <img
         src="{{ producto.image }}"
         class="card-img-top img-dest img-fluid"
         alt="..."
-        style="height: 20rem"
+        style="height: 15rem"
       />
 
       <div class="card-body item-info">
         <h3 class="fs-5">
           <b>{{ producto.name }}</b>
         </h3>
-        <p class="card-text" style="text-align: start">
-          {{ producto.description }}
-        </p>
         <h4 class="fs-6" style="text-align: end">${{ producto.price }}</h4>
       </div>
+    </a>
     </div>
 
     <!--

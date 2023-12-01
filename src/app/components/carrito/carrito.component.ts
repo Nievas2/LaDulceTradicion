@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/core/services/carrito.service';
+import { LoginService } from 'src/app/core/services/login.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
 
 @Component({
@@ -10,10 +11,13 @@ import { ProductoService } from 'src/app/core/services/producto.service';
 export class CarritoComponent implements OnInit {
   products: any = [];
   totalGeneral!: number;
-  constructor(private carritoService : CarritoService) {
+  isRegistered!: boolean;
+  constructor(private carritoService : CarritoService,private loginService : LoginService) {
   }
   ngOnInit(): void {
-   
+   this.loginService.isRegistered.subscribe((data)=>{
+    this.isRegistered = data
+   })
     this.carritoService.carrito.subscribe((carrito) => {
       this.products = carrito
     });

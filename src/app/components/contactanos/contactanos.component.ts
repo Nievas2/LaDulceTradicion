@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-contactanos',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class ContactanosComponent {
   form: FormGroup;
   consulta: string ="";
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  isRegistered!: boolean;
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) {
     this.form = this.formBuilder.group({
       consulta: ['', Validators.required],
     });
@@ -18,7 +20,11 @@ export class ContactanosComponent {
     this.contact();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginService.isRegistered.subscribe((data)=>{
+      this.isRegistered = data
+    })
+  }
   contact() {
     this.form.setValue({
       consulta: '',
