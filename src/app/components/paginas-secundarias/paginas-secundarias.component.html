@@ -1,25 +1,28 @@
 <div class="container-fluid">
   <div
     class="row"
-    style="background-color: #fff; border-radius: 15px; margin: 15px;"
+    style="background-color: #fff; border-radius: 15px; margin: 15px"
   >
     <div class="col-md-6 col-sm-12 mt-3 mb-3" style="max-width: 30rem">
       <div id="carouselExampleFade" class="carousel slide carousel-fade">
-        <div></div>
         <div class="carousel-inner">
           <div
             class="carousel-item"
             *ngFor="
               let image of producto.ImagesProductAsocciations;
-              let i = index
+              let index = index
             "
-            [class.active]="i === 0"
+            [class.active]="index === 0"
           >
-            <img
-              src="{{ image.ImageProduct.image }}"
-              class="d-block w-100"
-              alt="..."
-            />
+            <a data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal3-'">
+              <div>
+                <img
+                  src="{{ image.ImageProduct.image }}"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </a>
           </div>
         </div>
         <button
@@ -42,6 +45,8 @@
         </button>
       </div>
     </div>
+   
+
     <div class="col-md-6 col-sm-12">
       <h1 class="mt-2 p-2">
         <b>{{ producto.name }}</b>
@@ -57,10 +62,18 @@
             {{ producto.description }}
           </h4>
         </div>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin: 10px;">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin: 10px">
           <div class="row mb-3">
-            <label for="cant" class="form-label mb-0 p-0"><b>Cantidad:</b></label>
-            <input type="number" min="1" id="cant" formControlName="cant" class="form-control"/>
+            <label for="cant" class="form-label mb-0 p-0"
+              ><b>Cantidad:</b></label
+            >
+            <input
+              type="number"
+              min="1"
+              id="cant"
+              formControlName="cant"
+              class="form-control"
+            />
             <span
               *ngIf="
                 form.get('cant')?.hasError('required') &&
@@ -73,19 +86,20 @@
             </span>
           </div>
           <div class="row mb-3" *ngIf="options">
-            <label class="form-label mb-0 p-0"
-              ><b>Categorias</b></label
-            >
+            <label class="form-label mb-0 p-0"><b>Categorias</b></label>
             <select
-            formControlName="option"
-            name="option"
-            class="form-control"
-            id="option"
+              formControlName="option"
+              name="option"
+              class="form-control"
+              id="option"
             >
-            <option value="">Selecciona una option</option>
-            <option *ngFor="let product of producto.SubCategoryProducts" [value]="product.SubCategory.date">
-              <h1>{{ product.SubCategory.date }}</h1> 
-            </option>
+              <option value="">Selecciona una option</option>
+              <option
+                *ngFor="let product of producto.SubCategoryProducts"
+                [value]="product.SubCategory.date"
+              >
+                <h1>{{ product.SubCategory.date }}</h1>
+              </option>
             </select>
             <span
               *ngIf="
@@ -99,11 +113,15 @@
             </span>
           </div>
 
-
           <div class="row" *ngIf="!isRegistered">
-            <div class="rounded p-2 col" style="background-color: #f1ebeb; margin: 10px;">
-              <h4>¡Para poder hacer compras es necesario que este logueado, por favor redirijase <a routerLink="/login">aquí</a>!</h4>
-
+            <div
+              class="rounded p-2 col"
+              style="background-color: #f1ebeb; margin: 10px"
+            >
+              <h4>
+                ¡Para poder hacer compras es necesario que este logueado, por
+                favor redirijase <a routerLink="/login">aquí</a>!
+              </h4>
             </div>
           </div>
           <div class="col-md-6" *ngIf="isRegistered">
@@ -128,37 +146,35 @@
             </button>
           </div>
         </form>
-
-
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <h4 class="text-center"><b>Productos Recomendados</b></h4>
-  </div>
-  <div class="row">
-    <div
-      *ngFor="let productosOption of productosSelect.slice(0, 4)"
-      class="col p-2 m-2 rounded options"
-    >
-      <a
-        style="text-decoration: none; color: #000"
-        href="/pagsec/{{ productosOption.id }}"
+    <div class="row">
+      <h4 class="text-center"><b>Productos Recomendados</b></h4>
+    </div>
+    <div class="row">
+      <div
+        *ngFor="let productosOption of productosSelect.slice(0, 4)"
+        class="col p-2 m-2 rounded options"
       >
-        <div class="fotoC">
-          <img width="200" src="{{ productosOption.image }}" alt="" />
-          <h5>
-            <b>{{ productosOption.name }}</b>
-          </h5>
-          <p>
-            {{ productosOption.description }}
-          </p>
-        </div>
-      </a>
+        <a
+          style="text-decoration: none; color: #000"
+          href="/pagsec/{{ productosOption.id }}"
+        >
+          <div class="fotoC">
+            <img width="200" src="{{ productosOption.image }}" alt="" />
+            <h5>
+              <b>{{ productosOption.name }}</b>
+            </h5>
+            <p>
+              {{ productosOption.description }}
+            </p>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
@@ -204,3 +220,68 @@
     
   </div>
 </div> -->
+</div>
+<div
+class="modal fade "
+[id]="'exampleModal3-'"
+tabindex="-1"
+aria-labelledby="exampleModalLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog " >
+  <div class="modal-content" style="background-color: var(--color1);">
+    <div class="modal-body " style="padding: 0" >
+      <div id="carouselExampleFadeModal" class="carousel slide carousel-fade" >
+        
+        <div class="carousel-inner ">
+          <div
+            class="carousel-item"
+            *ngFor="
+              let image of producto.ImagesProductAsocciations;
+              let index = index
+            "
+            [class.active]="index === 0"
+          >
+            <a
+              data-bs-toggle="modal"
+              [attr.data-bs-target]="'#exampleModal3-'"
+            >
+              <div>
+                <img
+                  src="{{ image.ImageProduct.image }}"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleFadeModal"
+          data-bs-slide="prev"
+        >
+          <span
+            class="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleFadeModal"
+          data-bs-slide="next"
+        >
+          <span
+            class="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -229,3 +229,6 @@ tamaños
   box-shadow: 5px 5px 0 #c1694c;
   margin: 0;
 }
+.modal-backdrop {
+  --bs-backdrop-zindex: 0 !important;
+}
