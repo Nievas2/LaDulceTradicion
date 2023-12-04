@@ -66,8 +66,9 @@ export class PaginasSecundariasComponent implements OnInit {
     });
   }
   async ngOnInit() {
-    this.loginService.isAdmin.subscribe(
+    this.loginService.isRegistered.subscribe(
       (isRegistered)=>{
+        console.log(isRegistered)
         this.isRegistered  = isRegistered 
       }
     )
