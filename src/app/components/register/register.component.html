@@ -1,153 +1,220 @@
-<div style="background-image: url(../../../assets/fondos/fondos3.jpg);  background-size: cover;
-background-position: center;
-background-repeat: no-repeat;">
-
 <div
-  class="container d-flex justify-content-center align-items-center"
-  style="height: 100vh"
+  style="
+    background-image: url(../../../assets/fondos/fondos3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  "
 >
   <div
-    class="card"
-    style="width: 30rem; border-color: #fff;border: 20px solid var(--color4);"
+    class="container d-flex justify-content-center align-items-center"
+    
   >
-    <div class="card-body" id="card-body">
-      <div class="row p-2"><h5>Hola! registrate en nuestra pagina para recibir novedades y que la proxima compra sea mas rapido.</h5></div>
-      <div class="row">
-        <h5 class="card-title">Registro</h5>
-      </div>
-      <form [formGroup]="form" (ngSubmit)="createUser()">
-        <div class="mb-2">
-          <label>Nombres </label>
-          <input
-            class="form-control"
-            formControlName="firstName"
-            name="firstName"
-            type="text"
-            placeholder="Escribe tus nombres"
-          />
-          <span
-            *ngIf="
-              form.get('firstName')?.hasError('required') &&
-              form.get('firstName')?.touched
-            "
-          >
-            El campo Nombres es <strong>requerido</strong>
-          </span>
+    <div
+      class="card mt-4 mb-4"
+      style="width: 45rem; border-color: #fff; border: 20px solid var(--color4);"
+    >
+      <div class="card-body" id="card-body" *ngIf="!registro" >
+        <div class="row p-2">
+          <h5>
+            Hola! registrate en nuestra pagina para recibir novedades y que la
+            proxima compra sea mas rapido.
+          </h5>
         </div>
-        <div class="mb-2">
-          <label>Apellidos </label>
-          <input
-            class="form-control"
-            formControlName="lastName"
-            name="lastName"
-            type="text"
-            placeholder="Escribe tu/s apellido/s"
-          />
-          <span
-            *ngIf="
-              form.get('lastName')?.hasError('required') &&
-              form.get('lastName')?.touched
-            "
-          >
-            El campo es <strong>requerido</strong>
-          </span>
+        <div class="row">
+          <h5 class="card-title">Registro</h5>
         </div>
-        <div class="mb-2">
-          <label>Email</label>
-          <input
-            class="form-control"
-            formControlName="email"
-            name="email"
-            type="email"
-            placeholder="Escribe tu email"
-          />
-          <span
-            *ngIf="
-              form.get('email')?.hasError('required') &&
-              form.get('email')?.touched
-            "
-          >
-            El campo email es <strong>requerido</strong>
-          </span>
-          <span
-            *ngIf="
-              form.get('email')?.hasError('email') && form.get('email')?.touched
-            "
-          >
-            Por favor, introduce un email válido.
-          </span>
-        </div>
-        <div class="mb-2">
-          <label>Contraseña</label>
-          <input
-            class="form-control"
-            formControlName="password"
-            name="password"
-            type="password"
-            placeholder="************"
-          />
-          <span
-            *ngIf="
-              form.get('password')?.hasError('required') &&
-              form.get('password')?.touched
-            "
-          >
-            El campo es <strong>requerido</strong>
-          </span>
-        </div>
-
-        <div class="row mt-3" style="background-color: var(--color2)">
-          <button
-            [disabled]="form.invalid"
-            class="submit text-white btn"
-            type="submit"
-            data-bs-toggle="modal"
-            data-bs-target="#register"
-          >
-            Suscribirse
-          </button>
-        </div>
-        <div
-          class="modal fade"
-          id="register"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                <h2 class="p-4">
-                  ESTAS A UN PASO DE CREAR TU CUENTA <br> <br>
-
-      Te enviamos un link a tu email {{user.email}} para que valides que eres tú.
-                </h2>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <button
-                    class="btn"
-                    routerLink="/login"
-                    id="center"
-                    style="
-                      background-color: var(--color1);
-                      border-color: #c1694c;
-                      box-shadow: 5px 5px 0 #c1694c;
-                      margin: 0;
-                    "
-                  >
-                    Login
-                  </button>
-                </div>
+        <form [formGroup]="form" (ngSubmit)="createUser()">
+          <div class="mb-2">
+            <label>Nombres </label>
+            <input
+              class="form-control"
+              formControlName="firstName"
+              name="firstName"
+              type="text"
+              placeholder="Escribe tus nombres"
+            />
+            <span
+              *ngIf="
+                form.get('firstName')?.hasError('required') &&
+                form.get('firstName')?.touched
+              "
+            >
+              El campo Nombres es <strong>requerido</strong>
+            </span>
+          </div>
+          <div class="mb-2">
+            <label>Apellidos </label>
+            <input
+              class="form-control"
+              formControlName="lastName"
+              name="lastName"
+              type="text"
+              placeholder="Escribe tu/s apellido/s"
+            />
+            <span
+              *ngIf="
+                form.get('lastName')?.hasError('required') &&
+                form.get('lastName')?.touched
+              "
+            >
+              El campo es <strong>requerido</strong>
+            </span>
+          </div>
+          <div class="mb-2">
+            <label>Teléfono</label>
+            <input
+              class="form-control"
+              formControlName="phone"
+              name="phone"
+              type="text"
+              placeholder="Escribe tu numero de telefono"
+            />
+            <span
+              *ngIf="
+                form.get('phone')?.hasError('phone') &&
+                form.get('phone')?.touched
+              "
+            >
+              El campo telefono es <strong>requerido</strong>
+            </span>
+            <span
+              *ngIf="
+                form.get('email')?.hasError('email') &&
+                form.get('email')?.touched
+              "
+            >
+              Por favor, introduce un email válido.
+            </span>
+          </div>
+          <div class="mb-2">
+            <label>Email</label>
+            <input
+              class="form-control"
+              formControlName="email"
+              name="email"
+              type="email"
+              placeholder="Escribe tu email"
+            />
+            <span
+              *ngIf="
+                form.get('email')?.hasError('required') &&
+                form.get('email')?.touched
+              "
+            >
+              El campo email es <strong>requerido</strong>
+            </span>
+            <span
+              *ngIf="
+                form.get('email')?.hasError('email') &&
+                form.get('email')?.touched
+              "
+            >
+              Por favor, introduce un email válido.
+            </span>
+          </div>
+          <div class="mb-2">
+            <label>Contraseña</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                formControlName="password"
+                name="password"
+                type="{{ mostrarContrasena ? 'text' : 'password' }}"
+                placeholder="************"
+              />
+              <div class="input-group-text">
+                <input
+                  class="form-check-input mt-0"
+                  type="checkbox"
+                  (change)="toggleMostrarContrasena()"
+                  value=""
+                  aria-label="Checkbox for following text input"
+                />
               </div>
             </div>
+            <span
+              *ngIf="
+                form.get('password')?.hasError('required') &&
+                form.get('password')?.touched
+              "
+            >
+              El campo es <strong>requerido</strong>
+            </span>
           </div>
+          <div class="mb-2">
+            <label>Repetir contraseña</label>
+            <div class="input-group">
+
+            
+            <input
+              class="form-control"
+              formControlName="repeatpassword"
+              name="repeatpassword"
+              type="{{ mostrarRepeatContrasena ? 'text' : 'password' }}"
+              placeholder="************"
+            />
+            <div class="input-group-text">
+              <input
+                class="form-check-input mt-0"
+                type="checkbox"
+                (change)="toggleMostrarRepeatContrasena()"
+                value=""
+                aria-label="Checkbox for following text input"
+              />
+            </div>
+          </div>
+            <span
+              *ngIf="
+                form.get('repeatpassword')?.hasError('repeatpassword') &&
+                form.get('repeatpassword')?.touched
+              "
+            >
+              El campo es <strong>requerido</strong>
+            </span>
+          </div>
+          <div class="row mt-3" style="background-color: var(--color2)">
+            <button
+              [disabled]="form.invalid"
+              class="submit text-white btn"
+              type="submit"
+            >
+              Suscribirse
+            </button>
+          </div>
+        </form>
+        <h5 class="text-center">
+          Si ya tiene una cuenta puede ingresar desde aqui
+          <a href="login">aqui</a>
+        </h5>
+      </div>
+      <div class="card-body" id="card-body" style="height: 100%;" *ngIf="registro">
+        <h2 class="p-4">
+          ESTAS A UN PASO DE CREAR TU CUENTA <br />
+          <br />
+  
+          Te enviamos un link a tu email {{ user.email }} para que valides que
+          eres tú.
+        </h2>
+        <div class="row m-2">
+          <button
+            class="btn"
+            routerLink="/login"
+            id="center"
+            style="
+              background-color: var(--color1);
+              border-color: #c1694c;
+              box-shadow: 5px 5px 0 #c1694c;
+              margin: 0;
+            "
+          >
+            Login
+          </button>
         </div>
-      </form>
+      </div>
+
     </div>
-    <h5 class="text-center">
-      Si ya tiene una cuenta puede ingresar desde aqui
-      <a href="login">aqui</a>
-    </h5>
   </div>
 </div>
-</div>
+  <app-alerts></app-alerts>
+

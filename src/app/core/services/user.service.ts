@@ -55,4 +55,8 @@ export class UserService {
   validateCode(email:string, code:string){
     return this.httpUser.get(this.apiUrl+"/verificar-email/"+email+"/"+code)
   }
+  postContact ( mensage: string, email:string){
+    const requestBody = { mensage }; 
+    return this.httpUser.post(this.apiUrl+ "/contact/" + email, requestBody)
+  }
 }

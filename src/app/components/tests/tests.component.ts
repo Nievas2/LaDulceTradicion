@@ -11,7 +11,7 @@ export class TestsComponent {
   mensaje: string = 'mensaje2';
 
   constructor(private alertsService: AlertsService) {
-
+    this.alertsService.mostrarMensaje("La contraseña o el email son incorrectos");
   }
   productos = [
     {

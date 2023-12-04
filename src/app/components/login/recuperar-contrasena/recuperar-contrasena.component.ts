@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
@@ -10,33 +11,37 @@ import { LoginService } from 'src/app/core/services/login.service';
 export class RecuperarContrasenaComponent {
   form: FormGroup;
 
-    email: string = '';
+  email: string = '';
 
-  constructor(private formBuilder: FormBuilder, private loginService : LoginService,) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private alertsService: AlertsService
+  ) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]], 
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
+  recuperar() {
+    (this.email = this.form.value.email),
+      this.loginService.passwordRecovery(this.email).subscribe(
+        (data) => {
+          this.alertsService.mostrarMensaje('Correo enviado');
 
-  recuperar(){
+          setTimeout(() => {
+            this.alertsService.ocultarMensaje();
+          }, 2000);
+          
+        },
+        (error) => {
+          this.alertsService.mostrarMensaje('Algo fallo');
 
-    this.email = this.form.value.email,
-    this.loginService.passwordRecovery(this.email).subscribe(
-      (data)=>{
-        console.log("correo enviado")
-        
-    },(error)=>{
-      console.log(error)
-    }
-    
-    )
-    try {
-      /* llamada al back */
-
-    } catch {
-      /* this.toastr.error("Contraseña o email incorrectos") */
-
-    }
+          setTimeout(() => {
+            this.alertsService.ocultarMensaje();
+          }, 2000);
+          console.log(error);
+        }
+      );
   }
 }

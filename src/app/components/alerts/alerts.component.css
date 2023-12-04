@@ -2,14 +2,15 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #4CAF50;
+    /* background-color: #4CAF50; */
+    background-color: var(--color4);
     color: white;
     padding: 15px;
     border-radius: 5px;
     opacity: 0;
     transition: opacity 0.5s, transform 0.5s;
     transform: translateX(100%);
-    width: 150px;
+    width: 200px;
     z-index: 100;
   }
   
