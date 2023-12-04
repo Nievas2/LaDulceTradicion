@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AlertsComponent } from '../alerts/alerts.component';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 
 @Component({
   selector: 'app-tests',
@@ -6,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./tests.component.css']
 })
 export class TestsComponent {
+  mensaje: string = 'mensaje2';
+
+  constructor(private alertsService: AlertsService) {
+
+  }
   productos = [
     {
       id_Producto: 1,

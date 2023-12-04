@@ -28,11 +28,13 @@ import { EditImageProductComponent } from './components/admins/image-product/edi
 import { TicketComponent } from './components/carrito/ticket/ticket.component';
 import { RecuperarContrasenaComponent } from './components/login/recuperar-contrasena/recuperar-contrasena.component';
 import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nueva-contrasena.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 
 const routes: Routes = [ 
   {path:'',component:HomeComponent},
   {path:'test',component:TestsComponent},
+  {path:'alert',component:AlertsComponent},
   {path:'productos', component:ProductosComponent},
   {path:'pagsec/:id', component:PaginasSecundariasComponent},
   {path:'register', component:RegisterComponent},

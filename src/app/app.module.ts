@@ -38,6 +38,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { TicketComponent } from './components/carrito/ticket/ticket.component';
 import { RecuperarContrasenaComponent } from './components/login/recuperar-contrasena/recuperar-contrasena.component';
 import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nueva-contrasena.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nu
     TicketComponent,
     RecuperarContrasenaComponent,
     NuevaContrasenaComponent,
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +85,7 @@ import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nu
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AlertsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
