@@ -12,20 +12,30 @@
   >
     <div
       class="card"
-      style="width: 30rem; border-color: #fff; margin-top: -100px"
+      style="
+        width: 30rem;
+        border-color: #fff;
+        margin-top: -100px;
+        border: 20px solid var(--color4);
+      "
     >
       <div class="card-body" id="card-body">
         <div class="col" *ngIf="validateOK">
-          <h1 class="text-center">GRACIAS POR REGISTRARTE <br> <br>
-
-            ya podes realizar tu proxima compra !</h1>
+          <h2 class="text-center">
+            ¡Felicitacion tu cuenta ha sido creada con exito!<br />
+          </h2>
           <button class="btn boton" routerLink="/login">volver al login</button>
         </div>
         <div class="col" *ngIf="!validateOK">
-          <h1>No se pudo registrar</h1>
           <h4>
-            Si sigue teniendo problemas pruebe crear un nuevo código
-            <a routerLink="/crear-codigo" style="color: #000">aquí</a>
+            Algo ha salido mal, intentelo denuevo o genere un nuevo codigo
+            <button
+              class="btn boton"
+              routerLink="/crear-codigo"
+              style="color: #000"
+            >
+              Aquí
+            </button>
           </h4>
         </div>
       </div>

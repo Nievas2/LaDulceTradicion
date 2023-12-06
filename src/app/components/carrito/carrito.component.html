@@ -108,10 +108,7 @@
         <b>Total General: ${{ totalGeneral }}</b>
       </h5>
     </div>
-    <div>
-      <input type="checkbox" class="form-check-input" />
-      <label> Con envio</label>
-    </div>
+
     <div class="row" *ngIf="!isRegistered">
       <div class="rounded p-2 col" style="background-color: #f1ebeb; margin: 10px;">
         <h4>¡Para poder hacer compras es necesario que este logueado, por favor redirijase <a routerLink="/login">aquí</a>!</h4>
@@ -119,7 +116,7 @@
       </div>
     </div>
     <div class="row" *ngIf="isRegistered">
-      <button class="btn boton m-1">Enviar</button>
+      <button class="btn boton m-1" routerLink="/ticket" >Enviar</button>
     </div>
   </div>
 </div>

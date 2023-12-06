@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/core/interfaces/producto';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { CarritoService } from 'src/app/core/services/carrito.service';
 import { LoginService } from 'src/app/core/services/login.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
@@ -57,7 +58,8 @@ export class PaginasSecundariasComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private carritoService : CarritoService,
+    private carritoService: CarritoService,
+    private alertsService: AlertsService
   ) {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.form = this.fb.group({
@@ -66,36 +68,39 @@ export class PaginasSecundariasComponent implements OnInit {
     });
   }
   async ngOnInit() {
-    this.loginService.isRegistered.subscribe(
-      (isRegistered)=>{
-        console.log(isRegistered)
-        this.isRegistered  = isRegistered 
-      }
-    )
+    this.loginService.isRegistered.subscribe((isRegistered) => {
+      console.log(isRegistered);
+      this.isRegistered = isRegistered;
+    });
     await this.getProducto();
 
     this.form = this.fb.group({
       cant: ['', Validators.required],
       option: ['', this.options ? Validators.required : []],
     });
-    this.getProductos()
+    this.getProductos();
   }
   onSubmit() {
     if (this.form.valid) {
       // Recolecta los datos y agrégalo al array de objetos en localStorage
-      const subtotal = this.producto.price * this.form.value.cant
+      const subtotal = this.producto.price * this.form.value.cant;
       const datos = {
         cant: this.form.value.cant,
         option: this.form.value.option,
         name: this.producto.name,
         image: this.producto.image,
         price: this.producto.price,
-        total: subtotal
+        total: subtotal,
       };
-      this.carritoService.agregarAlCarrito(datos)
+      this.carritoService.agregarAlCarrito(datos);
+      this.alertsService.mostrarMensaje('Producto agregado con exito');
+
+      setTimeout(() => {
+        this.alertsService.ocultarMensaje();
+      }, 2000);
     }
   }
-  
+
   optionsC() {
     return this.options;
   }
@@ -129,5 +134,4 @@ export class PaginasSecundariasComponent implements OnInit {
       }
     );
   }
-
 }

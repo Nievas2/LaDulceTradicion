@@ -9,13 +9,11 @@ background-repeat: no-repeat;">
 >
   <div
     class="card"
-    style="width: 30rem; border-color: #fff; margin-top: -100px;  border: 20px solid var(--color4);"
+    style="width: 30rem; border-color: #fff; margin-top: -100px;  border: 20px solid var(--color4); border: 20px solid var(--color4);"
   >
     <div class="card-body" id="card-body">
-      <div class="row p-2"><h5>Gracias por volver! Inicia sesion para realizar tu proxima compra</h5></div>
-
-      <div class="row">
-        <h5 class="card-title">Iniciar sesion</h5>
+           <div class="row">
+        <h5 class="card-title">Recuperar</h5>
       </div>
       <form [formGroup]="form" (ngSubmit)="recuperar()">
         <div class="mb-2">
@@ -51,12 +49,11 @@ background-repeat: no-repeat;">
             class="submit text-white btn"
             type="submit"
           >
-            login
+            Recuperar
           </button>
         </div>
       </form>
     </div>
-    <h5><a routerLink="recuperarcontraseña">Recuperar contraseña</a></h5>
     <h5 class="text-center">
       Si no tiene una cuenta puede crearse una desde aqui
       <a href="register">aqui</a>

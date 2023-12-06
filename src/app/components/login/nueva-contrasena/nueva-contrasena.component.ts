@@ -22,8 +22,8 @@ export class NuevaContrasenaComponent {
     private router : Router
   ) {
     this.form = this.formBuilder.group({
-      password: ['', Validators.required],
-      repeatpassword: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      repeatpassword: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.code = String(aRouter.snapshot.paramMap.get('code'));
 

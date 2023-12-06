@@ -76,6 +76,7 @@
                 />
               </div>
             </div>
+        
             <span
               *ngIf="
                 form.get('password')?.hasError('required') &&
@@ -99,8 +100,12 @@
       </div>
       <h5><a routerLink="recuperarcontraseña">Recuperar contraseña</a></h5>
       <h5 class="text-center">
-        Si no tiene una cuenta puede crearse una desde aqui
+        Si no tiene una cuenta puede crearse una desde
         <a href="register">aqui</a>
+      </h5>
+      <h5 class="text-center">
+        Si tiene problemas con su código ingrese
+        <a href="crear-codigo">aqui</a>
       </h5>
     </div>
   </div>

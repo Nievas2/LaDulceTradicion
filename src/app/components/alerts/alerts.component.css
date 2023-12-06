@@ -11,7 +11,7 @@
     transition: opacity 0.5s, transform 0.5s;
     transform: translateX(100%);
     width: 200px;
-    z-index: 100;
+    z-index: 1000;
   }
   
   #mensaje.visible {

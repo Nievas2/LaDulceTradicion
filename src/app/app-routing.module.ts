@@ -69,7 +69,7 @@ const routes: Routes = [
   {path:'admins/carrusel/addcarrusel', component:AddCarouselComponent},
 
   {path:'categorias/:id', component:ProductsByCategoryComponent},
-  { path: '', redirectTo: '/', pathMatch: 'full' }
+  { path: '**', redirectTo:"/"}
 ];
 
 @NgModule({

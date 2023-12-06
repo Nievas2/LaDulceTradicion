@@ -114,25 +114,23 @@
             </span>
           </div>
           <div class="mb-2">
-            <label>Contraseña</label>
-            <div class="input-group">
-              <input
-                class="form-control"
-                formControlName="password"
-                name="password"
-                type="{{ mostrarContrasena ? 'text' : 'password' }}"
-                placeholder="************"
-              />
-              <div class="input-group-text">
-                <input
-                  class="form-check-input mt-0"
-                  type="checkbox"
-                  (change)="toggleMostrarContrasena()"
-                  value=""
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-            </div>
+            <label for="password">Contraseña:</label>
+            <input
+              class="form-control"
+              formControlName="password"
+              name="password"
+              type="password"
+              placeholder="************"
+            />
+            <span
+              *ngIf="
+                form.get('password')?.hasError('minlength') &&
+                form.get('password')?.touched
+              "
+            >
+              El campo requiere un <strong> mínimo 6 caracteres</strong>.
+            </span>
+
             <span
               *ngIf="
                 form.get('password')?.hasError('required') &&
@@ -141,32 +139,28 @@
             >
               El campo es <strong>requerido</strong>
             </span>
+           
           </div>
           <div class="mb-2">
             <label>Repetir contraseña</label>
-            <div class="input-group">
-
-            
             <input
               class="form-control"
               formControlName="repeatpassword"
               name="repeatpassword"
-              type="{{ mostrarRepeatContrasena ? 'text' : 'password' }}"
+              type="password"
               placeholder="************"
             />
-            <div class="input-group-text">
-              <input
-                class="form-check-input mt-0"
-                type="checkbox"
-                (change)="toggleMostrarRepeatContrasena()"
-                value=""
-                aria-label="Checkbox for following text input"
-              />
-            </div>
-          </div>
             <span
               *ngIf="
-                form.get('repeatpassword')?.hasError('repeatpassword') &&
+                form.get('repeatpassword')?.hasError('minlength') &&
+                form.get('repeatpassword')?.touched
+              "
+            >
+              El campo requiere un <strong> minimo 6 digitos</strong>
+            </span>
+            <span
+              *ngIf="
+                form.get('repeatpassword')?.hasError('required') &&
                 form.get('repeatpassword')?.touched
               "
             >

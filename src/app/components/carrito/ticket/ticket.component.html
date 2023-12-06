@@ -15,35 +15,52 @@
         <div class="row">
           <h1 class="line">Ticket</h1>
         </div>
-        <table class="table line">
-          <tbody>
-            <tr *ngFor="let product of products">
-              <td scope="row">{{ product.name }}</td>
-              <td scope="row">{{ product.cant }}</td>
-              <td scope="row">${{ product.price }}</td>
-              <td scope="row">{{ product.option }}</td>
-              <td scope="row">${{ product.cant * product.price }}</td>
+        <div>
+          <table class="table line">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio U.</th>
+                <th>Opcion</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td scope="row">{{ product.name }}</td>
+                <td scope="row">{{ product.cant }}</td>
+                <td scope="row">${{ product.price }}</td>
+                <td scope="row">{{ product.option }}</td>
+                <td scope="row">${{ product.cant * product.price }}</td>
+              </tr>
+            </tbody>
+            <tr class="position-relative m-2 p-2">
+              <td class="fs-4 position-absolute end-0">
+                Total:{{ totalGeneral }}
+              </td>
             </tr>
-          </tbody>
-          <tr>
-            <td class="fs-4">Total:{{
-                totalGeneral
-              }}</td>
+            <div>
+              <input type="checkbox" class="form-check-input m-2" />
+              <label> Con envio</label>
+            </div>
             
-          </tr>
-          <div>
-            <input type="checkbox" class="form-check-input" />
-            <label> Con envio</label>
-          </div>
-        </table>
+          </table>
+          <div class="row"></div>
+          
+        </div>
         
-      
-      <div class="row " style="margin-bottom: 50px;">
+
+        
+        
+      </div>
+      <div class="row p-4 mt-5 rounded" style="background-color: #fff;">
         <div class="col"><button class="btn boton">WhatsApp</button></div>
         <div class="col"><button class="btn boton">Email</button></div>
+      <div class="col"><button class="btn boton" routerLink="/productos" style="z-index: 100;">Volver</button></div>
+        
       </div>
-      <div class="row"></div>
-    </div>
+
     </div>
   </div>
 </div>

@@ -15,7 +15,7 @@ export class LoginComponent {
   loginError = '';
 
   form: FormGroup;
-
+  user: any = {};
   loginData: LoginData = {
     email: '',
     password: '',
@@ -58,26 +58,38 @@ export class LoginComponent {
             this.alertsService.ocultarMensaje();
             this.router.navigateByUrl('');
           }, 1000);
-          
-          this.form.reset();
-          
 
+          this.form.reset();
         },
 
         (error) => {
-          this.alertsService.mostrarMensaje('Contraseña o email incorrectos');
-
-          setTimeout(() => {
-            this.alertsService.ocultarMensaje();
-          }, 2000);
+          this.userSvc.getUserByEmail(this.loginData.email).subscribe(
+            (data) => {
+              this.user = data;
+            },
+            (error) => {}
+          );
+          if (this.user.active != true) {
+            this.alertsService.mostrarMensaje('Su cuenta no esta activa');
+            setTimeout(() => {
+              this.alertsService.ocultarMensaje();
+            }, 2000);
+          } else {
+            this.alertsService.mostrarMensaje(
+              'Contraseña o email incorrectos '
+            );
+            setTimeout(() => {
+              this.alertsService.ocultarMensaje();
+            }, 2000);
+          }
         }
       );
     } catch {
       this.alertsService.mostrarMensaje('Contraseña o email incorrectos');
 
-          setTimeout(() => {
-            this.alertsService.ocultarMensaje();
-          }, 2000);
+      setTimeout(() => {
+        this.alertsService.ocultarMensaje();
+      }, 2000);
     }
   }
   toggleMostrarContrasena() {

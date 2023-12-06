@@ -53,14 +53,14 @@
       </h1>
 
       <div
-        class="pb-5 pt-4 mt-3 mb-5"
+        class="pb-5 pt-4 mt-3 mb-2"
         style="background-color: #fff; border-radius: 15px; position: relative"
       >
-        <h2 class="fw-bolder" style="display: inline">$2500</h2>
+        <h2 class="fw-bolder" style="display: inline">${{producto.price}}</h2>
         <div class="mt-5">
-          <h4 class="fst-normal">
+          <p class="fst-normal">
             {{ producto.description }}
-          </h4>
+          </p>
         </div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin: 10px">
           <div class="row mb-3">
@@ -126,9 +126,12 @@
           </div>
           <div class="col-md-6" *ngIf="isRegistered">
             <button
+            [disabled]="form.invalid"
               class="btn text-white"
               style="background-color: var(--color3)"
               type="submit"
+              
+              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -173,53 +176,6 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <br>
-    <div>
-      <img src="{{producto.image}}" alt="{{producto.image}}" width="150">
-    </div>
-    <h3>{{producto.name}}</h3>
-    <div>
-      <h4 class="p-2">Por Favor seleccione una cantidad</h4>
-    </div>
-    <div>
-      <label for="cant" class="form-label">Cantidad</label>
-      <input class="form-control" type="number" id="cant">
-    </div>
-    <div>
-      <div class="dropdown mt-3">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-          Opciones
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
-    </div>
-    <button class="btn btn-success mt-3">
-      <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      fill="currentColor"
-      class="bi bi-cart"
-      viewBox="0 0 16 16"
-    >
-      <path
-        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-      />
-    </svg>
-      Agregar al carrito</button>
-    
-  </div>
-</div> -->
 </div>
 <div
 class="modal fade "

@@ -37,8 +37,8 @@ export class RegisterComponent {
       lastName: ['', Validators.required],
       email: ['', Validators.required],
       phone: ['', Validators.required],
-      password: ['', Validators.required],
-      repeatpassword: ['', Validators.required],
+      password: ['', [Validators.required,Validators.minLength(6)]],
+      repeatpassword: ['', [Validators.required,Validators.minLength(6)]],
     });
     this.register();
   }

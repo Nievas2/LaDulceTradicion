@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AlertsService } from 'src/app/core/services/alerts.service';
 import { LoginService } from 'src/app/core/services/login.service';
 
@@ -16,7 +17,8 @@ export class RecuperarContrasenaComponent {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private router : Router,
   ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -31,6 +33,7 @@ export class RecuperarContrasenaComponent {
 
           setTimeout(() => {
             this.alertsService.ocultarMensaje();
+            this.router.navigateByUrl('');
           }, 2000);
           
         },
