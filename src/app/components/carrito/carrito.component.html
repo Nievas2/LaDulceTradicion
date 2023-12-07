@@ -1,6 +1,6 @@
 <div
   class="offcanvas offcanvas-end"
-  tabindex="-1"
+  tabindex="100"
   id="offcanvasRight"
   aria-labelledby="offcanvasRightLabel"
   style="width: 750px; background-color: var(--color1)"
@@ -54,7 +54,10 @@
             <u
               ><b>{{ product.name }} </b></u
             ><br />
+            {{product.option}}
           </h5>
+
+
         </div>
         <div class="col-sm-2 col-md-2 col-12 numberVertBox">
           <p class="numberVert fs-4">${{ product.price }}</p>

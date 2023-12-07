@@ -13,11 +13,13 @@ export class ProductsByCategoryComponent implements OnInit {
   id: number;
   category!: any;
   options : boolean = true ;
+  categories!: any[];
   constructor(
     private aRouter: ActivatedRoute,
     private categoryService: CategoryService
   ) {
     this.id = Number(this.aRouter.snapshot.paramMap.get('id'));
+    this.getCategories()
   }
   ngOnInit(): void {
     this.getCategoryById();
@@ -33,6 +35,15 @@ export class ProductsByCategoryComponent implements OnInit {
       (error) => {
         console.log(error);
       }
+    );
+  }  
+  getCategories() {
+    this.categoryService.getCategories().subscribe((data) => {
+      this.categories = <any>data;
+    },
+    (error)=>{
+      console.log(error)
+    }
     );
   }
 }

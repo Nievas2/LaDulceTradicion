@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .carrusel-container2 {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .carrusel-item2 {
+    flex: 0 0 auto;
+    width: 200px; /* Ocupa el ancho completo de la pantalla */
+    scroll-snap-align: start;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 50%; /* Hace que el elemento tenga forma de círculo */
+    overflow: hidden; /* Asegura que el contenido no se desborde del círculo */
+    margin: 0 10px; /* Añade márgenes para evitar que los elementos se salgan de la pantalla */
+  }
+  
+  .carrusel-item2 img {
+    width: 100%; /* Ajusta el tamaño de la imagen al círculo */
+    border-radius: 50%; /* Hace que la imagen también tenga forma de círculo */
+  }
+  
+  @media (min-width: 600px) {
+    .carrusel-item2 {
+      width: 200px; /* Mostrar dos elementos en pantallas más grandes */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .carrusel-container2 {
+      scroll-snap-type: none; /* Deshabilita el scroll snap en pantallas pequeñas */
+    }
+    
+    .carrusel-item2:last-child {
+      margin-right: 10px; /* Ajusta el margen derecho del último elemento en pantallas pequeñas */
+    }
+  }
+  

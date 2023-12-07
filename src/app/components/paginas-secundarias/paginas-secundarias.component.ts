@@ -15,6 +15,8 @@ import { ProductoService } from 'src/app/core/services/producto.service';
 export class PaginasSecundariasComponent implements OnInit {
   id: number;
   form!: FormGroup;
+  optionExist: boolean = false;
+  price : number  = 0
   producto: any = {
     id: 0,
     name: '',
@@ -22,6 +24,7 @@ export class PaginasSecundariasComponent implements OnInit {
     image: '',
     price: 0,
     CategoryName: '',
+    
     ImagesProductAsocciations: [
       {
         id: 0,
@@ -52,6 +55,7 @@ export class PaginasSecundariasComponent implements OnInit {
   productosSelect: Producto[] = [];
   options: boolean = true;
   isRegistered: any;
+  carrito: any[] = [];
   constructor(
     private productoService: ProductoService,
     private aRouter: ActivatedRoute,
@@ -69,7 +73,6 @@ export class PaginasSecundariasComponent implements OnInit {
   }
   async ngOnInit() {
     this.loginService.isRegistered.subscribe((isRegistered) => {
-      console.log(isRegistered);
       this.isRegistered = isRegistered;
     });
     await this.getProducto();
@@ -79,31 +82,58 @@ export class PaginasSecundariasComponent implements OnInit {
       option: ['', this.options ? Validators.required : []],
     });
     this.getProductos();
+    this.carritoService.carrito.subscribe((carrito) => {
+      this.carrito = carrito;
+    });
   }
   onSubmit() {
     if (this.form.valid) {
+      this.producto.SubCategoryProducts.forEach((element: { SubCategory: { date: any; price: number; }; }) => {
+        if(element.SubCategory.date == this.form.value.option){
+          this.price = element.SubCategory.price
+        }
+      });
       // Recolecta los datos y agrégalo al array de objetos en localStorage
-      const subtotal = this.producto.price * this.form.value.cant;
+      const subtotal = this.price * this.form.value.cant;
       const datos = {
+        id: this.producto.id,
         cant: this.form.value.cant,
         option: this.form.value.option,
         name: this.producto.name,
         image: this.producto.image,
-        price: this.producto.price,
+        price: this.price,
         total: subtotal,
       };
-      this.carritoService.agregarAlCarrito(datos);
-      this.alertsService.mostrarMensaje('Producto agregado con exito');
+      this.checkCarrito(datos);
+      console.log(this.optionExist);
+      if (!this.optionExist) {
+        this.carritoService.agregarAlCarrito(datos);
+        this.alertsService.mostrarMensaje('Producto agregado con exito');
 
-      setTimeout(() => {
-        this.alertsService.ocultarMensaje();
-      }, 2000);
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 2000);
+      } else {
+        this.alertsService.mostrarMensaje('Producto Ya existente es necesario que tenga categorias distintas');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 2000);
+      }
     }
   }
-
-  optionsC() {
-    return this.options;
+  checkCarrito(product: any) {
+    this.optionExist = false;
+    this.carrito.forEach((element) => {
+      if (element.id == product.id) {
+        console.log(this.producto.SubCategoryProducts);
+        if (element.option == product.option) {
+          this.optionExist = true;
+        }
+      }
+    });
   }
+
   async getProducto() {
     try {
       const data = await this.productoService

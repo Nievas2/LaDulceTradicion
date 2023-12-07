@@ -36,6 +36,7 @@ const routes: Routes = [
   {path:'test',component:TestsComponent},
   {path:'alert',component:AlertsComponent},
   {path:'productos', component:ProductosComponent},
+  {path:'productos/:id', component:ProductsByCategoryComponent},
   {path:'pagsec/:id', component:PaginasSecundariasComponent},
   {path:'register', component:RegisterComponent},
   {path:'login', component:LoginComponent},
@@ -68,7 +69,6 @@ const routes: Routes = [
   {path:'admins/carrusel', component:CarouselComponent},
   {path:'admins/carrusel/addcarrusel', component:AddCarouselComponent},
 
-  {path:'categorias/:id', component:ProductsByCategoryComponent},
   { path: '**', redirectTo:"/"}
 ];
 
