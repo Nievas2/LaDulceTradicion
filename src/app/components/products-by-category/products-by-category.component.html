@@ -1,4 +1,11 @@
 <div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/productos">Productos</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{id}}</li>
+    </ol>
+  </nav>
   <div class="carrusel-container2 rounded" style="background-color: #fff;" id="carrusel">
     <div class="carrusel-item2" *ngFor="let category of categories">
       <a href="productos/{{category.id}}"><img height="120" width="120" src="{{ category.image }}" alt="" />
