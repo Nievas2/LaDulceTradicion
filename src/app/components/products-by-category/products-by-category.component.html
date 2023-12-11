@@ -6,7 +6,7 @@
       <li class="breadcrumb-item active" aria-current="page">{{id}}</li>
     </ol>
   </nav>
-  <div class="carrusel-container2 rounded" style="background-color: #fff;" id="carrusel">
+  <div class="carrusel-container2 rounded" id="carrusel">
     <div class="carrusel-item2" *ngFor="let category of categories">
       <a href="productos/{{category.id}}"><img height="120" width="120" src="{{ category.image }}" alt="" />
         <p class="text-center">{{category.name}}</p>

@@ -11,7 +11,7 @@ body {
 
 .carrusel-item2 {
   flex: 0 0 auto;
-  width: 200px; /* Ocupa el ancho completo de la pantalla */
+  width: 180px; /* Ocupa el ancho completo de la pantalla */
   scroll-snap-align: start;
   padding: 20px;
   box-sizing: border-box;
@@ -27,7 +27,7 @@ body {
 
 @media (min-width: 600px) {
   .carrusel-item2 {
-    width: 200px; /* Mostrar dos elementos en pantallas más grandes */
+    width: 180px; /* Mostrar dos elementos en pantallas más grandes */
   }
 }
 
