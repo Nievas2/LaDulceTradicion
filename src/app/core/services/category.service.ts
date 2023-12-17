@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoryService {
 
-  private apiUrl= "http://localhost:4001/category"; 
+  private apiUrl= "https://back-ladulce.fly.dev/category"; 
   
 
   constructor(private httpCategory: HttpClient) { }
