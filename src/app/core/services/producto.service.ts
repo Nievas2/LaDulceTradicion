@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Producto } from "../interfaces/producto"
+import { LoginService } from './login.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
 
   url='http://localhost:4001/product';
+  token!: string | null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private loginService: LoginService,) { 
+    this.loginService.token.subscribe(
+      (token)=>{
+        this.token = token        
+    })
+  }
 
   getProductos() {
     return this.http.get<Producto[]>(this.url)
@@ -18,16 +25,28 @@ export class ProductoService {
     return this.http.get<Producto>(this.url+'/'+id)
   }
 
-  postProducto(course: Producto){
-    return this.http.post(this.url, course)
+  postProducto(product: Producto){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.post(this.url, product,{headers})
   }
 
-  putProducto(course: Producto, id:number){
-    return this.http.put(this.url+'/'+id, course)
+  putProducto(product: Producto, id:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.put(this.url+'/'+id, product,{headers})
   }
 
   deleteProducto(id:number){
-    return this.http.delete(this.url+'/'+id)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.http.delete(this.url+'/'+id,{headers})
   }
 
 }

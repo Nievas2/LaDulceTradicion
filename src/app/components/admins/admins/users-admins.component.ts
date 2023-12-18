@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/core/interfaces/user';
 import { AlertsService } from 'src/app/core/services/alerts.service';
+import { LoginService } from 'src/app/core/services/login.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -11,13 +13,23 @@ import { UserService } from 'src/app/core/services/user.service';
 export class UsersAdminsComponent {
   users: User[] = [];
   id: number = 0;
+  admin!: boolean;
   constructor(
     private userService: UserService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private loginSvc: LoginService,
+    private router: Router
   ) {
     this.getUsers()
   }
-
+  ngOnInit(): void {
+    this.loginSvc.isAdmin.subscribe((isAdmin) => {
+      this.admin = isAdmin;
+      if (this.admin === false) {
+        /* this.router.navigateByUrl(''); */
+      }
+    });
+  }
   getUsers() {
     this.userService.getUsers().subscribe(
       (data) => {

@@ -1,27 +1,40 @@
-import { Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
+import { LoginService } from './login.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService  {
 
   private apiUrl="http://localhost:4001/user"
+  token!: string | null;
 
-  constructor(private httpUser: HttpClient) { }
+  constructor(private httpUser: HttpClient, private loginService : LoginService) { 
+    this.loginService.token.subscribe(
+      (token)=>{
+        this.token = token        
+    })
+  }
 
   patchAdmins(userId:number){
     const requestBody = { userId }; 
-    return this.httpUser.patch(this.apiUrl+"/admins",requestBody)
-  }
-  deleteAdmins(userId:number){
-    return this.httpUser.delete(this.apiUrl+"/admin/" + userId)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.httpUser.patch(this.apiUrl+"/admins",requestBody,{headers})
   }
   getUsers(){
-    return this.httpUser.get(this.apiUrl)
+   const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
+    
+    return this.httpUser.get(this.apiUrl,{headers})
   }
   getUser(id: number){
     return this.httpUser.get(this.apiUrl+"/"+ id)
@@ -36,17 +49,21 @@ export class UserService {
     const requestBody = { email }; 
     return this.httpUser.post(this.apiUrl+ "/createnewcode", requestBody)
   }
-  inscription(idCourse:number, idUser:number){  
-  const data = { idCourse, idUser };
-  return this.httpUser.post(this.apiUrl + "/inscription", data);
-  }
   putUser(user: User, id:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
     const userSelected= user
     const idSelected= id
-    return this.httpUser.put(this.apiUrl+'/'+idSelected, userSelected)
+    return this.httpUser.put(this.apiUrl+'/'+idSelected, userSelected,{headers})
   }
   deleteUser(id:number){
-    return this.httpUser.delete(this.apiUrl+'/'+id)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.httpUser.delete(this.apiUrl+'/'+id,{headers})
   }
   getUserByEmail(email:string){
     const emailSelected = email

@@ -1,36 +1,56 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ImageProduct } from '../interfaces/imageProduct';
+import { LoginService } from './login.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ImageProductService {
+  private apiUrl = 'http://localhost:4001/imageproduct';
+  token: any;
 
- 
-  
-  private apiUrl= "http://localhost:4001/imageproduct"; 
-  
-
-  constructor(private httpImageProduct: HttpClient) { }
+  constructor(
+    private httpImageProduct: HttpClient,
+    private loginService: LoginService
+  ) {
+    this.loginService.token.subscribe(
+      (token)=>{
+        this.token = token        
+    })
+  }
 
   getImageProducts() {
-    return this.httpImageProduct.get<ImageProduct>(this.apiUrl)
-  };
-  
-  getImageProductById(id:number){
-    return this.httpImageProduct.get<ImageProduct>(this.apiUrl+'/'+id)
+    return this.httpImageProduct.get<ImageProduct>(this.apiUrl);
   }
 
-  postImageProduct(subCategory: ImageProduct){
-    return this.httpImageProduct.post(this.apiUrl, subCategory)
+  getImageProductById(id: number) {
+    return this.httpImageProduct.get<ImageProduct>(this.apiUrl + '/' + id);
   }
 
-  putImageProduct(subCategory: ImageProduct, id:number){
-    return this.httpImageProduct.put(this.apiUrl+'/'+id, subCategory)
+  postImageProduct(subCategory: ImageProduct) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.httpImageProduct.post(this.apiUrl, subCategory, { headers });
   }
 
-  deleteImageProduct(id:number){
-    return this.httpImageProduct.delete(this.apiUrl+'/'+id)
-  }  
+  putImageProduct(subCategory: ImageProduct, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.httpImageProduct.put(this.apiUrl + '/' + id, subCategory, {
+      headers,
+    });
+  }
+
+  deleteImageProduct(id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.httpImageProduct.delete(this.apiUrl + '/' + id, { headers });
+  }
 }

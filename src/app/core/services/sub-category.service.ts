@@ -1,35 +1,56 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SubCategory } from '../interfaces/subCategory';
+import { LoginService } from './login.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SubCategoryService {
+  private apiUrl = 'http://localhost:4001/subcategory';
+  token: any;
 
-  
-  private apiUrl= "http://localhost:4001/subcategory"; 
-  
-
-  constructor(private httpSubCategory: HttpClient) { }
+  constructor(
+    private httpSubCategory: HttpClient,
+    private loginService: LoginService,
+  ) {
+    this.loginService.token.subscribe(
+      (token)=>{
+        this.token = token        
+    })
+  }
 
   getSubCategories() {
-    return this.httpSubCategory.get<SubCategory>(this.apiUrl)
-  };
-  
-  getSubCategoryById(id:number){
-    return this.httpSubCategory.get<SubCategory>(this.apiUrl+'/'+id)
+    return this.httpSubCategory.get<SubCategory>(this.apiUrl);
   }
 
-  postSubCategory(subCategory: SubCategory){
-    return this.httpSubCategory.post(this.apiUrl, subCategory)
+  getSubCategoryById(id: number) {
+    return this.httpSubCategory.get<SubCategory>(this.apiUrl + '/' + id);
   }
 
-  putSubCategory(subCategory: SubCategory, id:number){
-    return this.httpSubCategory.put(this.apiUrl+'/'+id, subCategory)
+  postSubCategory(subCategory: SubCategory) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.httpSubCategory.post(this.apiUrl, subCategory, { headers });
   }
 
-  deleteSubCategory(id:number){
-    return this.httpSubCategory.delete(this.apiUrl+'/'+id)
-  }  
+  putSubCategory(subCategory: SubCategory, id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.httpSubCategory.put(this.apiUrl + '/' + id, subCategory, {
+      headers,
+    });
+  }
+
+  deleteSubCategory(id: number) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.httpSubCategory.delete(this.apiUrl + '/' + id, { headers });
+  }
 }
