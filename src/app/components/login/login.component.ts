@@ -57,7 +57,7 @@ export class LoginComponent {
           setTimeout(() => {
             this.alertsService.ocultarMensaje();
             this.router.navigateByUrl('');
-          }, 1000);
+          }, 4000);
 
           this.form.reset();
         },
@@ -73,14 +73,14 @@ export class LoginComponent {
             this.alertsService.mostrarMensaje('Su cuenta no esta activa');
             setTimeout(() => {
               this.alertsService.ocultarMensaje();
-            }, 2000);
+            }, 4000);
           } else {
             this.alertsService.mostrarMensaje(
               'Contraseña o email incorrectos '
             );
             setTimeout(() => {
               this.alertsService.ocultarMensaje();
-            }, 2000);
+            }, 4000);
           }
         }
       );
@@ -89,7 +89,7 @@ export class LoginComponent {
 
       setTimeout(() => {
         this.alertsService.ocultarMensaje();
-      }, 2000);
+      }, 4000);
     }
   }
   toggleMostrarContrasena() {

@@ -29,6 +29,7 @@ import { TicketComponent } from './components/carrito/ticket/ticket.component';
 import { RecuperarContrasenaComponent } from './components/login/recuperar-contrasena/recuperar-contrasena.component';
 import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nueva-contrasena.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
+import { UsersAdminsComponent } from './components/admins/admins/users-admins.component';
 
 
 const routes: Routes = [ 
@@ -68,7 +69,8 @@ const routes: Routes = [
   /* CAROUSEL */
   {path:'admins/carrusel', component:CarouselComponent},
   {path:'admins/carrusel/addcarrusel', component:AddCarouselComponent},
-
+  /* ADMINS */
+  {path:'admins/admins', component:UsersAdminsComponent},
   { path: '**', redirectTo:"/"}
 ];
 

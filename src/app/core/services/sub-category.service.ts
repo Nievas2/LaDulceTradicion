@@ -8,7 +8,7 @@ import { SubCategory } from '../interfaces/subCategory';
 export class SubCategoryService {
 
   
-  private apiUrl= "https://back-ladulce.fly.dev/subcategory"; 
+  private apiUrl= "http://localhost:4001/subcategory"; 
   
 
   constructor(private httpSubCategory: HttpClient) { }

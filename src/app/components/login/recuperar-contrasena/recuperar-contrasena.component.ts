@@ -34,7 +34,7 @@ export class RecuperarContrasenaComponent {
           setTimeout(() => {
             this.alertsService.ocultarMensaje();
             this.router.navigateByUrl('');
-          }, 2000);
+          }, 4000);
           
         },
         (error) => {
@@ -42,7 +42,7 @@ export class RecuperarContrasenaComponent {
 
           setTimeout(() => {
             this.alertsService.ocultarMensaje();
-          }, 2000);
+          }, 4000);
           console.log(error);
         }
       );

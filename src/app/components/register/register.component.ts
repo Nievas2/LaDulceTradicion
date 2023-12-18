@@ -65,7 +65,7 @@ export class RegisterComponent {
 
       setTimeout(() => {
         this.alertsService.ocultarMensaje();
-      }, 2000);
+      }, 4000);
         }
       );
     } else {
@@ -73,7 +73,7 @@ export class RegisterComponent {
 
       setTimeout(() => {
         this.alertsService.ocultarMensaje();
-      }, 2000);
+      }, 4000);
     }
   }
 

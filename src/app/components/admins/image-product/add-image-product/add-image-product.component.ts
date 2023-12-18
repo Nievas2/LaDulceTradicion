@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImageProduct } from 'src/app/core/interfaces/imageProduct';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { ImageProductService } from 'src/app/core/services/image-product.service';
 import { LoginService } from 'src/app/core/services/login.service';
 @Component({
@@ -21,7 +22,9 @@ constructor(
   private router: Router,
   private aRouter: ActivatedRoute,
   private loginSvc: LoginService,
-  private imageProductService: ImageProductService){
+  private imageProductService: ImageProductService,
+  private alertsService: AlertsService,
+  ){
     this.miFormulario = this.fb.group({
       datos: this.fb.array([this.crearFormGroup()])
     });
@@ -77,10 +80,18 @@ constructor(
       // Realiza la llamada al backend utilizando tu servicio
       this.imageProductService.postImageProduct(this.imageProduct).subscribe(
         (respuesta) => {
-          console.log('Datos enviados con éxito:', respuesta);
+          this.alertsService.mostrarMensaje('Imagen Agregada');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         },
         (error) => {
-          console.error('Error al enviar datos:', error);
+          this.alertsService.mostrarMensaje('Hubo un error');
+
+          setTimeout(() => {
+            this.alertsService.ocultarMensaje();
+          }, 4000);
         }
       );
     });

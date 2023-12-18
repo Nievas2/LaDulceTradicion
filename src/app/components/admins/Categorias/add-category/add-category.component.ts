@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/core/interfaces/Category';
 import { Producto } from 'src/app/core/interfaces/producto';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { LoginService } from 'src/app/core/services/login.service';
 
@@ -58,6 +59,7 @@ export class AddCategoryComponent {
     private aRouter: ActivatedRoute,
     private categoryService : CategoryService,
     private loginSvc: LoginService,
+    private alertsService: AlertsService,
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -85,9 +87,19 @@ ngOnInit(): void {
     };
     this.categoryService.postCategory(this.category).subscribe(
       (data) => {
+        this.alertsService.mostrarMensaje('Categoria creada');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         this.router.navigate(['/admins/categorias']);
       },
       (error) => {
+        this.alertsService.mostrarMensaje('Hubo un error');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         console.log(error);
       }
     );

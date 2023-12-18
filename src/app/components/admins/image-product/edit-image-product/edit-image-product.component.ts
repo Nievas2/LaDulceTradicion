@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImageProduct } from 'src/app/core/interfaces/imageProduct';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { ImageProductService } from 'src/app/core/services/image-product.service';
 import { LoginService } from 'src/app/core/services/login.service';
 
@@ -26,7 +27,8 @@ export class EditImageProductComponent {
     private imageProductService: ImageProductService,
     private router: Router,
     private aRouter: ActivatedRoute,
-    private loginSvc: LoginService
+    private loginSvc: LoginService,
+    private alertsService: AlertsService,
   ) {
     this.form = this.fb.group({
       image: ['', Validators.required],
@@ -59,9 +61,19 @@ export class EditImageProductComponent {
     };
     this.imageProductService.putImageProduct(this.caterory, this.id).subscribe(
       (data) => {
+        this.alertsService.mostrarMensaje('Imagen actualizada');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         this.router.navigate(['/admins/imageproduct']);
       },
       (error) => {
+        this.alertsService.mostrarMensaje('Hubo un error');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         console.log(error);
       }
     );

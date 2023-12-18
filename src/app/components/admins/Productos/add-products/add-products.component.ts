@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/core/interfaces/Category';
 import { ImageProduct } from 'src/app/core/interfaces/imageProduct';
 import { Producto } from 'src/app/core/interfaces/producto';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { LoginService } from 'src/app/core/services/login.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
@@ -62,7 +63,8 @@ export class AddProductsComponent {
     private aRouter: ActivatedRoute,
     private categoryService: CategoryService,
     private loginSvc: LoginService,
-    private subCategoryService: SubCategoryService
+    private subCategoryService: SubCategoryService,
+    private alertsService: AlertsService,
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -135,9 +137,19 @@ export class AddProductsComponent {
     };
     this.courseService.postProducto(this.producto).subscribe(
       (data) => {
-       /*  this.router.navigate(['/admins/productos']); */
+        this.alertsService.mostrarMensaje('Producto creado');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
+        this.router.navigate(['/admins/productos']);
       },
       (error) => {
+        this.alertsService.mostrarMensaje('Hubo un error');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         console.log(error);
       }
     );

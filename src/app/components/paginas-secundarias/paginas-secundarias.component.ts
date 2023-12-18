@@ -112,13 +112,13 @@ export class PaginasSecundariasComponent implements OnInit {
 
         setTimeout(() => {
           this.alertsService.ocultarMensaje();
-        }, 2000);
+        }, 4000);
       } else {
         this.alertsService.mostrarMensaje('Producto Ya existente es necesario que tenga categorias distintas');
 
         setTimeout(() => {
           this.alertsService.ocultarMensaje();
-        }, 2000);
+        }, 4000);
       }
     }
   }

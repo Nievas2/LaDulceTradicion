@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/core/interfaces/Category';
 
 import { Producto } from 'src/app/core/interfaces/producto';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { LoginService } from 'src/app/core/services/login.service';
 @Component({
@@ -56,7 +57,8 @@ export class EditCategoryComponent {
     private categoryService: CategoryService,
     private router: Router,
     private aRouter: ActivatedRoute,
-    private loginSvc: LoginService
+    private loginSvc: LoginService,
+    private alertsService: AlertsService,
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -89,10 +91,19 @@ export class EditCategoryComponent {
     };
     this.categoryService.putCategory(this.caterory, this.id).subscribe(
       (data) => {
+        this.alertsService.mostrarMensaje('Categoria actualizada');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         this.router.navigate(['/admins/categorias']);
       },
       (error) => {
-        console.log(error);
+        this.alertsService.mostrarMensaje('Hubo un error');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
       }
     );
   }

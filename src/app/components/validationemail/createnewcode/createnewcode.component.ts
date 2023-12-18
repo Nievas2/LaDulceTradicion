@@ -51,14 +51,14 @@ export class CreatenewcodeComponent {
             this.alertsService.mostrarMensaje('¡¡email enviado!!');
             setTimeout(() => {
               this.alertsService.ocultarMensaje();
-            }, 1000);
+            }, 4000);
           }
         },
         (error) => {
           this.alertsService.mostrarMensaje('¡¡Hubo un error!!');
           setTimeout(() => {
             this.alertsService.ocultarMensaje();
-          }, 1000);
+          }, 4000);
           console.log(error);
         }
       );

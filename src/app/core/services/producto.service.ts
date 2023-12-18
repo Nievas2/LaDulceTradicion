@@ -6,7 +6,7 @@ import { Producto } from "../interfaces/producto"
 })
 export class ProductoService {
 
-  url='https://back-ladulce.fly.dev/product';
+  url='http://localhost:4001/product';
 
   constructor(private http: HttpClient) { }
 

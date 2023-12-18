@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubCategory } from 'src/app/core/interfaces/subCategory';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { LoginService } from 'src/app/core/services/login.service';
 import { SubCategoryService } from 'src/app/core/services/sub-category.service';
 
@@ -27,7 +28,8 @@ export class EditSubCategoryComponent {
     private categoryService: SubCategoryService,
     private router: Router,
     private aRouter: ActivatedRoute,
-    private loginSvc: LoginService
+    private loginSvc: LoginService,
+    private alertsService: AlertsService,
   ) {
     this.form = this.fb.group({
       date: ['', Validators.required],
@@ -63,9 +65,19 @@ export class EditSubCategoryComponent {
     };
     this.categoryService.putSubCategory(this.caterory, this.id).subscribe(
       (data) => {
+        this.alertsService.mostrarMensaje('Sub categoria Actualizada');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         this.router.navigate(['/admins/subcategorias']);
       },
       (error) => {
+        this.alertsService.mostrarMensaje('Hubo un error');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
         console.log(error);
       }
     );

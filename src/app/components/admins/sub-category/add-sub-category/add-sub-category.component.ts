@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { SubCategory } from 'src/app/core/interfaces/subCategory';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 import { SubCategoryService } from 'src/app/core/services/sub-category.service';
 @Component({
   selector: 'app-add-sub-category',
@@ -17,8 +18,12 @@ export class AddSubCategoryComponent {
   /* analiza si esta en !=0 true (para mostrar el input)
   si es == 0 false    */
   disable: boolean = false;
-  constructor(private fb: FormBuilder,
-    private aRouter: ActivatedRoute, private subCategoryService: SubCategoryService) {
+  constructor(
+    private fb: FormBuilder,
+    private aRouter: ActivatedRoute, 
+    private subCategoryService: SubCategoryService,
+    private alertsService: AlertsService,
+    ) {
     this.miFormulario = this.fb.group({
       datos: this.fb.array([this.crearFormGroup()])
     });
@@ -63,9 +68,19 @@ export class AddSubCategoryComponent {
       // Realiza la llamada al backend utilizando tu servicio
       this.subCategoryService.postSubCategory(this.subCategory).subscribe(
         (respuesta) => {
+          this.alertsService.mostrarMensaje('Sub categoria agregada');
+
+        setTimeout(() => {
+          this.alertsService.ocultarMensaje();
+        }, 4000);
           console.log('Datos enviados con éxito:', respuesta);
         },
         (error) => {
+          this.alertsService.mostrarMensaje('Hubo un error');
+
+          setTimeout(() => {
+            this.alertsService.ocultarMensaje();
+          }, 4000);
           console.error('Error al enviar datos:', error);
         }
       );

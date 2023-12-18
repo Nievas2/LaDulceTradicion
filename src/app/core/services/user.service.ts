@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  private apiUrl="https://back-ladulce.fly.dev/user"
+  private apiUrl="http://localhost:4001/user"
 
   constructor(private httpUser: HttpClient) { }
 
@@ -59,4 +59,5 @@ export class UserService {
     const requestBody = { mensage }; 
     return this.httpUser.post(this.apiUrl+ "/contact/" + email, requestBody)
   }
+
 }

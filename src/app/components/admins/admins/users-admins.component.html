@@ -1,0 +1,120 @@
+<div class="container-fluid userSelect" style="padding: 0">
+  <div
+    class="mt-5"
+    style="
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      margin-left: 15px;
+      margin-right: 15px;
+    "
+  >
+    <div class="row">
+      <button class="btn boton" routerLink="/admins">Volver</button>
+    </div>
+    <table class="table rounded">
+      <thead>
+        <tr>
+          <th scope="col" style="font-size: 25px"><b>User</b></th>
+          <th scope="col" style="font-size: 20px"><b>IsAdmin</b></th>
+          <th scope="col" style="font-size: 20px"><b>Hacer Admin</b></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of users">
+        <tr>
+          <th scope="row">
+            <h5>{{ user.email }}</h5>
+          </th>
+          <th>
+            <h5>{{user.admin}}</h5>
+          </th>
+
+          <!-- <th scope="row">
+            <button
+              class="btn border rounded"
+              style="background-color: var(--colorOrange)"
+              (click)="redirectEdit(user.id)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-pencil-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                />
+              </svg>
+            </button>
+          </th> -->
+          <th scope="row">
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn border rounded"
+              style="background-color: var(--colorOrange)"
+              data-bs-toggle="modal"
+              data-bs-target="#delete"
+              (click)="selectId(user.id)"
+            >
+            
+            <svg *ngIf="!user.admin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+              <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+            </svg>
+            <svg *ngIf="user.admin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+            </svg>
+            </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="delete"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <p>Hacer administrador</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn boton col"
+                      data-bs-dismiss="modal"
+                    >
+                      Volver
+                    </button>
+                    <button
+                      type="button"
+                      class="btn boton col"
+                      (click)="patchAdmin()"
+                    >
+                      Aceptar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <!--       <div class="col-lg-4 col-md-2 col-sm-12">
+        <button 
+          class="btn boton"
+          style="width: 120px;"
+          routerLink="addproductos/{{idAdd}}"
+        >
+          Agregar
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<app-alerts></app-alerts>

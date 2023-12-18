@@ -9,7 +9,7 @@ export class ImageProductService {
 
  
   
-  private apiUrl= "https://back-ladulce.fly.dev/imageproduct"; 
+  private apiUrl= "http://localhost:4001/imageproduct"; 
   
 
   constructor(private httpImageProduct: HttpClient) { }

@@ -54,13 +54,13 @@ export class ContactanosComponent {
 
         setTimeout(() => {
           this.alertsService.ocultarMensaje();
-        }, 2000);
+        }, 4000);
     },(error)=>{
       this.alertsService.mostrarMensaje("Hubo un error al enviar el email");
 
     setTimeout(() => {
       this.alertsService.ocultarMensaje();
-    }, 2000);
+    }, 4000);
     
     console.log(error)
     }

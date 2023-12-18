@@ -44,14 +44,14 @@ export class NuevaContrasenaComponent {
             setTimeout(() => {
               this.alertsService.ocultarMensaje();
               this.router.navigateByUrl('');
-            }, 1000);
+            }, 4000);
           },
           (error) => {
             this.alertsService.mostrarMensaje('Algo salio mal');
 
           setTimeout(() => {
             this.alertsService.ocultarMensaje();
-          }, 2000);
+          },4000);
             console.log(error);
           }
         );
@@ -61,7 +61,7 @@ export class NuevaContrasenaComponent {
 
           setTimeout(() => {
             this.alertsService.ocultarMensaje();
-          }, 2000);
+          }, 4000);
     }
   }
 }
