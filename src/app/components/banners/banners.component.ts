@@ -7,8 +7,7 @@ import { CarouselService } from 'src/app/core/services/carousel';
   styleUrls: ['./banners.component.css']
 })
 export class BannersComponent {
-  carousel: any;
-constructor(private carouselService: CarouselService){
-  this.carousel = this.carouselService.imageSources
+  
+constructor(){
 }
 }

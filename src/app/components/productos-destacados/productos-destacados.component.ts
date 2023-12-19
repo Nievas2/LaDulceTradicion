@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Dollar } from 'src/app/core/interfaces/dollar';
 import { Producto } from 'src/app/core/interfaces/producto';
 import { DollarService } from 'src/app/core/services/dollar.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
@@ -10,7 +11,7 @@ import { ProductoService } from 'src/app/core/services/producto.service';
 export class ProductosDestacadosComponent {
   productos: Producto[] = [];
   productosList: Producto[]= [];
-  dollar: any;
+  dollar!: Dollar;
   constructor(private productosService: ProductoService,private dollarService: DollarService,) {
     this.getProductos();
     this.getDollar();
@@ -19,7 +20,7 @@ export class ProductosDestacadosComponent {
   getDollar() {
     this.dollarService.getDollar().subscribe(
       (data) => {
-        this.dollar = data;
+        this.dollar = <any>data;
       },
 
       (error) => {

@@ -1,75 +1,77 @@
-<div class="row borde"style="background-color: #fbe4dd">
-
-  <h1 class=" text-center" >Productos favoritos</h1>
+<div class="row borde" style="background-color: #fbe4dd">
+  <h1 class="text-center">Productos favoritos</h1>
 </div>
 <div class="row" style="background-color: #fbe4dd">
-  <div
-    class="col m2"
-    *ngFor="let producto of productos; let index = index"
-  >
+  <div class="col m2" *ngFor="let producto of productos; let index = index">
     <div
       class="card sh"
       style="width: 18rem; margin-left: 15px; border-color: #751c19"
     >
-    <a
-          href="#arriba"
-          style="color: #000000; "
-          data-bs-toggle="modal"
-          [attr.data-bs-target]="'#exampleModal2-' + index"
-        >
-      <div style="position: absolute; right: 10px; z-index: 100;">
-        
+      <a
+        href="#arriba"
+        style="color: #000000"
+        data-bs-toggle="modal"
+        [attr.data-bs-target]="'#exampleModal2-' + index"
+      >
+        <div style="position: absolute; right: 10px; z-index: 100"></div>
 
-       
-      </div>
+        <img
+          src="{{ producto.image }}"
+          class="card-img-top img-dest img-fluid"
+          alt="..."
+          style="height: 15rem"
+        />
 
-      <img
-        src="{{ producto.image }}"
-        class="card-img-top img-dest img-fluid"
-        alt="..."
-        style="height: 15rem"
-      />
+        <div class="card-body item-info">
+          <h3 class="fs-5">
+            <b>{{ producto.name }}</b>
+          </h3>
 
-      <div class="card-body item-info">
-        <h3 class="fs-5">
-          <b>{{ producto.name }}</b>
-        </h3>
-
-        <h4 class="fs-6" style="text-align: end">${{ producto.price * dollar.price }}</h4>
-      </div>
-       </a>
+          <h4 class="fs-6" style="text-align: end">
+            ${{ producto.price * dollar.price }}
+          </h4>
+        </div>
+      </a>
     </div>
 
     <!--
           modal
         -->
-        <div
-        class="modal fade"
-        [id]="'exampleModal2-' + index"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content" style="background-color: var(--color1)">
-            <div class="modal-body " style="padding: 0;">
-              <img
-                src="{{ producto.image }}"
-                class="img-dest img-fluid"
-                alt="..."
-              />
-              <h3 class="p-2">
-                {{ producto.name }}
-              </h3>
-              <p class="p-2">
-                {{ producto.description }}
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button id="center" type="button" class="btn boton"><a style="text-decoration: none; color: #000;" href="/pagsec/{{producto.id}}">Ver más</a></button>
-            </div>
+    <div
+      class="modal fade"
+      [id]="'exampleModal2-' + index"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: var(--color1)">
+          <div class="modal-body" style="padding: 0">
+            <img
+              src="{{ producto.image }}"
+              class="img-dest img-fluid"
+              alt="..."
+            />
+            <h3 class="p-2">
+              {{ producto.name }}
+            </h3>
+            <p class="p-2">
+              {{ producto.description }}
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button id="center" type="button" class="btn boton">
+              <a
+                style="text-decoration: none; color: #000"
+                href="/pagsec/{{ producto.id }}"
+                >Ver más</a
+              >
+            </button>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
+  
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarritoService } from 'src/app/core/services/carrito.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-ticket',
@@ -11,9 +12,11 @@ export class TicketComponent implements OnInit {
   products!: any[];
   totalGeneral!: number;
   form: FormGroup;
+  mensage : string ="";
   constructor(
     private carritoService: CarritoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService,
   ) {
     this.form = this.formBuilder.group({
       envio: ['', Validators.required],
@@ -30,5 +33,6 @@ export class TicketComponent implements OnInit {
   }
   enviar(){
     
+    //this.userService.postTicket()
   }
 }

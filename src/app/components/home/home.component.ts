@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CarouselService } from 'src/app/core/services/carousel';
 import { LoginService } from 'src/app/core/services/login.service';
 @Component({
   selector: 'app-home',
@@ -14,7 +13,7 @@ export class HomeComponent implements OnInit{
   register : boolean = false;
   image : string ="";
   numero : number = 0
-constructor(private loginService:LoginService, private router: Router,private carouselService: CarouselService){
+constructor(private loginService:LoginService, private router: Router,){
 
 }
 ngOnInit(): void {

@@ -19,7 +19,14 @@ export class UserService  {
         this.token = token        
     })
   }
-
+  postTicket(email:string, mensage : string){
+    const requestBody = { email,mensage }; 
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 
+      'Authorization': `Bearer ${this.token}`
+    });
+    return this.httpUser.post(this.apiUrl+"/ticket",requestBody,{headers})
+  }
   patchAdmins(userId:number){
     const requestBody = { userId }; 
     const headers = new HttpHeaders({
