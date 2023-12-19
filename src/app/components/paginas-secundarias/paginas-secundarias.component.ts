@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Dollar } from 'src/app/core/interfaces/dollar';
 import { Producto } from 'src/app/core/interfaces/producto';
 import { AlertsService } from 'src/app/core/services/alerts.service';
 import { CarritoService } from 'src/app/core/services/carrito.service';
+import { DollarService } from 'src/app/core/services/dollar.service';
 import { LoginService } from 'src/app/core/services/login.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
 
@@ -56,6 +58,7 @@ export class PaginasSecundariasComponent implements OnInit {
   options: boolean = true;
   isRegistered: any;
   carrito: any[] = [];
+  dollar!: Dollar;
   constructor(
     private productoService: ProductoService,
     private aRouter: ActivatedRoute,
@@ -63,13 +66,15 @@ export class PaginasSecundariasComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private carritoService: CarritoService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private dollarService: DollarService,
   ) {
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.form = this.fb.group({
       cant: ['', Validators.required],
       option: ['', this.options ? Validators.required : []],
     });
+    this.getDollar();
   }
   async ngOnInit() {
     this.loginService.isRegistered.subscribe((isRegistered) => {
@@ -93,6 +98,9 @@ export class PaginasSecundariasComponent implements OnInit {
           this.price = element.SubCategory.price
         }
       });
+      if(this.price == 0){
+        this.price = this.producto.price * this.dollar.price
+      }
       // Recolecta los datos y agrégalo al array de objetos en localStorage
       const subtotal = this.price * this.form.value.cant;
       const datos = {
@@ -121,6 +129,17 @@ export class PaginasSecundariasComponent implements OnInit {
         }, 4000);
       }
     }
+  }
+  getDollar() {
+    this.dollarService.getDollar().subscribe(
+      (data) => {
+        this.dollar = <any>data;
+      },
+
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   checkCarrito(product: any) {
     this.optionExist = false;

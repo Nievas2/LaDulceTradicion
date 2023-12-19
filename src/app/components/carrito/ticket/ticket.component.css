@@ -1,6 +1,7 @@
 .ticket{
     background-color: #fff;
     height: auto;
+    width: auto;
     padding: 10px 10px 0px 20px;
     position: relative;
     margin: 0 auto;
@@ -27,4 +28,13 @@
     background-color: #ffffff;
     clip-path: polygon(0 0,5% 100%,10% 0,15% 100%,20% 0,25% 100%,30% 0,35% 100%,40% 0,45% 100%,50% 0,55% 100%,60% 0,65% 100%,70% 0,75% 100%,80% 0,85% 100%,90% 0,95% 100%,100% 0);
     -webkit-clip-path: polygon(0 0,5% 100%,10% 0,15% 100%,20% 0,25% 100%,30% 0,35% 100%,40% 0,45% 100%,50% 0,55% 100%,60% 0,65% 100%,70% 0,75% 100%,80% 0,85% 100%,90% 0,95% 100%,100% 0);
+}
+@media (max-width: 430px) {
+    .datesTable{
+        font-size: 12px;
+    }
+    .table>:not(caption)>*>* {
+        padding: 0.2rem 0.2rem !important;
+
+    }
 }

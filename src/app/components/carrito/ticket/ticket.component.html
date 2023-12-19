@@ -20,47 +20,79 @@
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>Cantidad</th>
+                <th>Cant.</th>
                 <th>Precio U.</th>
                 <th>Opcion</th>
-                <th>Subtotal</th>
+                <th>Sub total</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let product of products">
-                <td scope="row">{{ product.name }}</td>
+                <td scope="row" class="datesTable">{{ product.name }}</td>
                 <td scope="row">{{ product.cant }}</td>
-                <td scope="row">${{ product.price }}</td>
+                <td scope="row" class="datesTable">${{ product.price }}</td>
                 <td scope="row">{{ product.option }}</td>
-                <td scope="row">${{ product.cant * product.price }}</td>
+                <td scope="row" class="datesTable">
+                  ${{ product.cant * product.price }}
+                </td>
               </tr>
             </tbody>
             <tr class="position-relative m-2 p-2">
+              <td class="row"></td>
               <td class="fs-4 position-absolute end-0">
-                Total:{{ totalGeneral }}
+                <h4>Total:${{ totalGeneral }}</h4>
               </td>
             </tr>
-            <div>
-              <input type="checkbox" class="form-check-input m-2" />
-              <label> Con envio</label>
-            </div>
-            
+            <div class="row" style="margin-top: 50px"></div>
           </table>
           <div class="row"></div>
-          
         </div>
-        
+      </div>
+      <div class="p-4 mt-5 rounded" style="background-color: #fff">
+        <form [formGroup]="form" (ngSubmit)="enviar()">
+          <input
+            type="checkbox"
+            class="form-check-input m-2"
+            id="envio"
+            formControlName="envio"
+          /> Con envio (a cotizar según ubicacion)
+
+          <button
+            [disabled]="form.invalid"
+            class="btn text-white"
+            style="background-color: var(--color3)"
+            type="submit"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-cart"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+              />
+            </svg>
+            Enviar
+          </button>
+        </form>
+        <div class="col">
+          <button
+            class="btn boton"
+            routerLink="/productos"
+            style="z-index: 100"
+          >
+            Volver
+          </button>
+        </div>
 
         
-        
       </div>
-      <div class="row p-4 mt-5 rounded" style="background-color: #fff;">
-        <div class="col"><button class="btn boton">WhatsApp</button></div>
-        <div class="col"><button class="btn boton">Email</button></div>
-      <div class="col"><button class="btn boton" routerLink="/productos" style="z-index: 100;">Volver</button></div>
-        
-      </div>
-
     </div>
   </div>
 </div>

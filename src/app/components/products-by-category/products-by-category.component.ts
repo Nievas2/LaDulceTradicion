@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/core/interfaces/Category';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { DollarService } from 'src/app/core/services/dollar.service';
 
 @Component({
   selector: 'app-products-by-category',
@@ -14,15 +15,29 @@ export class ProductsByCategoryComponent implements OnInit {
   category!: any;
   options : boolean = true ;
   categories!: any[];
+  dollar: any;
   constructor(
     private aRouter: ActivatedRoute,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private dollarService: DollarService,
   ) {
     this.id = Number(this.aRouter.snapshot.paramMap.get('id'));
-    this.getCategories()
+    this.getCategories();
+    this.getDollar();
   }
   ngOnInit(): void {
     this.getCategoryById();
+  }
+  getDollar() {
+    this.dollarService.getDollar().subscribe(
+      (data) => {
+        this.dollar = data;
+      },
+
+      (error) => {
+        console.log(error);
+      }
+    );
   }
   getCategoryById() {
     this.categoryService.getCategoryById(this.id).subscribe(

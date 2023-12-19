@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Producto } from 'src/app/core/interfaces/producto';
+import { DollarService } from 'src/app/core/services/dollar.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
 @Component({
   selector: 'app-productos-destacados',
@@ -9,17 +10,23 @@ import { ProductoService } from 'src/app/core/services/producto.service';
 export class ProductosDestacadosComponent {
   productos: Producto[] = [];
   productosList: Producto[]= [];
-  constructor(private productosService: ProductoService) {
-    this.getProductos()
+  dollar: any;
+  constructor(private productosService: ProductoService,private dollarService: DollarService,) {
+    this.getProductos();
+    this.getDollar();
   }
-/*   getProductos(){
-    this.productosService.getProductos().subscribe(
+
+  getDollar() {
+    this.dollarService.getDollar().subscribe(
       (data) => {
-      this.productosList = <any>data;
-      this.productos = this.productosList.filter((productos) => this.productosList.indexOf(productos) < 3);
+        this.dollar = data;
+      },
+
+      (error) => {
+        console.log(error);
       }
-    )
-  } */
+    );
+  }
   getProductos() {
     this.productosService.getProductos().subscribe(
       (data) => {
