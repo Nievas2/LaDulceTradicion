@@ -10,7 +10,7 @@ import { LoginService } from './login.service';
 })
 export class UserService  {
 
-  private apiUrl="http://localhost:4001/user"
+  private apiUrl="https://back-ladulce.fly.dev/user"
   token!: string | null;
 
   constructor(private httpUser: HttpClient, private loginService : LoginService) { 

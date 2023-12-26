@@ -51,6 +51,7 @@ export class AddCategoryComponent {
   category : Category = {
     id: 0,
     name: "",
+    image:"",
     Products: [this.producto]
   }
   constructor(
@@ -63,9 +64,11 @@ export class AddCategoryComponent {
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
+      image: ['', Validators.required]
     });
     this.form.setValue({
       name: '',
+      image:'',
     });
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
   }
@@ -83,6 +86,7 @@ ngOnInit(): void {
     this.category = {
       id: this.id,
       name: this.form.value.name,
+      image:this.form.value.image,
       Products: [this.producto]
     };
     this.categoryService.postCategory(this.category).subscribe(

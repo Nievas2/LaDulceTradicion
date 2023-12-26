@@ -7,7 +7,7 @@ import { LoginService } from './login.service';
   providedIn: 'root',
 })
 export class SubCategoryService {
-  private apiUrl = 'http://localhost:4001/subcategory';
+  private apiUrl = 'https://back-ladulce.fly.dev/subcategory';
   token: any;
 
   constructor(

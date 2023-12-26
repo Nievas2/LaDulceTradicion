@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CarouselService {
-  private apiUrl = 'http://localhost:4001/carousel/images';
+  private apiUrl = 'https://back-ladulce.fly.dev/carousel/images';
   images: string[] = []; // Arreglo para almacenar los nombres de las imágenes
   imageSources: string[] = []; // Arreglo para almacenar las fuentes de las imágenes codificadas en base64
 
@@ -16,7 +16,7 @@ export class CarouselService {
 
   getImages(): void {
     this.httpCarousel
-      .get('http://localhost:4001/carousel', { responseType: 'text' })
+      .get('https://back-ladulce.fly.dev/carousel', { responseType: 'text' })
       .subscribe(
         (data) => {
           // Maneja los datos como texto
@@ -40,7 +40,7 @@ export class CarouselService {
   }
   getImageSource(name: string): void {
     this.httpCarousel
-      .get('http://localhost:4001/carousel/images/' + name, {
+      .get('https://back-ladulce.fly.dev/carousel/images/' + name, {
         responseType: 'blob',
       })
       .subscribe(
@@ -57,9 +57,9 @@ export class CarouselService {
       });
   }
   deleteCarousel(name : string){
-    return this.httpCarousel.delete("http://localhost:4001/carousel/image/delete/" + name)
+    return this.httpCarousel.delete("https://back-ladulce.fly.dev/carousel/image/delete/" + name)
   }
   postCarousel (image :Blob){
-    return this.httpCarousel.post("http://localhost:4001/carousel/upload",image)
+    return this.httpCarousel.post("https://back-ladulce.fly.dev/carousel/upload",image)
   }
 }

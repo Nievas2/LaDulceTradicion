@@ -7,7 +7,7 @@ import { LoginService } from './login.service';
   providedIn: 'root',
 })
 export class ImageProductService {
-  private apiUrl = 'http://localhost:4001/imageproduct';
+  private apiUrl = 'https://back-ladulce.fly.dev/imageproduct';
   token: any;
 
   constructor(

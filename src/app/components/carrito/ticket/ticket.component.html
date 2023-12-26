@@ -50,13 +50,17 @@
       </div>
       <div class="p-4 mt-5 rounded" style="background-color: #fff">
         <form [formGroup]="form" (ngSubmit)="enviar()">
-          <input
+          <div class="row">
+            <input
             type="checkbox"
             class="form-check-input m-2"
             id="envio"
             formControlName="envio"
-          /> Con envio (a cotizar según ubicacion)
+            /> Con envio (a cotizar según ubicacion)
 
+          </div>
+          <div class="row">
+          <div class="col">
           <button
             [disabled]="form.invalid"
             class="btn text-white"
@@ -80,16 +84,20 @@
             </svg>
             Enviar
           </button>
-        </form>
-        <div class="col">
-          <button
-            class="btn boton"
-            routerLink="/productos"
-            style="z-index: 100"
-          >
-            Volver
-          </button>
         </div>
+        
+          <div class="col">
+            <button
+              class="btn boton"
+              routerLink="/productos"
+              style="z-index: 100"
+            >
+              Volver
+            </button>
+          </div>
+          </div>
+        </form>
+        
 
         
       </div>

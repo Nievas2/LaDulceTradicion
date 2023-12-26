@@ -50,6 +50,7 @@ export class EditCategoryComponent {
   caterory: Category = {
     id: 0,
     name: '',
+    image:'',
     Products: [this.producto],
   };
   constructor(
@@ -62,6 +63,7 @@ export class EditCategoryComponent {
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
+      image: ['', Validators.required],
     });
     this.id = Number(aRouter.snapshot.paramMap.get('id'));
     this.getById(this.id);
@@ -79,6 +81,7 @@ export class EditCategoryComponent {
       this.recursos = <any>data;
       this.form.setValue({
         name: data.name,
+        image:data.image
       });
     });
   }
@@ -86,6 +89,7 @@ export class EditCategoryComponent {
   update() {
     this.caterory = {
       id: this.id,
+      image:this.form.value.image,
       name: this.form.value.name,
       Products: [this.producto],
     };

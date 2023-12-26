@@ -25,6 +25,25 @@
               El campo nombre es <strong>requerido</strong>
             </span>
           </div>
+          <div class="row mb-3">
+            <label class="form-label mb-0 p-0"><b>Imagen</b></label>
+            <input
+              formControlName="image"
+              type="text"
+              class="form-control"
+              placeholder="Ingrese imagen"
+            />
+            <span
+              *ngIf="
+                form.get('image')?.hasError('required') &&
+                form.get('image')?.touched
+              "
+              class="mt-1"
+              style="background-color: rgb(255, 73, 73); border-radius: 5px"
+            >
+              El campo imagen es <strong>requerido</strong>
+            </span>
+          </div>
           <div class="row mb-3 mt-2 text-center">
             <div class="col-lg-6">
               <button class="btn boton" routerLink="/admins/categorias">

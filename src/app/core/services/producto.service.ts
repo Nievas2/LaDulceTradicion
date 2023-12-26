@@ -7,7 +7,7 @@ import { LoginService } from './login.service';
 })
 export class ProductoService {
 
-  url='http://localhost:4001/product';
+  url='https://back-ladulce.fly.dev/product';
   token!: string | null;
 
   constructor(private http: HttpClient,private loginService: LoginService,) { 

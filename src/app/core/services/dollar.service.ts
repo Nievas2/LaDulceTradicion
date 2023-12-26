@@ -6,7 +6,7 @@ import { LoginService } from './login.service';
   providedIn: 'root'
 })
 export class DollarService {
-  private apiUrl= "http://localhost:4001/dollar"; 
+  private apiUrl= "https://back-ladulce.fly.dev/dollar"; 
   token!: string | null;
   constructor(private httpDollar: HttpClient,private loginService: LoginService,) {
     this.loginService.token.subscribe(

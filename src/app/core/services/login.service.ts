@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginService {
 
-  url = "http://localhost:4001"
+  url = "https://back-ladulce.fly.dev"
   token = new BehaviorSubject<string | null>(null);
   isAdmin = new BehaviorSubject<boolean>(false);
   isRegistered = new BehaviorSubject<boolean>(false);
