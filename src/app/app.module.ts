@@ -39,7 +39,8 @@ import { TicketComponent } from './components/carrito/ticket/ticket.component';
 import { RecuperarContrasenaComponent } from './components/login/recuperar-contrasena/recuperar-contrasena.component';
 import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nueva-contrasena.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
-import { UsersAdminsComponent } from './components/admins/admins/users-admins.component'
+import { UsersAdminsComponent } from './components/admins/admins/users-admins.component';
+import { DollarComponent } from './components/admins/dollar/dollar.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +79,7 @@ import { UsersAdminsComponent } from './components/admins/admins/users-admins.co
     NuevaContrasenaComponent,
     AlertsComponent,
     UsersAdminsComponent,
+    DollarComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class LoginService {
   token = new BehaviorSubject<string | null>(null);
   isAdmin = new BehaviorSubject<boolean>(false);
   isRegistered = new BehaviorSubject<boolean>(false);
-  codigo = new BehaviorSubject<string>("");
+  codigo = new BehaviorSubject<object>({});
   token2 : string = ""
   constructor(private http: HttpClient) {
     this.token.next(localStorage.getItem('token'));

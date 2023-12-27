@@ -26,7 +26,7 @@ export class UsersAdminsComponent {
     this.loginSvc.isAdmin.subscribe((isAdmin) => {
       this.admin = isAdmin;
       if (this.admin === false) {
-        /* this.router.navigateByUrl(''); */
+        this.router.navigateByUrl('');
       }
     });
   }

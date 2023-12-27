@@ -142,7 +142,6 @@ export class AddProductsComponent {
         setTimeout(() => {
           this.alertsService.ocultarMensaje();
         }, 4000);
-        this.router.navigate(['/admins/productos']);
       },
       (error) => {
         this.alertsService.mostrarMensaje('Hubo un error');

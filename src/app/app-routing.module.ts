@@ -30,6 +30,7 @@ import { RecuperarContrasenaComponent } from './components/login/recuperar-contr
 import { NuevaContrasenaComponent } from './components/login/nueva-contrasena/nueva-contrasena.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { UsersAdminsComponent } from './components/admins/admins/users-admins.component';
+import { DollarComponent } from './components/admins/dollar/dollar.component';
 
 
 const routes: Routes = [ 
@@ -71,6 +72,8 @@ const routes: Routes = [
   {path:'admins/carrusel/addcarrusel', component:AddCarouselComponent},
   /* ADMINS */
   {path:'admins/admins', component:UsersAdminsComponent},
+  /* DOLLAR */
+  {path:'admins/dollar', component:DollarComponent},
   { path: '**', redirectTo:"/"}
 ];
 

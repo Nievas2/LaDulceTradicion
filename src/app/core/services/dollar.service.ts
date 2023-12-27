@@ -14,13 +14,16 @@ export class DollarService {
         this.token = token        
     })
    }
-   putCategory(price:number){
+   putDollar(price: number) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json', 
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.token}`
     });
-    return this.httpDollar.put(this.apiUrl + '/update',price,{headers})
+    const body = { price: price };
+  
+    return this.httpDollar.put(this.apiUrl + '/update/1', body, { headers });
   }
+  
   getDollar(){
     return this.httpDollar.get(this.apiUrl)
   }
