@@ -11,9 +11,10 @@
       <table class="table rounded">
         <thead>
           <tr>
-            <th scope="col" style="font-size: 25px;"> <b>Cursos</b> </th>
-            <th scope="col" style="font-size: 20px;"> <b></b> Editar</th>
-            <th scope="col" style="font-size: 20px;"> <b></b> Desactivar</th>
+            <th scope="col" style="font-size: 25px;"> <b>Productos</b> </th>
+            <th scope="col" style="font-size: 25px;"> <b>id</b> </th>
+            <th scope="col" style="font-size: 20px;"> <b></b>Editar</th>
+            <th scope="col" style="font-size: 20px;"> <b></b>Desactivar</th>
           </tr>
         </thead>
         <tbody *ngFor="let producto of productos">
@@ -22,7 +23,9 @@
             <th scope="row">
               <h5>{{ producto.name }}</h5>
             </th>
-                
+            <th scope="row">
+              <h5>{{ producto.id }}</h5>
+            </th>
             <th scope="row">
               <button
                 class="btn border rounded"

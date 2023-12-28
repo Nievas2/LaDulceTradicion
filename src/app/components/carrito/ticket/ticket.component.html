@@ -50,6 +50,25 @@
       </div>
       <div class="p-4 mt-5 rounded" style="background-color: #fff">
         <form [formGroup]="form" (ngSubmit)="enviar()">
+          <div class="row mb-3">
+            <label class="form-label mb-0 p-0"><b>Aclaraciones (opcional)</b></label>
+            <textarea
+              formControlName="description"
+              type="text"
+              class="form-control mt-2"
+              placeholder="Ingrese descripcion"
+            > </textarea>
+            <span
+              *ngIf="
+                form.get('description')?.hasError('required') &&
+                form.get('description')?.touched
+              "
+              class="mt-1"
+              style="background-color: rgb(255, 73, 73); border-radius: 5px"
+            >
+              El campo descripcion es <strong>Requisitos</strong>
+            </span>
+          </div>
           <div class="row">
             <input
             type="checkbox"

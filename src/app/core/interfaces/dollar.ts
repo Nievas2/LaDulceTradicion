@@ -1,4 +1,4 @@
-export interface Dollar{
-    id: number;
-    price: number;
+export interface Dollar {
+  id: number;
+  price: number;
 }

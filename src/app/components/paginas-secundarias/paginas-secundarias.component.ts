@@ -19,7 +19,7 @@ export class PaginasSecundariasComponent implements OnInit {
   form!: FormGroup;
   optionExist: boolean = false;
   price : number  = 0
-  producto: any = {
+  producto: Producto = {
     id: 0,
     name: '',
     description: '',
@@ -58,7 +58,8 @@ export class PaginasSecundariasComponent implements OnInit {
   options: boolean = true;
   isRegistered: any;
   carrito: any[] = [];
-  dollar!: Dollar;
+  dollar: number = 0;
+  dollar2 : number | null = 0
   constructor(
     private productoService: ProductoService,
     private aRouter: ActivatedRoute,
@@ -74,7 +75,6 @@ export class PaginasSecundariasComponent implements OnInit {
       cant: ['', Validators.required],
       option: ['', this.options ? Validators.required : []],
     });
-    this.getDollar();
   }
   async ngOnInit() {
     this.loginService.isRegistered.subscribe((isRegistered) => {
@@ -90,16 +90,20 @@ export class PaginasSecundariasComponent implements OnInit {
     this.carritoService.carrito.subscribe((carrito) => {
       this.carrito = carrito;
     });
+    this.dollarService.dollar.subscribe((dolar)=>{
+      this.dollar2 = dolar
+    })
   }
   onSubmit() {
-    if (this.form.valid) {
+    if (this.form.valid && this.dollar2 != null) {
       this.producto.SubCategoryProducts.forEach((element: { SubCategory: { date: any; price: number; }; }) => {
         if(element.SubCategory.date == this.form.value.option){
-          this.price = element.SubCategory.price
+          this.price = element.SubCategory.price;
+          this.price = this.price * this.dollar2!
         }
       });
       if(this.price == 0){
-        this.price = this.producto.price * this.dollar.price
+        this.price = this.producto.price * this.dollar2
       }
       // Recolecta los datos y agrégalo al array de objetos en localStorage
       const subtotal = this.price * this.form.value.cant;
@@ -113,7 +117,6 @@ export class PaginasSecundariasComponent implements OnInit {
         total: subtotal,
       };
       this.checkCarrito(datos);
-      console.log(this.optionExist);
       if (!this.optionExist) {
         this.carritoService.agregarAlCarrito(datos);
         this.alertsService.mostrarMensaje('Producto agregado con exito');
@@ -129,17 +132,6 @@ export class PaginasSecundariasComponent implements OnInit {
         }, 4000);
       }
     }
-  }
-  getDollar() {
-    this.dollarService.getDollar().subscribe(
-      (data) => {
-        this.dollar = <any>data;
-      },
-
-      (error) => {
-        console.log(error);
-      }
-    );
   }
   checkCarrito(product: any) {
     this.optionExist = false;
@@ -159,7 +151,6 @@ export class PaginasSecundariasComponent implements OnInit {
         .getProductoById(this.id)
         .toPromise();
       this.producto = <any>data;
-
       if (!this.producto.SubCategoryProducts.some(Boolean)) {
         this.options = false;
       }

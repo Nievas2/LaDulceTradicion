@@ -30,7 +30,7 @@ export class CarouselComponent {
     });
   }
 
-  deleteCourseCategory() {
+  deleteCategory() {
     return this.carouselService.deleteCarousel(this.name).subscribe(
       (res) => {
         window.location.reload();

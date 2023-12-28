@@ -27,20 +27,20 @@ export class CategoryService {
     return this.httpCategory.get<Category>(this.apiUrl+'/'+id)
   }
 
-  postCategory(courseCategory: Category){
+  postCategory(Category: Category){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json', 
       'Authorization': `Bearer ${this.token}`
     });
-    return this.httpCategory.post(this.apiUrl, courseCategory,{headers})
+    return this.httpCategory.post(this.apiUrl, Category,{headers})
   }
 
-  putCategory(courseCategory: Category, id:number){
+  putCategory(Category: Category, id:number){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json', 
       'Authorization': `Bearer ${this.token}`
     });
-    return this.httpCategory.put(this.apiUrl+'/'+id, courseCategory,{headers})
+    return this.httpCategory.put(this.apiUrl+'/'+id, Category,{headers})
   }
 
   deleteCategory(id:number){
@@ -51,6 +51,6 @@ export class CategoryService {
     return this.httpCategory.delete(this.apiUrl+'/'+id,{headers})
   }  
   getCategoriesProduct(CategoryName: string){
-    return this.httpCategory.get(this.apiUrl+ "/courses/"+ CategoryName)
+    return this.httpCategory.get(this.apiUrl+ "/Products/"+ CategoryName)
   }
 }

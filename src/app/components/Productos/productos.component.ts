@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/core/services/producto.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -7,15 +7,17 @@ import { UserService } from 'src/app/core/services/user.service';
 import { Producto } from 'src/app/core/interfaces/producto';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { DollarService } from 'src/app/core/services/dollar.service';
+import { Dollar } from 'src/app/core/interfaces/dollar';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css'],
 })
-export class ProductosComponent {
+export class ProductosComponent implements OnInit {
   ListarProducto: Producto[] = [];
   categories!: any[];
-  dollar: any = {};
+  dollar!: Dollar;
+  dollar2!: number | null;
   constructor(
     private categoryService: CategoryService,
     private ProductoService: ProductoService,
@@ -25,20 +27,26 @@ export class ProductosComponent {
   ) {
     this.listarProducto();
     this.getCategories();
-    this.getDollar();
+    
   }
-
-  getDollar() {
+ngOnInit(): void {
+ /*  this.getDollar(); */
+ this.dollarService.dollar.subscribe((dolar)=>{
+  this.dollar2 = dolar
+})
+}
+  /* getDollar() {
     this.dollarService.getDollar().subscribe(
       (data) => {
-        this.dollar = data;
+        console.log(data)
+        this.dollar = <any>data;
       },
 
       (error) => {
         console.log(error);
       }
     );
-  }
+  } */
   listarProducto() {
     this.ProductoService.getProductos().subscribe(
       (res) => {

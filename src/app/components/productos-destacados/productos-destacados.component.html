@@ -28,7 +28,7 @@
           </h3>
 
           <h4 class="fs-6" style="text-align: end">
-            ${{ producto.price * dollar.price }}
+            ${{ producto.price * dollar2 }}
           </h4>
         </div>
       </a>
@@ -55,8 +55,7 @@
             <h3 class="p-2">
               {{ producto.name }}
             </h3>
-            <p class="p-2">
-              {{ producto.description }}
+            <p class="p-2" [innerHTML]="producto.description ">
             </p>
           </div>
           <div class="modal-footer">

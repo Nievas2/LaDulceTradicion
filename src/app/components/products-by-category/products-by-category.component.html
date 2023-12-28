@@ -9,7 +9,7 @@
   <div class="carrusel-container2 rounded" id="carrusel">
     <div class="carrusel-item2" *ngFor="let category of categories">
       <a href="productos/{{category.id}}"><img height="120" width="120" src="{{ category.image }}" alt="" />
-        <p class="text-center">{{category.name}}</p>
+        <p class="text-center text-black" >{{category.name}}</p>
       </a>  
     </div>
   </div>
@@ -71,7 +71,7 @@
         <h3 class="fs-5">
           <b>{{ producto.name }}</b>
         </h3>
-        <h4 class="fs-6" style="text-align: end">${{ producto.price * dollar.price }}</h4>
+        <h4 class="fs-6" style="text-align: end">${{ producto.price * dollar2 }}</h4>
       </div>
     </a>
     </div>
@@ -97,8 +97,7 @@
               <h3 class="p-2">
                 {{ producto.name }}
               </h3>
-              <p class="p-2">
-                {{ producto.description }}
+              <p class="p-2" [innerHTML]="producto.description ">
               </p>
             </div>
             <div class="modal-footer">

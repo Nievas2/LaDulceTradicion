@@ -63,10 +63,10 @@
         class="pb-5 pt-4 mt-3 mb-2"
         style="background-color: #fff; border-radius: 15px; position: relative"
       >
-        <h2 class="fw-bolder" style="display: inline">${{ producto.price * dollar.price }}</h2>
+        <h2 class="fw-bolder" style="display: inline">${{ producto.price * dollar2!}}</h2>
         <div class="mt-5">
-          <p class="fst-normal">
-            {{ producto.description }}
+          <p class="fst-normal" [innerHTML]="producto.description ">
+           
           </p>
         </div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin: 10px">
@@ -100,12 +100,13 @@
               class="form-control"
               id="option"
             >
-              <option value="">Selecciona una option</option>
+              <option value="">Selecciona una opción</option>
               <option
                 *ngFor="let product of producto.SubCategoryProducts"
                 [value]="product.SubCategory.date"
+                
               >
-                <h1>{{ product.SubCategory.date }}</h1>
+                <h1>{{ product.SubCategory.date }}  Precio: ${{dollar2 * product.SubCategory.price}}</h1>
               </option>
             </select>
             <span
@@ -175,9 +176,6 @@
             <h5>
               <b>{{ productosOption.name }}</b>
             </h5>
-            <p>
-              {{ productosOption.description }}
-            </p>
           </div>
         </a>
       </div>

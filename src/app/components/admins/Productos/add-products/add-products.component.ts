@@ -58,7 +58,7 @@ export class AddProductsComponent {
   };
   constructor(
     private fb: FormBuilder,
-    private courseService: ProductoService,
+    private ProductService: ProductoService,
     private router: Router,
     private aRouter: ActivatedRoute,
     private categoryService: CategoryService,
@@ -135,7 +135,7 @@ export class AddProductsComponent {
         }
       }],
     };
-    this.courseService.postProducto(this.producto).subscribe(
+    this.ProductService.postProducto(this.producto).subscribe(
       (data) => {
         this.alertsService.mostrarMensaje('Producto creado');
 

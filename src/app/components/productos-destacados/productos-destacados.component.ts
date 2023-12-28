@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Dollar } from 'src/app/core/interfaces/dollar';
 import { Producto } from 'src/app/core/interfaces/producto';
 import { DollarService } from 'src/app/core/services/dollar.service';
@@ -8,16 +8,21 @@ import { ProductoService } from 'src/app/core/services/producto.service';
   templateUrl: './productos-destacados.component.html',
   styleUrls: ['./productos-destacados.component.css']
 })
-export class ProductosDestacadosComponent {
+export class ProductosDestacadosComponent implements OnInit{
   productos: Producto[] = [];
   productosList: Producto[]= [];
   dollar!: Dollar;
+  dollar2!: number | null;
   constructor(private productosService: ProductoService,private dollarService: DollarService,) {
     this.getProductos();
-    this.getDollar();
+   /*  this.getDollar(); */
   }
-
-  getDollar() {
+ngOnInit(): void {
+  this.dollarService.dollar.subscribe((dolar)=>{
+    this.dollar2 = dolar
+  })
+}
+ /*  getDollar() {
     this.dollarService.getDollar().subscribe(
       (data) => {
         this.dollar = <any>data;
@@ -27,7 +32,7 @@ export class ProductosDestacadosComponent {
         console.log(error);
       }
     );
-  }
+  } */
   getProductos() {
     this.productosService.getProductos().subscribe(
       (data) => {

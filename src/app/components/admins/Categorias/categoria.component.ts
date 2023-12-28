@@ -38,7 +38,7 @@ export class CategoriaComponent {
     );
   }
 
-  deleteCourseCategory() {
+  deleteCategory() {
     this.categoryService.deleteCategory(this.id).subscribe(
       (res) => {
         window.location.reload();

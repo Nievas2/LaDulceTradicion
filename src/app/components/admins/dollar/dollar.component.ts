@@ -25,7 +25,7 @@ export class DollarComponent {
     this.form = this.fb.group({
       price: "",
     });
-    this.getById()
+  /*   this.getById() */
   }
 
   ngOnInit(): void {
@@ -36,14 +36,14 @@ export class DollarComponent {
       }
     });
   }
-  getById() {
+/*   getById() {
     this.dollarService.getDollar().subscribe((data) => {
       this.dollar = <any> data
       this.form.setValue({
         price: this.dollar.price,
       });
     });
-  }
+  } */
 
   update() {
     const precio = this.form.value.price

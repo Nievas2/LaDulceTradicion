@@ -27,8 +27,9 @@ export class TicketComponent implements OnInit {
   ) {
     this.form = this.formBuilder.group({
       envio: ['', Validators.required],
+      description: "",
     });
-    this.form.setValue({ envio: false });
+    this.form.setValue({ envio: false, description: "" });
   }
   ngOnInit(): void {
     this.carritoService.carrito.subscribe((carrito) => {
@@ -54,11 +55,6 @@ export class TicketComponent implements OnInit {
     let env = "";
     this.products.forEach((element) => {
       if (contador > 0) {
-       /*  prod = prod + ', ' + element.name;
-        cant = cant + ', ' + element.cant;
-        precio = precio + ', ' + element.price;
-        opcion = opcion + ', ' + element.opcion;
-        subtotal = subtotal + ', ' + element.total; */
         contador = contador + 1;
       prod = element.name;
       cant = element.cant;
@@ -116,33 +112,6 @@ export class TicketComponent implements OnInit {
       '<br>' 
       }
     });
-    /* env =
-      'Productos: ' +
-      prod +
-      ',' +
-      '<br>' +
-      'cantidades: ' +
-      cant +
-      ',' +
-      '<br>' +
-      'Precios: ' +
-      precio +
-      ',' +
-      '<br>' +
-      'Opcionales: ' +
-      opcion +
-      ',' +
-      '<br>' +
-      'Subtotales: ' +
-      subtotal +
-      ',' +
-      '<br>' +
-      'Total: ' +
-      this.totalGeneral +
-      ',' +
-      '<br>' +
-      'Envio: ' +
-      this.form.value.envio; */
     console.log(env);
     env = env +
     '<br>' + 
@@ -151,7 +120,7 @@ export class TicketComponent implements OnInit {
     ',' +
     '<br>' +
     'Envio: ' +
-    this.form.value.envio;
+    this.form.value.envio + "<br>"+ "Descipcion: " + this.form.value.description;
     this.userService.postTicket(this.token.email, env).subscribe(
       (data)=>{
         this.alertsService.mostrarMensaje('Email enviado');
@@ -159,7 +128,7 @@ export class TicketComponent implements OnInit {
         setTimeout(() => {
           this.alertsService.ocultarMensaje();
         }, 4000);
-      console.log(data)
+        this.router.navigateByUrl('');
     }, ( error)=>{
       this.alertsService.mostrarMensaje('Algo salio mal');
 

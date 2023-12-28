@@ -53,8 +53,8 @@ export class LoginService {
             this.isRegistered.next(true);
           }
           localStorage.setItem('token', userData.token);
-          observer.next(userData); // Emitir el resultado al observador
-          observer.complete(); // Completar el observable
+          observer.next(userData);
+          observer.complete();
         },
         (errorData) => {
           observer.error(errorData); // Manejar el error

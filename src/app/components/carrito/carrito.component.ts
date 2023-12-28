@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Dollar } from 'src/app/core/interfaces/dollar';
 import { CarritoService } from 'src/app/core/services/carrito.service';
+import { DollarService } from 'src/app/core/services/dollar.service';
 import { LoginService } from 'src/app/core/services/login.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
 
@@ -12,7 +14,9 @@ export class CarritoComponent implements OnInit {
   products: any = [];
   totalGeneral!: number;
   isRegistered!: boolean;
-  constructor(private carritoService : CarritoService,private loginService : LoginService) {
+  dollar!: Dollar;
+  constructor(private dollarService: DollarService,private carritoService : CarritoService,private loginService : LoginService) {
+/*   this.getDollar() */
   }
   ngOnInit(): void {
    this.loginService.isRegistered.subscribe((data)=>{
@@ -26,7 +30,17 @@ export class CarritoComponent implements OnInit {
     });
     this.actualizarTotalGeneral()
   }
+/*   getDollar() {
+    this.dollarService.getDollar().subscribe(
+      (data) => {
+        this.dollar = <any>data;
+      },
 
+      (error) => {
+        console.log(error);
+      }
+    );
+  } */
   delete(id: number) {
     const indiceAEliminar = id; 
     
