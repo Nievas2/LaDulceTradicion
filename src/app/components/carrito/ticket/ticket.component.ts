@@ -59,7 +59,7 @@ export class TicketComponent implements OnInit {
       prod = element.name;
       cant = element.cant;
       precio = element.price;
-      opcion = element.opcion;
+      opcion = element.option;
       subtotal = element.total;
         env ="<br>" + env + "<br>-------<br>" +
       'Productos: ' +
@@ -87,7 +87,7 @@ export class TicketComponent implements OnInit {
       prod = element.name;
       cant = element.cant;
       precio = element.price;
-      opcion = element.opcion;
+      opcion = element.option;
       subtotal = element.total;
       env = 
       'Productos: ' +
@@ -123,12 +123,13 @@ export class TicketComponent implements OnInit {
     this.form.value.envio + "<br>"+ "Descipcion: " + this.form.value.description;
     this.userService.postTicket(this.token.email, env).subscribe(
       (data)=>{
-        this.alertsService.mostrarMensaje('Email enviado');
+        this.alertsService.mostrarMensaje('Email enviado con exito');
 
         setTimeout(() => {
           this.alertsService.ocultarMensaje();
+          this.router.navigateByUrl('');
         }, 4000);
-        this.router.navigateByUrl('');
+        
     }, ( error)=>{
       this.alertsService.mostrarMensaje('Algo salio mal');
 

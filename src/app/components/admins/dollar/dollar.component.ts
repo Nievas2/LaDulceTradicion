@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/core/services/login.service';
 export class DollarComponent {
   admin: any;
   form : FormGroup;
-  dollar! : Dollar;
+  dollar! : number | null;
   constructor(
     private dollarService: DollarService,
     private loginService: LoginService,
@@ -35,6 +35,12 @@ export class DollarComponent {
         this.router.navigateByUrl('');
       }
     });
+    this.dollarService.dollar.subscribe((data)=>{
+      this.dollar = data
+      this.form.setValue({
+        price: this.dollar,
+      });
+    })
   }
 /*   getById() {
     this.dollarService.getDollar().subscribe((data) => {

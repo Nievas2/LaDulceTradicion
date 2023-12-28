@@ -166,17 +166,22 @@
       <div
         *ngFor="let productosOption of productosSelect.slice(0, 4)"
         class="col p-2 m-2 rounded options"
+        id="center"
       >
         <a
           style="text-decoration: none; color: #000"
           href="/pagsec/{{ productosOption.id }}"
+          
         >
-          <div class="fotoC">
+          <div class="fotoC" style=" display: flex;
+          justify-content: center;
+          ">
             <img width="200" src="{{ productosOption.image }}" alt="" />
-            <h5>
-              <b>{{ productosOption.name }}</b>
-            </h5>
+            
           </div>
+          <h5 class="text-center">
+            <b >{{ productosOption.name }}</b>
+          </h5>
         </a>
       </div>
     </div>
