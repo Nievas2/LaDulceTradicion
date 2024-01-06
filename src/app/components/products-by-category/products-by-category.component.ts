@@ -32,17 +32,6 @@ export class ProductsByCategoryComponent implements OnInit {
       this.dollar2 = dolar
     })
   }
- /*  getDollar() {
-    this.dollarService.getDollar().subscribe(
-      (data) => {
-        this.dollar = data;
-      },
-
-      (error) => {
-        console.log(error);
-      }
-    );
-  } */
   getCategoryById() {
     this.categoryService.getCategoryById(this.id).subscribe(
       (data) => {

@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
 })
 export class CategoryService {
 
-  private apiUrl= "https://back-ladulce.fly.dev/category"; 
+  private apiUrl= "https://localhost:4001/category"; 
   token!: string | null;
   
 

@@ -47,16 +47,55 @@
       <div class="modal-dialog">
         <div class="modal-content" style="background-color: var(--color1)">
           <div class="modal-body" style="padding: 0">
-            <img
-              src="{{ producto.image }}"
-              class="img-dest img-fluid"
-              alt="..."
-            />
+            <div [id]="'carouselExampleFade' + index" class="carousel slide carousel-fade">
+              <div class="carousel-inner">
+                <div
+                  class="carousel-item"
+                  *ngFor="
+                    let image of producto.ImagesProductAsocciations;
+                    let i = index
+                  "
+                  [class.active]="i === 0"
+                >
+                  
+                    <div>
+                      <img
+                        src="{{ image.ImageProduct.image }}"
+                        class="d-block w-100"
+                        alt="..."
+                      />
+                    </div>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                [attr.data-bs-target]="'#carouselExampleFade' + index"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                [attr.data-bs-target]="'#carouselExampleFade' + index"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
             <h3 class="p-2">
               {{ producto.name }}
             </h3>
-            <p class="p-2" [innerHTML]="producto.description ">
-            </p>
+            <p class="p-2" [innerHTML]="producto.description"></p>
           </div>
           <div class="modal-footer">
             <button id="center" type="button" class="btn boton">
@@ -72,5 +111,3 @@
     </div>
   </div>
 </div>
-  
-

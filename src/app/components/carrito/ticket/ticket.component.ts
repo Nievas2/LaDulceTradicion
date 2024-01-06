@@ -123,7 +123,7 @@ export class TicketComponent implements OnInit {
     this.form.value.envio + "<br>"+ "Descipcion: " + this.form.value.description;
     this.userService.postTicket(this.token.email, env).subscribe(
       (data)=>{
-        this.alertsService.mostrarMensaje('Email enviado con exito');
+        this.alertsService.mostrarMensaje('Email enviado con exito, pronto nos estaremos comunicando ¡gracias!.');
 
         setTimeout(() => {
           this.alertsService.ocultarMensaje();
