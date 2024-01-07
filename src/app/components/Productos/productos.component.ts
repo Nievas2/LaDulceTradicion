@@ -30,23 +30,10 @@ export class ProductosComponent implements OnInit {
     
   }
 ngOnInit(): void {
- /*  this.getDollar(); */
  this.dollarService.dollar.subscribe((dolar)=>{
   this.dollar2 = dolar
 })
 }
-  /* getDollar() {
-    this.dollarService.getDollar().subscribe(
-      (data) => {
-        console.log(data)
-        this.dollar = <any>data;
-      },
-
-      (error) => {
-        console.log(error);
-      }
-    );
-  } */
   listarProducto() {
     this.ProductoService.getProductos().subscribe(
       (res) => {

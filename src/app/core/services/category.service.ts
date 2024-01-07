@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
 })
 export class CategoryService {
 
-  private apiUrl= "https://localhost:4001/category"; 
+  private apiUrl= "https://back-ladulce.fly.dev/category"; 
   token!: string | null;
   
 
@@ -51,6 +51,6 @@ export class CategoryService {
     return this.httpCategory.delete(this.apiUrl+'/'+id,{headers})
   }  
   getCategoriesProduct(CategoryName: string){
-    return this.httpCategory.get(this.apiUrl+ "/Products/"+ CategoryName)
+    return this.httpCategory.get(this.apiUrl+ "/product/"+ CategoryName)
   }
 }

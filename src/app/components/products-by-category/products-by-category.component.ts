@@ -12,9 +12,86 @@ import { DollarService } from 'src/app/core/services/dollar.service';
 export class ProductsByCategoryComponent implements OnInit {
   existProducts: boolean = true;
   id: number;
-  category!: any;
+  category: Category= {
+    id: 0,
+    name: "",
+    image:"",
+    Products: [{
+      id: 0,
+      name: '',
+      description: '',
+      image: '',
+      price: 0,
+      CategoryName: '',
+      
+      ImagesProductAsocciations: [
+        {
+          id: 0,
+          ImageProductId: 0,
+          ProductId: 0,
+          ImageProduct: {
+            id: 0,
+            image: '',
+            Product: 0,
+          },
+        },
+      ],
+      SubCategoryProducts: [
+        {
+          id: 0,
+          SubCategoryId: 0,
+          ProductId: 0,
+          SubCategory: {
+            date: '',
+            id: 0,
+            price: 0,
+            Product: 0,
+          },
+        },
+      ],
+    }]
+  };
+  name!:any;
+  productCategory : any =
+    [{
+      Products: [{
+        id: 0,
+        name: '',
+        description: '',
+        image: '',
+        price: 0,
+        CategoryName: '',
+        
+        ImagesProductAsocciations: [
+          {
+            id: 0,
+            ImageProductId: 0,
+            ProductId: 0,
+            ImageProduct: {
+              id: 0,
+              image: '',
+              Product: 0,
+            },
+          },
+        ],
+        SubCategoryProducts: [
+          {
+            id: 0,
+            SubCategoryId: 0,
+            ProductId: 0,
+            SubCategory: {
+              date: '',
+              id: 0,
+              price: 0,
+              Product: 0,
+            },
+          },
+        ],
+      }]
+    }]
+  ;
   options : boolean = true ;
-  categories!: any[];
+  categories!: any;
   dollar: any;
   dollar2!: number | null;
   constructor(
@@ -24,7 +101,7 @@ export class ProductsByCategoryComponent implements OnInit {
   ) {
     this.id = Number(this.aRouter.snapshot.paramMap.get('id'));
     this.getCategories();
-   /*  this.getDollar(); */
+    
   }
   ngOnInit(): void {
     this.getCategoryById();
@@ -35,10 +112,9 @@ export class ProductsByCategoryComponent implements OnInit {
   getCategoryById() {
     this.categoryService.getCategoryById(this.id).subscribe(
       (data) => {
-        this.category = data.Products;
-        if(!this.category.some(Boolean)){
-          this.options = false
-        }
+        this.category = <any>data;
+        this.getProductoCategory(this.category.name);
+
       },
       (error) => {
         console.log(error);
@@ -53,5 +129,15 @@ export class ProductsByCategoryComponent implements OnInit {
       console.log(error)
     }
     );
+  }
+  getProductoCategory(name : string){
+    this.categoryService.getCategoriesProduct(name).subscribe(
+      (data)=>{
+        this.productCategory = data
+    },
+    (error)=>{
+      console.log(error)
+    }
+    )
   }
 }

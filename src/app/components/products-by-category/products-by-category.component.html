@@ -3,7 +3,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
       <li class="breadcrumb-item"><a routerLink="/productos">Productos</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{id}}</li>
+      <li class="breadcrumb-item active" aria-current="page">{{category.name}}</li>
     </ol>
   </nav>
   <div class="carrusel-container2 rounded" id="carrusel">
@@ -41,7 +41,7 @@
   <div class="row">
   <div
     class="col m2"
-    *ngFor="let producto of category; let index = index"
+    *ngFor="let producto of productCategory.Products; let index = index"
   >
     <div
       class="card sh"
@@ -134,6 +134,8 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
+
+
               <!-- <img
                 src="{{ producto.image }}"
                 class="img-dest img-fluid"
